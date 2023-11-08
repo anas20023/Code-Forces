@@ -14,10 +14,22 @@ int main()
 
     int one=strlen(case_1);
 
+    for(int i=0 ; i<one ; i++ )
+    {
+        if(case_1[i] >=65 && case_1[i] <=90)
+        {
+            case_1[i]+=32;
+        }
+        if(case_2[i] >=65 && case_2[i] <=90)
+        {
+            case_2[i]+=32;
+        }
+    }
+
 
     for(int i=0; i<one ; i++ )
     {
-        if(case_1[i] == case_2[i] || case_1[i] +32 == case_2[i] || case_1[i]-32 == case_2[i])
+        if(case_1[i] == case_2[i])
         {
             p=0;
         }
