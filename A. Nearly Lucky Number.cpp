@@ -5,25 +5,31 @@ using namespace std;
 int main()
 {
     long long x;
-    int flag = 0;
+    int count = 0;
     cin >> x;
 
     while (x != 0)
     {
 
-        int num = x % 10;
-        if (num == 4 || num == 7)
+        int temp = x % 10;
+        if (temp == 4)
         {
-            flag = 0;
+            count++;
         }
-        else
+        else if (temp == 7)
         {
-            flag = 1;
-            break;
+            count++;
         }
         x /= 10;
     }
-    (flag == 0) ? cout << "YES" << endl : cout << "NO" << endl;
+    if (count == 4 || count == 7)
+    {
+        cout << "YES\n";
+    }
+    else
+    {
+        cout << "NO\n";
+    }
 
     return 0;
 }
