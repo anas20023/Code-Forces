@@ -26,7 +26,6 @@ int findNextDistinctYear(int year) {
 
 int main() {
     int year;
-  //  cout << "Enter the year: ";
     cin >> year;
     int nextDistinctYear = findNextDistinctYear(year);
     cout << nextDistinctYear << endl;
