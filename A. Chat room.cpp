@@ -5,29 +5,26 @@ using namespace std;
 
 int main()
 {
-    string text, match = "hello";
-    getline(cin, text);
-    vector<char> v;
-    bool chck = true;
-    for (int i = 0; i < text.length(); i++)
+    ios_base ::sync_with_stdio(false);
+    cin.tie(NULL);
+    string s1;
+    string s2 = "hello";
+
+    cin >> s1;
+
+    int j = 0;
+    for (int i = 0; i < s1.length(); i++)
     {
-        if (text[i] == 'h' || text[i] == 'e' || text[i] == 'l' || text[i] == 'o')
+        if (s1[i] == s2[j])
         {
-            v.push_back(text[i]);
-            if (text[i] == text[i + 1])
-            {
-                v.pop_back();
-            }
-        }
-    }G. Summation from 1 to N
-    for (int i = 0; i < text.length(); i++)
-    {
-        if (v[i] != text[i])
-        {
-            chck = false;
+
+            j++;
         }
     }
-    (chck != true) ? cout << "YES\n" : cout << "NO\n";
+    if (j == 5)
+        cout << "YES\n";
+    else
+        cout << "NO\n";
 
     return 0;
 }
