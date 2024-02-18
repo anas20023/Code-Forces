@@ -7,7 +7,6 @@ int main()
     long long x;
     int count = 0;
     cin >> x;
-
     while (x != 0)
     {
 
