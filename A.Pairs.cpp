@@ -17,13 +17,13 @@ int main()
     {
         netsum += arr[i];
     }
-    int mysum = 0;
+    int before_sum = 0;
     int count = 0;
     for (int i = n - 1; i >= 0; i--)
     {
-        mysum += arr[i];
+        before_sum += arr[i];
         count++;
-        if (mysum > netsum - mysum)
+        if (before_sum > netsum - before_sum)
             break;
     }
     cout << count;
