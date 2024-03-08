@@ -58,10 +58,13 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "*.jsx": "javascriptreact",
+    ".env*": "dotenv",
+    "*.html": "html",
     "iostream": "cpp",
     "string": "cpp",
     "cmath": "cpp",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "ostream": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
