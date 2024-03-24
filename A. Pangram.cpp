@@ -5,9 +5,10 @@ using namespace std;
 
 int main()
 {
-    int x, cnt = 0;
+    int x;
     cin >> x;
     char a[x];
+    set<char> p;
     for (int i = 0; i < x; i++)
     {
         cin >> a[i];
@@ -19,17 +20,14 @@ int main()
         {
             a[i] += 32;
         }
-        //cout << a[i];
+        // cout << a[i];
+    }
+    for (int i = 0; i < x; i++)
+    {
+        p.insert(a[i]);
     }
 
-    for (int i = 0; i < x-1; i++)
-    {
-        if (a[i] != a[i + 1])
-        {
-            cnt++;
-        }
-    }
-    (cnt >= 26) ? cout << "YES\n" : cout << "NO\n";
+    (p.size() == 26) ? cout << "YES\n" : cout << "NO\n";
 
     return 0;
 }
