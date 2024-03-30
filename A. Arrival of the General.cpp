@@ -45,9 +45,13 @@ int main()
             max_i = i;
         }
     }
-    cout << mn_num << endl;
-    cout << min_i << endl;
-    cout << max_i << endl;
-    cout << max_i << endl;
+    // cout << mn_num << endl;
+    // cout << min_i << endl;
+    // cout << mx_num << endl;
+    // cout << max_i << endl;
+    ll cng;
+    (max_i < min_i) ? cng = (max_i - min_i + x - 1) : cng = (max_i - min_i + x - 2);
+    cout << cng << endl;
+
     return 0;
 }
