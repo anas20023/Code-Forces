@@ -32,27 +32,42 @@ void Fast_io()
 int main()
 {
     Fast_io();
+    vector<pair<ll, ll>> vp;
     bool ck = true;
-    ll s, n;
+    ll s, n, it = 0;
     cin >> s >> n;
+
+    for (int i = 0; i < n; i++)
+    {
+        ll a, b;
+        cin >> a >> b;
+        pair<ll, ll> temp_pair;
+        temp_pair.first = a;
+        temp_pair.second = b;
+        vp.push_back(temp_pair);
+    }
+    sort(vp.begin(), vp.end());
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout << vp[i].first << endl;
+    //     cout << vp[i].second << endl;
+    // }
+
     while (n--)
     {
-        ll x, y;
-        cin >> x >> y;
-        if (x > s)
+        if (s < vp[it].first)
         {
-            // cout << "NO" << endl;
-            // return 0;
             ck = false;
         }
         else
         {
-            s += y;
+            s += vp[it].second;
             ck = true;
         }
+        it++;
     }
     (ck) ? cout << "YES\n" : cout << "NO\n";
-    // cout << "YES" << endl;
+    // cout << ck << endl;
 
     return 0;
 }
