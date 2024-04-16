@@ -55,7 +55,7 @@ int main()
 
     while (n--)
     {
-        if (s < vp[it].first)
+        if (s <= vp[it].first)
         {
             ck = false;
         }

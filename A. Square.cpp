@@ -1,45 +1,53 @@
-#include <iostream>
-#include <cmath>
+////////////////              ANAS IBN BELAL            /////////////////
+//                         Test  Case  Template                       ||
+//                                                                    ||
+//                                                                    ||
+//      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
+//                          INTAKE 52                                 ||
+//                      DEPARTMENT OF CSE                             ||
+//                                                                    ||
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+#include <bits/stdc++.h>
+#include <vector>
+#include <algorithm>
 #include <string>
+#include <cmath>
+#include <set>
+#include <queue>
+#include <map>
+#include <deque>
+#include <list>
+#include <limits.h>
+#define ll long long
+#define dl double
+#define endl "\n"
 using namespace std;
+
+void Fast_io()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+}
 
 int main()
 {
-    int t_case;
-    cin >> t_case;
-    int Points[4][2], w_2, w_1, l_2, l_1;
-    for (int i = 0; i < t_case; i++)
+    Fast_io();
+    ll tc;
+    cin >> tc;
+    while (tc--)
     {
-        for (int i = 0; i < 4; i++)
+        vector<ll> x_vals, y_vals;
+        for (int i = 1; i <= 4; i++)
         {
-            for (int j = 0; j < 2; j++)
-            {
-                cin >> Points[i][j];
-            }
+            ll x, y;
+            cin >> x >> y;
+            x_vals.push_back(x);
+            y_vals.push_back(y);
         }
-        w_2 = Points[0][0];
-        l_2 = Points[0][1];
-        for (int i = 0; i < 3; i++)
-        {
-            if (Points[i][0] < Points[i + 1][0])
-            {
-                w_2 = Points[i + 1][0];
-            }
-            else
-            {
-                w_1 = Points[i + 1][0];
-            }
-            if (Points[i][1] < Points[i + 1][1])
-            {
-                l_2 = Points[i + 1][1];
-            }
-            else
-            {
-                l_1 = Points[i + 1][1];
-            }
-        }
-        float area = max(0, (l_2 - l_1) * (w_2 - w_1));
-        cout << area << "\n";
+        sort(x_vals.begin(), x_vals.end());
+        sort(y_vals.begin(), y_vals.end());
+        cout << abs(x_vals[2] - x_vals[0]) * abs(y_vals[2] - y_vals[0]) << endl;
     }
 
     return 0;
