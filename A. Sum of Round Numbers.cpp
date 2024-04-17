@@ -3,7 +3,7 @@
 //                                                                    ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
-//                          INTAKE 52                                 ||
+//                          llAKE 52                                 ||
 //                      DEPARTMENT OF CSE                             ||
 //                                                                    ||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -28,7 +28,35 @@ void Fast_io()
     cin.tie(0);
     cout.tie(0);
 }
-
+void Run()
+{
+    ll n;
+    cin >> n;
+    ll count = 0;
+    ll multiplier = 1;
+    vector<ll> arr;
+    while (n > 0)
+    {
+        ll curr = n % 10;
+        if (curr == 0)
+        {
+            multiplier *= 10;
+        }
+        else
+        {
+            arr.push_back(curr * multiplier);
+            count++;
+            multiplier *= 10;
+        }
+        n /= 10;
+    }
+    cout << count << endl;
+    for (ll i = 0; i < arr.size(); i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
 int main()
 {
     Fast_io();
@@ -36,44 +64,7 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        ll a, b, step = 0;
-        cin >> a >> b;
-        if (a == b)
-        {
-            cout << 0 << endl;
-        }
-        else if (a > b)
-        {
-            // for (int i = 2, int j = 1; a == b; i += 2, j += 2)
-            // {
-            // }
-            ll dif = a - b;
-            if (dif % 2 == 0)
-            {
-                step = 1;
-            }
-            else
-            {
-                step = 2;
-            }
-            cout << step << endl;
-        }
-        else if (a < b)
-        {
-            // for (int i = 2, int j = 1; a == b; i += 2, j += 2)
-            // {
-            // }
-            ll dif = b - a;
-            if (dif % 2 == 0)
-            {
-                step = 2;
-            }
-            else
-            {
-                step = 1;
-            }
-            cout << step << endl;
-        }
+        Run();
     }
 
     return 0;
