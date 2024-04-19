@@ -1,5 +1,5 @@
 ////////////////              ANAS IBN BELAL            /////////////////
-//                         Test  Case  Template                       ||
+//                      Test Case Less Template                       ||
 //                                                                    ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
@@ -21,6 +21,7 @@
 #define ll long long
 #define endl "\n"
 using namespace std;
+
 void Fast_io()
 {
     ios_base::sync_with_stdio(false);
@@ -31,17 +32,49 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    ll tc;
-    cin >> tc;
-    while (tc--)
+    string a, b;
+    cin >> a >> b;
+    reverse(a.begin(), a.end());
+    reverse(b.begin(), b.end());
+    for (int i = a.size() - 1; a[i] == '0'; i--)
     {
-        ll a, b;
-        cin >> a >> b;
-        ll sum_of_match = a + b;
-        if (sum_of_match % 2 == 0)
-            cout << "Bob" << endl;
-        else
-            cout << "Alice" << endl;
+        a.pop_back();
+    }
+    for (int i = b.size() - 1; b[i] == '0'; i--)
+    {
+        b.pop_back();
+    }
+    // cout << a << " " << b;
+    if (a.size() > b.size())
+    {
+        cout << ">" << endl;
+    }
+    else if (a.size() < b.size())
+    {
+        cout << "<" << endl;
+    }
+    else
+    {
+        bool flag = false;
+        for (int i = a.size() - 1; i >= 0; i--)
+        {
+            if (a[i] > b[i])
+            {
+                flag = true;
+                cout << ">";
+                break;
+            }
+            if (a[i] < b[i])
+            {
+                flag = true;
+                cout << "<";
+                break;
+            }
+        }
+        if (!flag)
+        {
+            cout << "=" << endl;
+        }
     }
 
     return 0;

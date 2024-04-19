@@ -21,6 +21,7 @@
 #define ll long long
 #define endl "\n"
 using namespace std;
+
 void Fast_io()
 {
     ios_base::sync_with_stdio(false);
@@ -28,6 +29,20 @@ void Fast_io()
     cout.tie(0);
 }
 
+void  solve() {ll a, b, n, l;
+        cin >> a >> b >> n >> l;
+        if ((n * a) + b < l)
+        {
+            cout << "NO\n";
+            return;
+        }
+        ll ck = l / n;
+        if ((ck * n) + b < l)
+        {
+            cout << "NO\n";
+            return;
+        }
+        cout << "YES\n";}
 int main()
 {
     Fast_io();
@@ -35,13 +50,7 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        ll a, b;
-        cin >> a >> b;
-        ll sum_of_match = a + b;
-        if (sum_of_match % 2 == 0)
-            cout << "Bob" << endl;
-        else
-            cout << "Alice" << endl;
+        solve();
     }
 
     return 0;
