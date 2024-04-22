@@ -1,5 +1,5 @@
 ////////////////              ANAS IBN BELAL            /////////////////
-//                         Test  Case  Template                       ||
+//                      Test Case Less Template                       ||
 //                                                                    ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
@@ -32,25 +32,29 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    ll tc;
-    cin >> tc;
-    while (tc--)
+    ll x, process = 0;
+    cin >> x;
+    vector<ll> v(x);
+    for (int i = 0; i < x; i++)
     {
-        ll n, score = 0;
-        cin >> n;
-        vector<ll> a(2 * n);
-        for (int i = 0; i < 2 * n; i++)
-        {
-            cin >> a[i];
-        }
-         sort(a.begin(), a.end());
-        for (int i = 0; i < (2 * n) - 1; i += 2)
-        {
-            score += min(a[i], a[i + 1]);
-        }
-        cout << score << endl;
-        // cout << endl;
+        cin >> v[i];
     }
+    ll min = v[0];
+    ll max = v[0];
+    for (int i = 0; i < x; i++)
+    {
+        if (v[i] > max)
+        {
+            max = v[i];
+            process++;
+        }
+        if (v[i] < min)
+        {
+            min = v[i];
+            process++;
+        }
+    }
+    cout << process;
 
     return 0;
 }

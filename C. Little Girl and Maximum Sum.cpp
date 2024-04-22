@@ -34,32 +34,11 @@ int main()
     Fast_io();
     ll n, q;
     cin >> n >> q;
-    vector<ll> a(n);
+    vector<ll> a(n + 2);
     vector<ll> b(n + 2, 0);
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
     }
-    // sort(a.begin(), a.end());
-    for (int i = 2; i <= n; i++)
-    {
-        a[i] += a[i - 1];
-    }
-    while (q--)
-    {
-        ll l, r;
-        cin >> l >> r;
-        b[l]++;
-        b[r + 1]--;
-    }
-    for (int i = 2; i <= n; i++)
-    {
-        b[i] += b[i - 1];
-    }
-    for (int i = 1; i <= n; i++)
-    {
-        cout << b[i] << " ";
-    }
-
     return 0;
 }
