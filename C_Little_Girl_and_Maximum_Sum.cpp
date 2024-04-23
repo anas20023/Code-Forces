@@ -32,13 +32,32 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    ll n, q;
+    ll n, q, max_sum = 0;
     cin >> n >> q;
-    vector<ll> a(n + 2);
-    vector<ll> b(n + 2, 0);
-    for (int i = 1; i <= n; i++)
+    vector<ll> a(n);
+    vector<ll> b(2e5 + 100);
+    for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
+    while (q--)
+    {
+        ll l, r;
+        cin >> l >> r;
+        b[l - 1]++;
+        b[r]--;
+    }
+    for (int i = 1; i < n; i++)
+    {
+        b[i] += b[i - 1];
+    }
+    sort(b.rbegin(), b.rend());
+    sort(a.rbegin(), a.rend());
+    for (int i = 0; i < n; i++)
+    {
+        // cout << a[i] << " " << b[i] << endl;
+        max_sum += a[i] * b[i];
+    }
+    cout << max_sum << endl;
     return 0;
 }
