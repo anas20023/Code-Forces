@@ -32,14 +32,21 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    vector<ll> x(4);
-    for (int i = 0; i < 4; i++)
+    ll a, b;
+    cin >> a >> b;
+    ll sum = a + b, track = 0;
+    while (a-- && b--)
     {
-        cin >> x[i];
+        track++;
     }
-    sort(x.begin(), x.end());
-    ll a = x[3] - x[0], b = x[3] - x[1], c = x[3] - x[2];
-    cout << a << " " << b << " " << c << endl;
+    if (track % 2 == 0)
+    {
+        cout << "Malvika" << endl;
+    }
+    else
+    {
+        cout << "Akshat" << endl;
+    }
 
     return 0;
 }

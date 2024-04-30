@@ -32,14 +32,14 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    vector<ll> x(4);
-    for (int i = 0; i < 4; i++)
-    {
-        cin >> x[i];
-    }
-    sort(x.begin(), x.end());
-    ll a = x[3] - x[0], b = x[3] - x[1], c = x[3] - x[2];
-    cout << a << " " << b << " " << c << endl;
+    ll n, k, l, c, d, p, nl, np, needed_drink, needed_limes, needed_salt;
+    cin >> n >> k >> l >> c >> d >> p >> nl >> np;
+    needed_drink = (k * l) / nl;
+    needed_limes = c * d;
+    needed_salt = p / np;
+    ll toasts;
+    toasts = min({needed_drink, needed_limes, needed_salt}) / n;
+    cout << toasts << endl;
 
     return 0;
 }
