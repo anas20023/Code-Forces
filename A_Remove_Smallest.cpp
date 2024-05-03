@@ -31,37 +31,60 @@ void Fast_io()
 
 int main()
 {
-    /// Sieve of Eratosthenes for Prime number array
-    vector<int> a(1e6);
-    a[0] = a[1] = 0;
-    for (int i = 2; i * i <= 1e6; ++i)
-    {
-        if (a[i] == 0)
-        {
-            for (int j = i * i; j <= 1e6; j += i)
-            {
-                a[j] = 1;
-            }
-        }
-    }
-
     Fast_io();
     ll tc;
     cin >> tc;
     while (tc--)
     {
-        ll num;
-        cin >> num;
-        ll temp = sqrtl(num);
-        if (num == 1)
-            cout << "NO" << endl;
-        else if (temp * temp == num && a[temp] == 0)
+        ll s;
+        cin >> s;
+        set<ll> st;
+        for (int i = 0; i < s; i++)
         {
-            cout << "YES" << endl;
+            ll temp;
+            cin >> temp;
+            st.insert(temp);
+        }
+        // sort(a.rbegin(), a.rend());
+        // for (auto i : st)
+        // {
+        //     cout << i << " ";
+        // }
+        // cout << endl;
+        if (st.size() == 1)
+        {
+            cout << "YES\n";
         }
         else
         {
-            cout << "NO" << endl;
+            vector<ll> a;
+            bool flag = true;
+            for (auto i : st)
+            {
+                // cout << i << " ";
+                a.push_back(i);
+            }
+            for (int i = 0; i < a.size() - 1; i++)
+            {
+                if (a[i + 1] - a[i] != 1)
+                {
+                    flag = false;
+                    break;
+                }
+                else
+                {
+                    flag = true;
+                }
+            }
+            // cout << endl;
+            if (!flag)
+            {
+                cout << "NO" << endl;
+            }
+            else
+            {
+                cout << "YES" << endl;
+            }
         }
     }
     return 0;

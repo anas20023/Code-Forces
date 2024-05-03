@@ -1,5 +1,5 @@
 ////////////////              ANAS IBN BELAL            /////////////////
-//                         Test  Case  Template                       ||
+//                      Test Case Less Template                       ||
 //                                                                    ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
@@ -31,37 +31,30 @@ void Fast_io()
 
 int main()
 {
-    /// Sieve of Eratosthenes for Prime number array
-    vector<int> a(1e6);
-    a[0] = a[1] = 0;
-    for (int i = 2; i * i <= 1e6; ++i)
-    {
-        if (a[i] == 0)
-        {
-            for (int j = i * i; j <= 1e6; j += i)
-            {
-                a[j] = 1;
-            }
-        }
-    }
-
     Fast_io();
-    ll tc;
-    cin >> tc;
-    while (tc--)
+    string a;
+    cin >> a;
+    // cout << a[0];
+    if (a[0] >= '0' && a[0] <= '9')
     {
-        ll num;
-        cin >> num;
-        ll temp = sqrtl(num);
-        if (num == 1)
-            cout << "NO" << endl;
-        else if (temp * temp == num && a[temp] == 0)
+        cout << a << endl;
+    }
+    else if (a.size() == 3 && a[a.size() - 1] == '0')
+    {
+        cout << 0 << endl;
+    }
+    else
+    {
+        // cout << a[a.size() - 1] << endl;
+        if (a[a.size() - 1] > a[a.size() - 2])
         {
-            cout << "YES" << endl;
+            a.pop_back();
+            cout << a << endl;
         }
-        else
+        else 
         {
-            cout << "NO" << endl;
+            a.erase(a.end() - 2);
+            cout << a << endl;
         }
     }
     return 0;

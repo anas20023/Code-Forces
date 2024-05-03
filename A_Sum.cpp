@@ -31,31 +31,18 @@ void Fast_io()
 
 int main()
 {
-    /// Sieve of Eratosthenes for Prime number array
-    vector<int> a(1e6);
-    a[0] = a[1] = 0;
-    for (int i = 2; i * i <= 1e6; ++i)
-    {
-        if (a[i] == 0)
-        {
-            for (int j = i * i; j <= 1e6; j += i)
-            {
-                a[j] = 1;
-            }
-        }
-    }
-
     Fast_io();
     ll tc;
     cin >> tc;
     while (tc--)
     {
-        ll num;
-        cin >> num;
-        ll temp = sqrtl(num);
-        if (num == 1)
-            cout << "NO" << endl;
-        else if (temp * temp == num && a[temp] == 0)
+        vector<ll> a(3);
+        for (int i = 0; i < 3; i++)
+        {
+            cin >> a[i];
+        }
+        sort(a.begin(), a.end());
+        if (a[0] + a[1] == a[2])
         {
             cout << "YES" << endl;
         }
@@ -64,5 +51,6 @@ int main()
             cout << "NO" << endl;
         }
     }
+
     return 0;
 }
