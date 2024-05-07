@@ -1,6 +1,6 @@
 ////////////////              ANAS IBN BELAL            /////////////////
-//                         Test  Case  Template                       ||
-//                                                                    ||
+//                      Test Case Less Template                       ||
+//                            Binary Search                           ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
 //                          INTAKE 52                                 ||
@@ -11,18 +11,11 @@
 #define ll long long
 #define endl "\n"
 using namespace std;
-
-void Fast_io()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-}
-bool check_Sq(ll n)
+int msqrt(ll n)
 {
     if (n == 0 || n == 1)
     {
-        return true;
+        return n;
     }
     ll l = 1, r = sqrtl(n);
     while (l <= r)
@@ -31,7 +24,7 @@ bool check_Sq(ll n)
         ll sq_nm = mid_nm * mid_nm;
         if (sq_nm == n)
         {
-            return true;
+            return mid_nm;
         }
         else if (sq_nm < n)
         {
@@ -42,27 +35,21 @@ bool check_Sq(ll n)
             r = mid_nm - 1;
         }
     }
-    return false;
+    return 0;
 }
+void Fast_io()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+}
+
 int main()
 {
     Fast_io();
-    ll tc;
-    cin >> tc;
-    while (tc--)
-    {
-        ll s, sum = 0;
-        cin >> s;
-        vector<ll> a(s);
-        for (int i = 0; i < s; i++)
-        {
-            cin >> a[i];
-            sum += a[i];
-        }
-        // cout << sum << endl;
-        // cout << check_Sq(sum) << endl;
-        (check_Sq(sum)) ? cout << "YES\n" : cout << "NO\n";
-    }
-
+    ll a;
+    cin >> a;
+    cout << 25 << endl;
+    // cout << msqrt(a) << endl;
     return 0;
 }
