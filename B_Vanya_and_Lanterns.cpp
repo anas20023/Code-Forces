@@ -1,5 +1,5 @@
 ////////////////              ANAS IBN BELAL            /////////////////
-//                         Test  Case  Template                       ||
+//                      Test Case Less Template                       ||
 //                                                                    ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
@@ -22,37 +22,30 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    ll tc;
-    cin >> tc;
-    while (tc--)
+    ll x, y;
+    cin >> x >> y;
+    vector<ll> a(x);
+    for (int i = 0; i < x; i++)
     {
-        ll s;
-        cin >> s;
-        map<string, int> trc;
-        vector<string> q(s);
-        for (int i = 0; i < s; i++)
-        {
-            cin >> q[i];
-            trc[q[i]] = 1;
-        }
-        for (int i = 0; i < s; i++)
-        {
-            int temp = 0;
-            for (int j = 1; j < q[i].size(); j++)
-            {
-                string t1 = q[i].substr(0, j);
-                string t2 = q[i].substr(j, q[i].size() - 1);
-                if (trc[t1] == 1 && trc[t2] == 1)
-                {
-                    temp = 1;
-                    break;
-                }
-            }
-            (temp) ? cout << 1 : cout << 0;
-            temp = 0;
-        }
-        cout << endl;
+        cin >> a[i];
     }
+    sort(a.begin(), a.end());
+    // for (auto i : a)
+    // {
+    //     cout << i << " ";
+    // }
+    double max_dist = 0.0;
+    for (int i = 1; i < x; i++)
+    {
+        if (a[i] - a[i - 1] > max_dist)
+            max_dist = a[i] - a[i - 1];
+    }
+    ll rtc = max(a[0], y - a[x - 1]);
+    //  cout << rtc << endl;
+    //  rtc = (double)rtc;
+    max_dist /= 2;
+    double total = max(max_dist, (double)rtc);
+    printf("%.10f\n", total);
 
     return 0;
 }

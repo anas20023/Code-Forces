@@ -26,32 +26,16 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        ll s;
-        cin >> s;
-        map<string, int> trc;
-        vector<string> q(s);
-        for (int i = 0; i < s; i++)
+        ll a, b, c, d;
+        cin >> a >> b >> c >> d;
+        if (a - d > 0)
         {
-            cin >> q[i];
-            trc[q[i]] = 1;
+            cout << "YES" << endl;
         }
-        for (int i = 0; i < s; i++)
+        else
         {
-            int temp = 0;
-            for (int j = 1; j < q[i].size(); j++)
-            {
-                string t1 = q[i].substr(0, j);
-                string t2 = q[i].substr(j, q[i].size() - 1);
-                if (trc[t1] == 1 && trc[t2] == 1)
-                {
-                    temp = 1;
-                    break;
-                }
-            }
-            (temp) ? cout << 1 : cout << 0;
-            temp = 0;
+            cout << "NO" << endl;
         }
-        cout << endl;
     }
 
     return 0;

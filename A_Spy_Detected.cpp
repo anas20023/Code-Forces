@@ -28,30 +28,21 @@ int main()
     {
         ll s;
         cin >> s;
-        map<string, int> trc;
-        vector<string> q(s);
+        vector<ll> el(s);
         for (int i = 0; i < s; i++)
         {
-            cin >> q[i];
-            trc[q[i]] = 1;
+            cin >> el[i];
         }
+        ll track = el[0];
+        ll idx;
         for (int i = 0; i < s; i++)
         {
-            int temp = 0;
-            for (int j = 1; j < q[i].size(); j++)
+            for (int j = 0; j < s; j++)
             {
-                string t1 = q[i].substr(0, j);
-                string t2 = q[i].substr(j, q[i].size() - 1);
-                if (trc[t1] == 1 && trc[t2] == 1)
-                {
-                    temp = 1;
-                    break;
-                }
+                /* code */
             }
-            (temp) ? cout << 1 : cout << 0;
-            temp = 0;
+            
         }
-        cout << endl;
     }
 
     return 0;
