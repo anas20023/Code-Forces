@@ -1,5 +1,5 @@
 ////////////////              ANAS IBN BELAL            /////////////////
-//                      Test Case Less Template                       ||
+//                         Test  Case  Template                       ||
 //                                                                    ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
@@ -11,6 +11,7 @@
 #define ll long long
 #define endl "\n"
 using namespace std;
+
 void Fast_io()
 {
     ios_base::sync_with_stdio(false);
@@ -21,22 +22,22 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    ll n;
-    cin >> n;
-    vector<ll> arr(n);
-    for (int i = 0; i < n; i++)
+    ll tc;
+    cin >> tc;
+    while (tc--)
     {
-        cin >> arr[i];
+        string a, b;
+        cin >> a;
+        b = a;
+        reverse(b.begin(), b.end());
+        ll sum_1 = 0, sum_2 = 0;
+        for (int i = 5; i >= 3; i--)
+        {
+            sum_1 += int(a[i] - '0');
+            sum_2 += int(b[i] - '0');
+        }
+        (sum_1 == sum_2) ? cout << "YES\n" : cout << "NO\n";
     }
-    sort(arr.begin(), arr.end());
-    ll q;
-    cin >> q;
-    while (q--)
-    {
-        ll m;
-        cin >> m;
-        ll cnt = upper_bound(arr.begin(), arr.end(), m) - arr.begin();
-        cout << cnt << endl;
-    }
+
     return 0;
 }
