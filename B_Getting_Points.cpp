@@ -26,16 +26,25 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        ll n, P, l, t;
-        cin >> n >> P >> l >> t;
-        while (n--)
+        ll day, Points, lecture, task;
+        cin >> day >> Points >> lecture >> task;
+        ll total_task = (day + 6) / 7;
+        ll st = 1, end = day, ans = 0;
+        while (st <= end)
         {
-            if (P == l)
+            ll mid = (st + end) / 2;
+            ll curr_pt = mid * lecture + task * min(2 * mid, total_task);
+            if (Points <= curr_pt)
             {
-                cout << "0\n";
-                break;
+                ans = mid;
+                end = mid - 1;
+            }
+            else
+            {
+                st = mid + 1;
             }
         }
+        cout << day - ans << endl;
     }
 
     return 0;
