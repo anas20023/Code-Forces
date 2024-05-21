@@ -28,7 +28,11 @@ int main()
     {
         ll a, b, c, d;
         cin >> a >> b >> c >> d;
-        if (a - d > 0)
+        if (a > b)
+            swap(a, b);
+        if (c > d)
+            swap(c, d);
+        if ((a < c && c < b && b < d) || (c < a && a < d && d < b))
         {
             cout << "YES" << endl;
         }

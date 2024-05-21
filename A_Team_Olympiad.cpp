@@ -26,15 +26,28 @@ int main()
     ll s;
     cin >> s;
     vector<int> c(s);
+    vector<int> o, tw, th;
     set<int> st;
     map<int, int> mp;
     for (int i = 0; i < s; i++)
     {
         cin >> c[i];
+        if (c[i] == 1)
+        {
+            o.push_back(i + 1);
+        }
+        else if (c[i] == 2)
+        {
+            tw.push_back(i + 1);
+        }
+        else if (c[i] == 3)
+        {
+            th.push_back(i + 1);
+        }
         st.insert(c[i]);
         mp[c[i]]++;
     }
-    sort(c.begin(), c.end());
+    // sort(c.begin(), c.end());
     if (st.size() < 3)
     {
         cout << 0 << endl;
@@ -49,6 +62,10 @@ int main()
             temp_cnt = min(temp_cnt, temp);
         }
         cout << temp_cnt << endl;
+        for (int i = 0; i < temp_cnt; i++)
+        {
+            cout << o[i] << " " << tw[i] << " " << th[i] << endl;
+        }
     }
 
     return 0;
