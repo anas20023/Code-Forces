@@ -27,34 +27,14 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        ll n, m, k;
-        cin >> n >> m >> k;
-        vector<ll> vc(n);
-        for (int i = 0, j = 1; i < n; i++, j++)
+        string a, b;
+        cin >> a;
+        for (int i = 0; i < a.size(); i += 2)
         {
-            if (j > m)
-            {
-                j = 1;
-            }
-            vc[i] = j;
+            b.push_back(a[i]);
         }
-        if (k == m)
-        {
-            cout << "NO" << endl;
-        }
-        else
-        {
-            bool check = false;
-            for (int i = 0; i < n - 2; i++)
-            {
-                if (vc[i] == vc[i + 1] && vc[i + 1] == vc[i + 2])
-                {
-                    check = true;
-                    break;
-                }
-            }
-            (!check) ? cout << "YES" << endl : cout << "NO" << endl;
-        }
+        b.push_back(a[a.size() - 1]);
+        cout << b << endl;
     }
 
     return 0;

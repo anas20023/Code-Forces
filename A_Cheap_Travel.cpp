@@ -1,5 +1,5 @@
 ////////////////              ANAS IBN BELAL            /////////////////
-//                      Test Case Less Template                       ||
+//                         Test  Case  Template                       ||
 //                                                                    ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
@@ -10,6 +10,7 @@
 #include <bits/stdc++.h>
 #define ll long long
 #define endl "\n"
+#define Qtpie 2 * acos(0.0)
 using namespace std;
 
 void Fast_io()
@@ -22,8 +23,15 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    ll n, m, a, b, total_rbl = 0;
+    ll n, m, a, b, total_price = 0;
     cin >> n >> m >> a >> b;
-
+    if (m * a <= b)
+    {
+        cout << n * a << endl;
+    }
+    else
+    {
+        cout << (n / m) * b + min(((n % m) * a), b);
+    }
     return 0;
 }

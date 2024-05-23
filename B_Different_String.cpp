@@ -28,16 +28,21 @@ int main()
     {
         string a;
         cin >> a;
-        string temp = a;
-        reverse(a.begin(), a.end());
-        if (a == temp)
+        set<char> x;
+        for (int i = 0; i < a.size(); i++)
+        {
+            x.insert(a[i]);
+        }
+        if (x.size() == 1)
         {
             cout << "NO\n";
         }
         else
         {
             cout << "YES\n";
-            // cout << a << endl;
+            // sort(a.begin(), a.end());
+            reverse(a.begin(), a.end());
+            cout << a << endl;
         }
     }
 
