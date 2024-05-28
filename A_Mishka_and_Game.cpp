@@ -35,7 +35,7 @@ int main()
         {
             m++;
         }
-        else
+        else if (mi < ci)
         {
             c++;
         }
