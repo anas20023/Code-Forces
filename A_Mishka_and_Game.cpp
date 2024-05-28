@@ -25,41 +25,32 @@ int main()
     Fast_io();
     ll tc;
     cin >> tc;
+    int m = 0, c = 0;
     while (tc--)
     {
-        int x;
-        cin >> x;
-        string s;
-        cin >> s;
-        map<char, int> mp;
-        bool ck = false;
-        for (int i = 0; i < x; i++)
+
+        ll mi, ci;
+        cin >> mi >> ci;
+        if (mi > ci)
         {
-            if (mp.find(s[i]) == mp.end())
-            {
-                mp[s[i]] = i;
-            }
-            else
-            {
-                if ((i - mp[s[i]]) % 2 == 1)
-                {
-                    ck = true;
-                    break;
-                }
-                else
-                {
-                    mp[s[i]] = i;
-                }
-            }
-        }
-        if (!ck)
-        {
-            cout << "YES" << endl;
+            m++;
         }
         else
         {
-            cout << "NO" << endl;
+            c++;
         }
+    }
+    if (m > c)
+    {
+        cout << "Mishka" << endl;
+    }
+    else if (c > m)
+    {
+        cout << "Chris" << endl;
+    }
+    else
+    {
+        cout << "Friendship is magic!^^" << endl;
     }
 
     return 0;
