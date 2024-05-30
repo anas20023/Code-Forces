@@ -10,6 +10,7 @@
 #include <bits/stdc++.h>
 #define ll long long
 #define endl "\n"
+#define Qtpie 2 * acos(0.0)
 using namespace std;
 
 void Fast_io()
@@ -26,35 +27,15 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        string a, b;
-        cin >> a;
-        b = a;
-        map<char, int> x;
-        for (int i = 0; i < a.size(); i++)
+        int a, b;
+        cin >> a >> b;
+        if (a >= b)
         {
-            x[a[i]]++;
-        }
-        if (x.size() == 1)
-        {
-            cout << "NO\n";
+            cout << "Yes" << endl;
         }
         else
         {
-            sort(a.begin(), a.end());
-            cout << "YES\n";
-            if (a == b)
-            {
-                reverse(a.begin(), a.end());
-                cout << a << endl;
-            }
-            else
-            {
-                cout << a << endl;
-            }
-
-            // sort(a.begin(), a.end());
-            // reverse(a.begin(), a.end());
-            // cout << a << endl;
+            cout << "No" << endl;
         }
     }
 
