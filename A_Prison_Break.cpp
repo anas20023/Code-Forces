@@ -27,16 +27,9 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int a, b;
+        ll a, b;
         cin >> a >> b;
-        if (b - a <= 0)
-        {
-            cout << "Yes" << endl;
-        }
-        else
-        {
-            cout << "No" << endl;
-        }
+        cout << a * b << endl;
     }
 
     return 0;
