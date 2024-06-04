@@ -27,29 +27,15 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int a, b;
-        cin >> a >> b;
-        if (a < b)
-        {
-            cout << "No" << endl;
-        }
-        else if (a == b)
-        {
-            cout << "Yes" << endl;
-        }
-        else
-        {
-            int diff = a - b;
-            if (diff % 2 == 0)
-            {
-                cout << "Yes" << endl;
-            }
-            else
-            {
-                cout << "No" << endl;
-            }
-        }
-    }
+        ll x, y, n;
+        cin >> x >> y >> n;
 
+        ll k = n - (n - y) % x;
+        if (k > n)
+        {
+            k -= x;
+        }
+        cout << k << endl;
+    }
     return 0;
 }
