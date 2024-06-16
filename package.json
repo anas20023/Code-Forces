@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Anas Ibn Belal",
   "license": "ISC",
   "dependencies": {
     "@ip-algorithmics/codeforces-io": "^1.1.2"
