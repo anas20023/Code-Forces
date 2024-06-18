@@ -8,6 +8,7 @@
 //                                                                    ||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 #include <bits/stdc++.h>
+#include <set>
 #define ll long long
 #define endl "\n"
 #define Qtpie 2 * acos(0.0)
@@ -27,16 +28,29 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int n, m;
+        int n, m, cnt = 0;
         cin >> n >> m;
         string s;
         cin >> s;
-        set<char> st;
-        for (int i = 0; i < s.size(); i++)
+        map<char, int> mp;
+        for (int i = 0; i < n; i++)
         {
-            st.insert(s[i]);
+            mp[s[i]]++;
         }
-        cout << 7 - st.size() << endl;
+        for (auto i : mp)
+        {
+            // cout << i.first << " " << i.second << endl;
+        }
+        // cout << endl;
+        for (char i = 'A'; i <= 'G'; i++)
+        {
+            ll temp = mp[i];
+            if (temp < m)
+            {
+                cnt += (m - temp);
+            }
+        }
+        cout << cnt << endl;
     }
     return 0;
 }
