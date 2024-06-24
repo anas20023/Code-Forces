@@ -27,8 +27,23 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        ll a, b;
-        cin >> a >> b;
+        int a, b, c;
+        vector<int> v(3);
+        cin >> v[0] >> v[1] >> v[2];
+        int mn = INT_MAX;
+        for (int i = 0; i < 3; i++)
+        {
+            int temp = 0;
+            for (int j = 0; j < 3; j++)
+            {
+                // cout << v[j] << " - " << v[i] << endl;
+                temp += abs(v[j] - v[i]);
+                // cout << abs(v[j] - v[i]) << endl;
+            }
+            mn = min(temp, mn);
+            // cout << temp << endl;
+        }
+        cout << mn << endl;
     }
 
     return 0;
