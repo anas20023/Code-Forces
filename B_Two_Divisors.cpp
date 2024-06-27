@@ -27,8 +27,9 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        ll a, b;
+        int a, b;
         cin >> a >> b;
+        cout << __gcd(a, b) * b << endl;
     }
 
     return 0;
