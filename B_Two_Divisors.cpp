@@ -27,9 +27,17 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int a, b;
+        ll a, b;
         cin >> a >> b;
-        cout << __gcd(a, b) * b << endl;
+        // cout << __gcd(a, b) << endl;
+        if (b % a == 0)
+        {
+            cout << b * (b / a) << endl;
+        }
+        else
+        {
+            cout << ((a * b) / __gcd(a, b)) << endl;
+        }
     }
 
     return 0;
