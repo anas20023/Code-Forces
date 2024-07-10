@@ -27,18 +27,18 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        ll n;
+        ll n, rslt;
         cin >> n;
-        // cout << n / 3 << endl;
-        if (n % 3 == 0)
+        for (int i = 2; i <= 1e6; i++)
         {
-            cout << n / 3 << endl;
+            int num = pow(2, i)-1;
+            if (n % num == 0)
+            {
+                rslt = n / num;
+                break;
+            }
         }
-        else
-        {
-            double tmp = (((n / 3.0) - 1) / 2.0);
-            cout << round(tmp) << endl;
-        }
+        cout << rslt << endl;
     }
 
     return 0;
