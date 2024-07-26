@@ -1,5 +1,5 @@
 ////////////////              ANAS IBN BELAL            /////////////////
-//                      Test Case Less Template                       ||
+//                         Test  Case  Template                       ||
 //                                                                    ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
@@ -22,13 +22,29 @@ void Fast_io()
 
 int main()
 {
-    long long n;
-    // cout << "Enter a number: ";
-    cin >> n;
-    if(n%4==0 || n%7==0 || n%44==0 || n%47==0 || n%74==0 || n%77==0 || n%447==0 || n%477==0 || n%444==0 || n%474==0 || n%777==0 || n%747==0 || n%774==0 || n%744==0){
-        cout<<"YES"<<endl;
-    } else{
-        cout<<"NO"<<endl;
+    Fast_io();
+    ll tc;
+    cin >> tc;
+    while (tc--)
+    {
+        string s;
+        cin >> s;
+        int flag = 0;
+        for (int j = 0; j <= s.length() - 3; j++)
+        {
+            string x = s.substr(j, 3);
+            if (x == "010" || x == "101")
+            {
+                flag++;
+                cout << "Good" << endl;
+                break;
+            }
+        }
+        if (flag == 0)
+        {
+            cout << "Bad" << endl;
+        }
     }
+
     return 0;
 }

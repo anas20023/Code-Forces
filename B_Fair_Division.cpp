@@ -27,22 +27,38 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int n;
+        int n, sum = 0;
         cin >> n;
         vector<int> v(n);
+        map<int, int> mp;
         for (int i = 0; i < n; i++)
+        {
             cin >> v[i];
-        vector<int> gcd;
-        for (int i = 0; i < n - 1; i++)
-        {
-            gcd.push_back(__gcd(v[i], v[i + 1]));
+            mp[v[i]]++;
+            sum += v[i];
         }
-        int cnt = 0;
-        for (int i = 0; i < gcd.size() - 1; i++)
+        map<int, int>::iterator it;
+        int a = 0, b = 0;
+        for (it = mp.begin(); it != mp.end(); it++)
         {
-            // cout << gcd[i] << " ";
+            // cout << i.first << " " << i.second << endl;
+            if (it->first == 1)
+            {
+                a = it->second;
+            }
+            if (it->first == 2)
+            {
+                b = it->second;
+            }
         }
-        // cout << endl;
+        if (a == 0 && b % 2 == 1 || sum % 2 == 1)
+        {
+            cout << "NO" << endl;
+        }
+        else
+        {
+            cout << "YES" << endl;
+        }
     }
 
     return 0;
