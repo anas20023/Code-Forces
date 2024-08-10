@@ -18,6 +18,7 @@ void Fast_io()
     cin.tie(0);
     cout.tie(0);
 }
+
 int main()
 {
     Fast_io();
@@ -29,14 +30,14 @@ int main()
         bool flag = false;
         cin >> n >> s >> d;
         // cout << "OK" << endl;
-        int arr[d] = {0};
+        vector<ll> arr(d + 10);
         while (n--)
         {
             ll x, y;
             cin >> x >> y;
             // cout << x << " " << y << endl;
             arr[x]++;
-            arr[y]--;
+            arr[y + 1]--;
             // cout << "OK" << endl;
         }
         for (int i = 1; i < d; i++)
@@ -46,7 +47,6 @@ int main()
         int cnt = 0;
         for (int i = 0; i < d; i++)
         {
-
             if (arr[i] == 0)
             {
                 cnt++;
@@ -58,8 +58,8 @@ int main()
             }
             else
             {
-                flag = false;
                 cnt = 0;
+                flag = false;
             }
         }
         (flag) ? cout << "YES\n" : cout << "NO\n";

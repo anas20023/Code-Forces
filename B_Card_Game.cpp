@@ -18,6 +18,28 @@ void Fast_io()
     cin.tie(0);
     cout.tie(0);
 }
+bool check(int a, int b, int c, int d)
+{
+    int wina = 0, winb = 0;
+    if (a > c)
+    {
+        wina++;
+    }
+    if (c > a)
+    {
+        winb++;
+    }
+    if (d > b)
+    {
+        winb++;
+    }
+    if (b > d)
+    {
+        wina++;
+    }
+    return wina > winb;
+}
+
 int main()
 {
     Fast_io();
@@ -27,22 +49,10 @@ int main()
     {
         int a, aa, b, bb, win = 0;
         cin >> a >> aa >> b >> bb;
-        if (a > b)
-        {
-            win++;
-        }
-        if (a > bb)
-        {
-            win++;
-        }
-        if (aa > b)
-        {
-            win++;
-        }
-        if (aa > bb)
-        {
-            win++;
-        }
+        win += check(a, aa, b, bb);
+        win += check(a, aa, bb, b);
+        win += check(a, aa, bb, b);
+        win += check(aa, a, bb, b);
         cout << win << endl;
     }
     return 0;
