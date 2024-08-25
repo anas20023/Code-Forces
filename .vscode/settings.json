@@ -72,7 +72,8 @@
     "unordered_map": "cpp",
     "unordered_set": "cpp",
     "fstream": "cpp",
-    "functional": "cpp"
+    "functional": "cpp",
+    "iomanip": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

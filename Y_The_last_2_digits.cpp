@@ -21,27 +21,16 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    int tc;
-    cin >> tc;
-    while (tc--)
+    ll a, b, c, d;
+    cin >> a >> b >> c >> d;
+    ll ans = ((a % 100) * (b % 100) * (c % 100) * (d % 100)) % 100;
+    if (ans % 100 < 10)
     {
-        ll num;
-        cin >> num;
-        // cout << num / 3 << endl;
-        ll cnt_x, cnt_y;
-        cnt_x = num / 3;
-        cnt_y = num / 3;
-        // cout << num % 3 << endl;
-        if (num % 3 == 1)
-        {
-            cnt_x++;
-        }
-        else if (num % 3 == 2)
-        {
-            cnt_y++;
-        }
-        cout << cnt_x << " " << cnt_y << endl;
+        cout << 0 << ans % 100 << endl;
     }
-
+    else
+    {
+        cout << ans % 100 << endl;
+    }
     return 0;
 }
