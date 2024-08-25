@@ -18,45 +18,36 @@ void Fast_io()
     cin.tie(0);
     cout.tie(0);
 }
-
+int getValue(ll n)
+{
+    if (n / 10 == 0)
+    {
+        return 1;
+    }
+    if (n / 20 == 0)
+    {
+        return 1;
+    }
+    return 0;
+}
 int main()
 {
     Fast_io();
-    ll tc;
+    int tc;
     cin >> tc;
     while (tc--)
     {
-        ll n, s, d;
-        bool flag = false;
-        cin >> n >> s >> d;
-        // cout << "OK" << endl;
-        vector<ll> arr(d, 0);
-        while (n--)
+        ll x;
+        cin >> x;
+        if (x == 1)
         {
-            ll x, y;
-            cin >> x >> y;
-            //cout << x << " " << y << endl;
-            arr[x]++;
-            arr[y]--;
-            //cout << "OK" << endl;
+            cout << "YES" << endl;
         }
-        for (int i = 1; i < d; i++)
+        else
         {
-            arr[i] += arr[i - 1];
+            cout << getValue(x) << endl;
         }
-        for (int i = 0; i < d; i++)
-        {
-            cout << arr[i] << " ";
-        }
-        cout << endl;
-        // if (flag)
-        // {
-        //     cout << "YES\n";
-        // }
-        // else
-        // {
-        //     cout << "NO\n";
-        // }
     }
+
     return 0;
 }
