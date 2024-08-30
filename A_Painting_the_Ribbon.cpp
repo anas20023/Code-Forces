@@ -1,5 +1,5 @@
 ////////////////              ANAS IBN BELAL            /////////////////
-//                         Test  Case  Template                       ||
+//                          Template   Code                           ||
 //                                                                    ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
@@ -10,7 +10,6 @@
 #include <bits/stdc++.h>
 #define ll long long
 #define endl "\n"
-#define Qtpie 2 * acos(0.0)
 using namespace std;
 
 void Fast_io()
@@ -19,43 +18,23 @@ void Fast_io()
     cin.tie(0);
     cout.tie(0);
 }
-
 int main()
 {
     Fast_io();
-    ll tc;
+    int tc = 1;
     cin >> tc;
     while (tc--)
     {
-        ll n, m, k;
-        cin >> n >> m >> k;
-        vector<ll> vc(n);
-        for (int i = 0, j = 1; i < n; i++, j++)
-        {
-            if (j > m)
-            {
-                j = 1;
-            }
-            vc[i] = j;
-        }
-        if (k == m)
-        {
-            cout << "NO" << endl;
-        }
-        else
-        {
-            bool check = false;
-            for (int i = 0; i < n - 2; i++)
-            {
-                if (vc[i] == vc[i + 1] && vc[i + 1] == vc[i + 2])
-                {
-                    check = true;
-                    break;
-                }
-            }
-            (!check) ? cout << "YES" << endl : cout << "NO" << endl;
-        }
+        int parts,colors,steps;
+        cin>>parts>>colors>>steps;
+        // int unq_cols=parts-(parts/colors);
+        // cout<<unq_cols<<" "<<steps<<endl;
+        int rem;
+        if(!(parts%colors))rem=parts/colors;
+            else rem=(parts/colors)+1;
+        parts-=rem;
+        if(parts>steps)cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
     }
-
     return 0;
 }

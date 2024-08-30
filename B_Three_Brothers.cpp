@@ -21,15 +21,8 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    string a, b, c, d;
-    cin >> a >> b;
-    if (a.size() > b.size())
-    {
-        cout << b << endl;
-    }
-    else
-    {
-        cout << a << endl;
-    }
+   //vector<int>v={1,2,3};
+    int x,y;cin>>x>>y;
+    cout<<6-(x+y)<<endl;
     return 0;
 }

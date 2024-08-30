@@ -21,15 +21,15 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    string a, b, c, d;
-    cin >> a >> b;
-    if (a.size() > b.size())
+    int tc;cin>>tc;
+    cin.ignore();
+    set<string>st;
+    while(tc--)
     {
-        cout << b << endl;
+        string n;getline(cin,n);
+        //cin>>n;
+        st.insert(n);
     }
-    else
-    {
-        cout << a << endl;
-    }
+    cout<<st.size()<<endl;
     return 0;
 }
