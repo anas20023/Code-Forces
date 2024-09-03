@@ -25,14 +25,24 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int parts,colors,steps;
-        cin>>parts>>colors>>steps;
-        int rem;
-        if(!(parts%colors))rem=parts/colors;
-            else rem=(parts/colors)+1;
-        parts-=rem;
-        if(parts>steps)cout<<"YES"<<endl;
-        else cout<<"NO"<<endl;
+        int n;cin>>n;
+        map<int,int>mp;
+        for (int i = 0; i < n; ++i)
+        {
+            int tmp;cin>>tmp;
+            mp[tmp]++;
+        }
+        bool flag=false;
+        for (auto i:mp)
+        {
+            //cout<<i.first<<" "<<i.second<<endl;
+            if(i.second%2){
+                flag=true;
+                break;
+            }
+        }
+        (flag)?cout<<"YES\n":cout<<"NO\n";
+
     }
     return 0;
 }

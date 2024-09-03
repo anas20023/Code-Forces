@@ -25,14 +25,25 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int parts,colors,steps;
-        cin>>parts>>colors>>steps;
-        int rem;
-        if(!(parts%colors))rem=parts/colors;
-            else rem=(parts/colors)+1;
-        parts-=rem;
-        if(parts>steps)cout<<"YES"<<endl;
-        else cout<<"NO"<<endl;
+        int s;cin>>s;
+        vector<int>v(s);
+        for (int i = 0; i < s; ++i)
+        {
+            cin>>v[i];
+        }
+        int sum=0;
+        for (int i = 0; i < s; ++i)
+        {
+            if(i%2==0)
+            {
+                sum+=v[i];
+            }
+            else
+            {
+                sum-=v[i];
+            }
+        }
+        cout<<sum<<endl;
     }
     return 0;
 }

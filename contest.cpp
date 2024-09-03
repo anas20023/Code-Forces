@@ -18,21 +18,34 @@ void Fast_io()
     cin.tie(0);
     cout.tie(0);
 }
+
 int main()
 {
     Fast_io();
-    int tc = 1;
-    cin >> tc;
-    while (tc--)
-    {
-        int parts,colors,steps;
-        cin>>parts>>colors>>steps;
-        int rem;
-        if(!(parts%colors))rem=parts/colors;
-            else rem=(parts/colors)+1;
-        parts-=rem;
-        if(parts>steps)cout<<"YES"<<endl;
-        else cout<<"NO"<<endl;
+     int n;
+    cin >> n;
+    string s;
+    cin >> s;
+
+    int cnt = 0;
+    int x_c = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (s[i] == 'x') {
+            x_c++;
+        } else {
+    
+            if (x_c >= 3) {
+                cnt += x_c - 2;
+            }
+            x_c = 0;
+        }
     }
+    
+    if (x_c >= 3) {
+        cnt += x_c - 2;
+    }
+
+    cout << cnt << endl;
     return 0;
 }

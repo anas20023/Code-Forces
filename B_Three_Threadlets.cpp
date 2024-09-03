@@ -25,14 +25,22 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int parts,colors,steps;
-        cin>>parts>>colors>>steps;
-        int rem;
-        if(!(parts%colors))rem=parts/colors;
-            else rem=(parts/colors)+1;
-        parts-=rem;
-        if(parts>steps)cout<<"YES"<<endl;
-        else cout<<"NO"<<endl;
+        vector<int>v(3);
+        for (int i = 0; i < 3; ++i)
+        {
+            cin>>v[i];
+        }
+        sort(v.begin(),v.end());
+        if(v[1]%v[0] == 0 && ((v[1]/v[0] == 2 && v[2]%v[0] == 0 && v[2]/v[0] <= 3)
+        || (v[1]/v[0] == 1 && v[2]%v[0] == 0 && v[2]/v[0] <= 4)))
+        {
+            cout<<"YES\n";
+        }
+        else
+        {
+            cout<<"NO\n";
+        }
+
     }
     return 0;
 }

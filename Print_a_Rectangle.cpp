@@ -21,18 +21,21 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    int tc = 1;
-    cin >> tc;
-    while (tc--)
+    //int tc = 1;
+    //cin >> tc;
+    int h,w;
+    while (cin>>h && cin>>w)
     {
-        int parts,colors,steps;
-        cin>>parts>>colors>>steps;
-        int rem;
-        if(!(parts%colors))rem=parts/colors;
-            else rem=(parts/colors)+1;
-        parts-=rem;
-        if(parts>steps)cout<<"YES"<<endl;
-        else cout<<"NO"<<endl;
+        // cout<<"ok\n";
+        for (int i = 0; i < h; ++i)
+        {
+            for (int j = 0; j < w; ++j)
+            {
+                cout<<"#";
+            }
+            cout<<endl;
+        }
+        cout<<endl;
     }
     return 0;
 }
