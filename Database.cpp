@@ -12,39 +12,41 @@
 #define endl "\n"
 using namespace std;
 
-void Fast_io()
-{
+void Fast_io() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
 }
-int main()
-{
+
+int main() {
     Fast_io();
-    int tc = 1;
+    int tc;
     cin >> tc;
-    int cnt=1;
-    while (tc--)
-    {
-        int st,sub;cin>>st>>sub;
-        map<int,int>mp;
-        for (int i = 0; i < sub; i++)
-        {
-            int a,b;cin>>a>>b;
-            mp[b]++;
-        }
-        bool flag=false;
-        for (auto i :mp)
-        {
-            if(i.second>st)
-            {
-                flag=true;
-                break;
-            }
-        }
-        (flag)?cout<<"Scenario #"<<cnt<<": "<<"impossible\n":cout<<"Scenario #"<<cnt<<": "<<"possible\n";
-        cnt++;
+    int cnt = 1;
+    
+    while (tc--) {
+        int N, R;
+        cin >> N >> R;
+        map<int, set<int>> studentSubjects;
         
+        bool corrupted = false;
+        
+        for (int i = 0; i < R; i++) {
+            int studentID, subjectCode;
+            cin >> studentID >> subjectCode;
+            if (studentSubjects[studentID].count(subjectCode)) {
+                corrupted = true;
+            }
+            studentSubjects[studentID].insert(subjectCode);
+        }
+        
+        if (corrupted) {
+            cout << "Scenario #" << cnt << ": impossible\n";
+        } else {
+            cout << "Scenario #" << cnt << ": possible\n";
+        }
+        cnt++;
     }
+    
     return 0;
 }
