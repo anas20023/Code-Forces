@@ -21,19 +21,30 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    bool flag=false;
-    int n;cin>>n;
-    for (int i = 0; i < n; ++i)
+    int tc = 1;
+    cin >> tc;
+    int cnt=1;
+    while (tc--)
     {
-        int prc,qlt;cin>>prc>>qlt;
-        if(prc>qlt)
+        int st,sub;cin>>st>>sub;
+        map<int,int>mp;
+        for (int i = 0; i < sub; i++)
         {
-            cout<<"Happy Alex\n";
-            flag=true;
-            break;
+            int a,b;cin>>a>>b;
+            mp[b]++;
         }
+        bool flag=false;
+        for (auto i :mp)
+        {
+            if(i.second>st)
+            {
+                flag=true;
+                break;
+            }
+        }
+        (flag)?cout<<"Scenario #"<<cnt<<": "<<"impossible\n":cout<<"Scenario #"<<cnt<<": "<<"possible\n";
+        cnt++;
+        
     }
-    if(flag==false)
-        cout<<"Poor Alex"<<endl;
     return 0;
 }

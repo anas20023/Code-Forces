@@ -21,19 +21,32 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    bool flag=false;
+    // int tc = 1;
+    // cin >> tc;
+    // while (tc--)
+    // {
+    // }
     int n;cin>>n;
+    map<int,int>mp;
     for (int i = 0; i < n; ++i)
     {
-        int prc,qlt;cin>>prc>>qlt;
-        if(prc>qlt)
+        int tmp;cin>>tmp;
+        mp[tmp]++;
+    }
+    int ans=0;
+    for (auto i:mp)
+    {
+        //ans=max(ans,abs(i.first-i.second));
+        //cout<<i.first<<" "<<i.second<<endl;
+        if(i.second>i.first)
         {
-            cout<<"Happy Alex\n";
-            flag=true;
-            break;
+            ans+=i.second-i.first; 
+        }
+        else if(i.second<i.first)
+        {
+            ans+=i.second;
         }
     }
-    if(flag==false)
-        cout<<"Poor Alex"<<endl;
+    cout<<ans<<endl;
     return 0;
 }

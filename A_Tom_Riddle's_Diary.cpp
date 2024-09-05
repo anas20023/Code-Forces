@@ -21,19 +21,26 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    bool flag=false;
+    // int tc = 1;
+    // cin >> tc;
+    // while (tc--)
+    // {
+    // }
     int n;cin>>n;
+    cin.ignore();
+    map<string,int>mp;
     for (int i = 0; i < n; ++i)
     {
-        int prc,qlt;cin>>prc>>qlt;
-        if(prc>qlt)
+        string tmp;cin>>tmp;
+        if(mp.find(tmp)==mp.end())
         {
-            cout<<"Happy Alex\n";
-            flag=true;
-            break;
+            cout<<"NO"<<endl;
+            mp[tmp]=1;
         }
+        else
+        {
+            cout<<"YES"<<endl;
+        }        
     }
-    if(flag==false)
-        cout<<"Poor Alex"<<endl;
     return 0;
 }
