@@ -1,5 +1,5 @@
 ////////////////              ANAS IBN BELAL            /////////////////
-//                         Test  Case  Template                       ||
+//                          Template   Code                           ||
 //                                                                    ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
@@ -18,33 +18,18 @@ void Fast_io()
     cin.tie(0);
     cout.tie(0);
 }
-
 int main()
 {
     Fast_io();
-    ll tc;
+    int tc = 1;
     cin >> tc;
     while (tc--)
     {
-        ll n, s, d,cnt=0;
-        bool flag = false;
-        cin >> n >> s >> d;
-        while (n--)
-        {
-            ll x, y;
-            cin >> x >> y;
-            if(x-cnt >=s)
-                flag=true;
-               else
-                cnt=y;
- 
-        }
-        if(d-cnt>=s || flag)
-            cout<<"YES\n";
+        int a,b;cin>>a>>b;
+        if(a%b==0)
+            cout<<a/b<<endl;
         else
-            cout<<"NO\n";
-      
+            cout<<(a/b)+1<<endl;
     }
-
     return 0;
 }
