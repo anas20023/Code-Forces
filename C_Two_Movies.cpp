@@ -163,14 +163,54 @@ int main()
             cin >> m1[i];
         for (int i = 0; i < n; i++)
             cin >> m2[i];
-        int ans = 0;
+        int sum1 = 0,
+            sum2 = 0;
         for (int i = 0; i < n; i++)
         {
-            int tmp=min(m1[i],m2[i]);
-            ans=max(tmp,ans);
+            if (m1[i] == m2[i])
+            {
+                continue;
+            }
+            if (m1[i] > m2[i])
+            {
+                sum1 += m1[i];
+            }
+            else
+            {
+                sum2 += m2[i];
+            }
         }
-        // cout << sum1 << " " << sum2 << endl;
-        cout << ans << endl;
+        for (int i = 0; i < n; i++)
+        {
+            if (m1[i] != m2[i])
+            {
+                continue;
+            }
+            if (m1[i] == 1)
+            {
+                if (sum1 > sum2)
+                {
+                    sum2++;
+                }
+                else
+                {
+                    sum1++;
+                }
+            }
+            if (m1[i] == -1)
+            {
+                if (sum1 > sum2)
+                {
+                    sum1--;
+                }
+                else
+                {
+                    sum2--;
+                }
+            }
+        }
+       // cout << sum1 << " " << sum2 << endl;
+        cout << min(sum1, sum2) << endl;
     }
 
     return 0;
