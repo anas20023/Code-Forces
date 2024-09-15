@@ -30,16 +30,20 @@ int main()
         int x;
         cin >> x;
         vector<int> v(x + 10);
-        for (int i = 1; i <= x; i++)
+        for (int i = 0; i < x; i++)
         {
             cin >> v[i];
         }
-        // int cost = 0;
-        for (int i = 1; i <= x; i++)
+        int cost = 0;
+        for (int i = 0; i < x; i++)
         {
-           
+            if (v[i] != 1)
+            {
+                v[i] = __gcd(v[i], i);
+                cost += x - i + 1;
+            }
         }
-        cout << endl;
+        cout << cost << endl;
     }
 
     return 0;

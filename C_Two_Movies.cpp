@@ -22,7 +22,7 @@ typedef vector<pii> vii;
 typedef vector<pll> vll;
 typedef double dl;
 
-#define pb push_back
+#define PB push_back
 #define F first
 #define S second
 #define MP make_pair
@@ -152,9 +152,26 @@ void faltu(T arg, const hello &...rest)
 int main()
 {
     optimize();
-    int a, b;
-    cin >> a >> b;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        vector<int> m1(n), m2(n);
+        for (int i = 0; i < n; i++)
+            cin >> m1[i];
+        for (int i = 0; i < n; i++)
+            cin >> m2[i];
+        int ans = 0;
+        for (int i = 0; i < n; i++)
+        {
+            int tmp=min(m1[i],m2[i]);
+            ans=max(tmp,ans);
+        }
+        // cout << sum1 << " " << sum2 << endl;
+        cout << ans << endl;
+    }
 
-    cout << a + (a - 1) / (b - 1) << endl;
     return 0;
 }
