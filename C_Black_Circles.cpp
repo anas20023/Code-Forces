@@ -141,10 +141,6 @@ void faltu(T a[], int n)
         cerr << a[i] << ' ';
     cerr << endl;
 }
-dl distance(double x1, double y1, double x2, double y2)
-{
-    return sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
-}
 template <typename T, typename... hello>
 void faltu(T arg, const hello &...rest)
 {
@@ -159,37 +155,41 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int n;
+        ll n;
         cin >> n;
-        vector<pair<int, int>> pr;
-        for (int i = 0; i < n; i++)
+        vector<pair<ll, ll>> pr;
+        for (ll i = 0; i < n; i++)
         {
-            int x, y;
+            ll x, y;
             cin >> x >> y;
-            pair<int, int> tmp = MP(x, y);
-            pr.push_back(tmp);
+            // pair<ll, ll> tmp = MP(x, y);
+            pr.push_back({x, y});
         }
-        int sx, sy, dx, dy;
+        ll sx, sy, dx, dy;
         cin >> sx >> sy >> dx >> dy;
-        dl s2d = distance(sx, sy, dx, dy);
-        // cout << s2d << endl;
-        dl mindst = DBL_MAX;
+        ll s2d = ((sx - dx) * 1LL * (sx - dx) * 1LL + (sy - dy) * (sy - dy) * 1LL);
+        bool flag = false;
+        // ll mindst = 0;
         for (auto i : pr)
         {
-            dl tmp_dst = distance(i.F, i.S, dx, dy);
-            if (tmp_dst < mindst)
+            ll tmp_dst = ((i.F - dx) * (i.F - dx) * 1LL + (i.S - dy) * (i.S - dy) * 1LL);
+            // mindst = max(mindst, tmp_dst);
+            //cout << tmp_dst << " " << s2d << endl;
+            if (tmp_dst <= s2d)
             {
-                mindst = tmp_dst;
+                flag = true;
+                break;
             }
         }
-        // cout << mindst << " " << s2d << endl;
-        if (s2d >= mindst)
+        // cout << s2d << " " <<  mindst << endl;
+
+        if (flag)
         {
-            cout << "YES" << endl;
+             cout << "NO" << endl;
         }
         else
         {
-            cout << "NO" << endl;
+             cout << "YES" << endl;
         }
     }
 
