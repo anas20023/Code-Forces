@@ -153,29 +153,12 @@ int main()
 {
     optimize();
     int tc = 1;
-    cin >> tc;
+    //   cin >> tc;
     while (tc--)
     {
-        int n, cnt = 0;
+        int n;
         cin >> n;
-        vector<int> vc(n);
-        map<int, int> mp;
-        for (int i = 0; i < n; i++)
-        {
-            cin >> vc[i];
-            mp[vc[i]]++;
-        }
-        for (auto i : mp)
-        {
-            if (i.S > 1)
-            {
-                cnt += (i.S - 1);
-            }
-        }
-        if (cnt % 2)
-            cnt += 1;
-
-        cout << vc.size() - cnt << endl;
+        cout << 0 << " " << 0 << " " << n << endl;
     }
 
     return 0;
