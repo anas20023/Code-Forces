@@ -153,28 +153,31 @@ int main()
 {
     optimize();
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     while (tc--)
     {
-        int a;
-        cin >> a;
-        vector<int> arr(a);
-        for (int i = 0; i < a; i++)
+        int n, k;
+        cin >> n >> k;
+        vector<int> v(n);
+        for (int i = 0; i < n; i++)
         {
-            cin >> arr[i];
+            cin >> v[i];
         }
-        for (int i = 0; i < a; i++)
+        int ans = 0;
+        int robin = 0;
+        for (int i = 0; i < n; i++)
         {
-            if (arr[i] == 0)
+            if (robin > 0 && v[i] == 0)
             {
-                reverse(arr.begin(), arr.begin() + i);
+                ans++;
+                robin--;
+            }
+            if (v[i] >= k)
+            {
+                robin += v[i];
             }
         }
-        for (int i = 0; i < a; i++)
-        {
-            cout << arr[i] << " ";
-        }
-        cout << endl;
+        cout << ans << endl;
     }
 
     return 0;

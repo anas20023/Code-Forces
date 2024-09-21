@@ -153,28 +153,23 @@ int main()
 {
     optimize();
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     while (tc--)
     {
-        int a;
-        cin >> a;
-        vector<int> arr(a);
-        for (int i = 0; i < a; i++)
+        int n, k;
+        cin >> n >> k;
+        int lwr = n + 1 - k;
+        int upr = n;
+        int oddcnt;
+        oddcnt = ((upr + 1) / 2) - (lwr / 2);
+        if (oddcnt % 2 == 0)
         {
-            cin >> arr[i];
+            cout << "YES" << endl;
         }
-        for (int i = 0; i < a; i++)
+        else
         {
-            if (arr[i] == 0)
-            {
-                reverse(arr.begin(), arr.begin() + i);
-            }
+            cout << "NO" << endl;
         }
-        for (int i = 0; i < a; i++)
-        {
-            cout << arr[i] << " ";
-        }
-        cout << endl;
     }
 
     return 0;

@@ -3,7 +3,7 @@
 //                                                                    ||
 //                                                                    ||
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
-//                          INTAKE 52                                 ||
+//                          llAKE 52                                 ||
 //                      DEPARTMENT OF CSE                             ||
 //                                                                    ||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -11,11 +11,11 @@
 using namespace std;
 
 typedef long long ll;
-typedef vector<int> vi;
+typedef vector<ll> vi;
 typedef vector<ll> vl;
 typedef vector<vi> vvi;
 typedef vector<vl> vvl;
-typedef pair<int, int> pii;
+typedef pair<ll, ll> pii;
 typedef pair<double, double> pdd;
 typedef pair<ll, ll> pll;
 typedef vector<pii> vii;
@@ -28,15 +28,15 @@ typedef double dl;
 #define MP make_pair
 #define endl '\n'
 #define all(a) (a).begin(), (a).end()
-#define sz(x) (int)x.size()
+#define sz(x) (ll)x.size()
 #define mid(l, r) ((r + l) / 2)
 #define left(node) (node * 2)
 #define right(node) (node * 2 + 1)
-#define mx_int_prime 999999937
+#define mx_ll_prime 999999937
 
 const double PI = acos(-1);
 const double eps = 1e-9;
-const int inf = 2000000000;
+const ll inf = 2000000000;
 const ll infLL = 9000000000000000000;
 #define MOD 1000000007
 
@@ -56,13 +56,13 @@ const ll infLL = 9000000000000000000;
     freopen("inputf.in", "r", stdin); \
     freopen("outpuft.out", "w", stdout);
 
-typedef vector<int>::iterator vit;
-typedef set<int>::iterator sit;
+typedef vector<ll>::iterator vit;
+typedef set<ll>::iterator sit;
 
-int dx[] = {0, 0, +1, -1};
-int dy[] = {+1, -1, 0, 0};
-// int dx[] = {+1, 0, -1, 0, +1, +1, -1, -1};
-// int dy[] = {0, +1, 0, -1, +1, -1, +1, -1};
+ll dx[] = {0, 0, +1, -1};
+ll dy[] = {+1, -1, 0, 0};
+// ll dx[] = {+1, 0, -1, 0, +1, +1, -1, -1};
+// ll dy[] = {0, +1, 0, -1, +1, -1, +1, -1};
 
 template <typename F, typename S>
 ostream &operator<<(ostream &os, const pair<F, S> &p)
@@ -135,9 +135,9 @@ void faltu()
 }
 
 template <typename T>
-void faltu(T a[], int n)
+void faltu(T a[], ll n)
 {
-    for (int i = 0; i < n; ++i)
+    for (ll i = 0; i < n; ++i)
         cerr << a[i] << ' ';
     cerr << endl;
 }
@@ -152,29 +152,21 @@ void faltu(T arg, const hello &...rest)
 int main()
 {
     optimize();
-    int tc = 1;
-    // cin >> tc;
+    ll tc = 1;
+    //  cin >> tc;
     while (tc--)
     {
-        int a;
-        cin >> a;
-        vector<int> arr(a);
-        for (int i = 0; i < a; i++)
-        {
-            cin >> arr[i];
-        }
-        for (int i = 0; i < a; i++)
-        {
-            if (arr[i] == 0)
-            {
-                reverse(arr.begin(), arr.begin() + i);
-            }
-        }
-        for (int i = 0; i < a; i++)
-        {
-            cout << arr[i] << " ";
-        }
-        cout << endl;
+        ll a, b, sum1 = 0, sum2 = 0;
+        cin >> a >> b;
+        vector<ll> v(a);
+        for (ll i = 0; i < a; i++)
+            cin >> v[i];
+        for (ll i = v.size() - 1; i >= b; i--)
+            sum2 += v[i];
+        for (ll i = 0; i < b; i++)
+            sum1 += v[i];
+        // cout << sum1 << " " << sum2 << endl;
+        cout << max(sum1, sum2) << endl;
     }
 
     return 0;
