@@ -156,34 +156,26 @@ int main()
     // cin >> tc;
     while (tc--)
     {
-        int n, m, ans;
-        cin >> n >> m;
-        if (n < m)
+        int a;
+        cin >> a;
+        vector<int> arr(a);
+        for (int i = 0; i < a; i++)
         {
-            ans = -1;
+            cin >> arr[i];
         }
-        else
+        for (int i = a - 1; i >= 0; i--)
         {
-            if (m > (n / 2))
+            if (arr[i] == 0)
             {
-                ans = m;
-                // dbg(ans);
-            }
-            else
-            {
-                int tmp = 0, i = 1;
-                n++;
-                // dbg(n);
-                while (tmp < (n / 2))
-                {
-                    // dbg(tmp);
-                    tmp = m * i;
-                    i++;
-                }
-                ans = tmp;
+                reverse(arr.begin(), arr.end() - i);
+                break;
             }
         }
-        cout << ans << endl;
+        for (int i = 0; i < a; i++)
+        {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
     }
 
     return 0;

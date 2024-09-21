@@ -153,37 +153,19 @@ int main()
 {
     optimize();
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     while (tc--)
     {
-        int n, m, ans;
-        cin >> n >> m;
-        if (n < m)
+        int a, b;
+        cin >> a >> b;
+        if (a == b)
         {
-            ans = -1;
+            cout << "Square\n";
         }
         else
         {
-            if (m > (n / 2))
-            {
-                ans = m;
-                // dbg(ans);
-            }
-            else
-            {
-                int tmp = 0, i = 1;
-                n++;
-                // dbg(n);
-                while (tmp < (n / 2))
-                {
-                    // dbg(tmp);
-                    tmp = m * i;
-                    i++;
-                }
-                ans = tmp;
-            }
+            cout << "Rectangle\n";
         }
-        cout << ans << endl;
     }
 
     return 0;
