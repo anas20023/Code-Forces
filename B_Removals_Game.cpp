@@ -156,15 +156,34 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int x, y;
-        cin >> x >> y;
-        vector<int> a(x), b(y);
-        for (int i = 0; i < x; i++)cin >> a[i];
-        for (int i = 0; i < y; i++)cin >> b[i];
-        int apos = find(a.begin(), a.end(), 1) - a.begin();
-        int bpos = find(b.begin(), b.end(), 1) - b.begin();
-        if (apos<=bpos) cout << "Bob\n";
-        else cout << "Alice\n";
+        int n;
+        cin >> n;
+        vector<int> a(n), b(n);
+        for (int i = 0; i < n; i++)
+            cin >> a[i];
+        for (int i = 0; i < n; i++)
+            cin >> b[i];
+        int cntb = 0, cntbal = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (a[i] == b[i])
+            {
+                cntb++;
+            }
+            if (a[i] == b[n - i - 1])
+            {
+                cntbal++;
+            }
+        }
+
+        if (cntb == n || cntbal == n)
+        {
+            cout << "Bob" << endl;
+        }
+        else
+        {
+            cout << "Alice" << endl;
+        }
     }
 
     return 0;
