@@ -160,10 +160,39 @@ int main()
         cin >> n;
         string s;
         cin >> s;
-        string p, q;
-        p = s.substr(0, (n / 2) - 1);
-        q = s.substr((n / 2) - 1, n);
-        cout << p << " " << q << endl;
+        int maxsum = INT_MIN;
+        // for (int i = 0; i < n; i++)
+        // {
+        //     string s1 = s.substr(0, i);
+        //     string s2 = s.substr(i, n - i);
+        //     // cout << s1 << " " << s2 << endl;
+        //     set<char> st1, st2;
+        //     for (int i = 0; i < s1.size(); i++)
+        //     {
+        //         st1.insert(s1[i]);
+        //     }
+        //     for (int i = 0; i < s2.size(); i++)
+        //     {
+        //         st2.insert(s2[i]);
+        //     }
+        //     int sum = st1.size() + st2.size();
+        //     maxsum = max(maxsum, sum);
+        // }
+        vector<int> ltr(n), rtl(n);
+        set<char> ltrs, rtls;
+        for (int i = 0; i < n; i++)
+        {
+            ltrs.insert(s[i]);
+            ltr[i] = ltrs.size();
+            rtls.insert(s[n - 1 - i]);
+            rtl[n - 1 - i] = rtls.size();
+        }
+        for (int i = 0; i < n - 1; i++)
+        {
+            maxsum = max(maxsum, ltr[i] + rtl[i + 1]);
+        }
+
+        cout << maxsum << endl;
     }
 
     return 0;
