@@ -151,44 +151,34 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        vector<string>v;
+        vector<string> v;
         for (int i = 0; i < 8; i++)
         {
             string tmp;
-            cin>>tmp;
+            cin >> tmp;
             v.push_back(tmp);
-            
         }
-        char tmp;
-        int rcnt=0,bcnt=0;
+        int rcnt = 0;
         for (int i = 0; i < 8; i++)
         {
+            int mtp = 0;
             for (int j = 0; j < 8; j++)
             {
-                if(v[i][j]=='R')
+                if (v[i][j] == 'R')
                 {
-                   rcnt++;
-                   tmp=v[i][j];
-                }
-                else if( v[i][j]=='B')
-                {
-                    bcnt++;
-                    tmp=v[i][j];
+                    mtp++;
                 }
             }
+            rcnt=max(rcnt,mtp);
         }
-       // cout<< rcnt<<" "<<bcnt<<" "<<tmp<<endl;
-        if(rcnt>bcnt)
+        // cout<< rcnt<<" "<<bcnt<<" "<<tmp<<endl;
+        if (rcnt ==8)
         {
-            cout<<"R"<<endl;
-        }
-        else if(rcnt==bcnt)
-        {
-            cout<<tmp<<endl;
+            cout << "R" << endl;
         }
         else
         {
-            cout<<"B"<<endl;
+            cout << "B" << endl;
         }
     }
 
