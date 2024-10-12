@@ -157,6 +157,11 @@ int main()
         // sort(v.begin(),v.end());
         // cout<<v[n-1]-v[0]<<endl;
         int ans=v[n-1]-v[0];
+        if(n==1)
+        {
+            cout<<0<<endl;
+            continue;
+        }
         for (int i = 1; i < n; i++)
         {int tp=v[i]-v[0];
             ans=max(ans,tp);
@@ -168,7 +173,7 @@ int main()
         }
         for (int i = 1; i < n; i++)
         {
-            int tmp=v[i]-v[i-1];
+            int tmp=v[i-1]-v[i];
             ans=max(ans,tmp);
         }
         cout<<ans<<endl;
