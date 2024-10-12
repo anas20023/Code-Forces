@@ -154,8 +154,26 @@ int main()
         int n;cin>>n;
         vector<ll>v(n);
         for(int i=0;i<n;i++)cin>>v[i];
-        sort(all(v));
-        cout<<v[n-1]-v[0]<<endl;
+        // sort(v.begin(),v.end());
+        // cout<<v[n-1]-v[0]<<endl;
+        int ans=v[n-1]-v[0];
+        for (int i = 1; i < n; i++)
+        {int tp=v[i]-v[0];
+            ans=max(ans,tp);
+        }
+        for (int i = 0; i < n-1; i++)
+        {
+            int tp=v[n-1]-v[i];
+            ans=max(ans,tp);
+        }
+        for (int i = 1; i < n; i++)
+        {
+            int tmp=v[i]-v[i-1];
+            ans=max(ans,tmp);
+        }
+        cout<<ans<<endl;
+        
+        
     }
 
     return 0;
