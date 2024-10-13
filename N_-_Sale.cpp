@@ -148,22 +148,28 @@ int main()
 {
     optimize();
     int tc = 1;
-    cin >> tc;
+    //cin >> tc;
     while (tc--)
     {
-        int n,k;cin>>n>>k;
-        string s;
-        cin >> s;
-        int ans=0;
-        for(int i = 0; i < n; i++)
+        int n,kg;cin>>n>>kg;
+        vector<int>v(n);
+        for (int i = 0; i < n; i++)
         {
-            if(s[i]=='B')
-            {
-               ans++;
-               i+=k-1;
+            cin>>v[i];
+        }
+        sort(all(v));
+        int ans=0;
+        int k=0;
+        while (kg--)
+        {
+            if(v[k]>0){
+                break;
             }
+            ans+=(-v[k]);
+            k++;
         }
         cout<<ans<<endl;
+        
     }
 
     return 0;

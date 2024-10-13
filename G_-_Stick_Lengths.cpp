@@ -148,22 +148,19 @@ int main()
 {
     optimize();
     int tc = 1;
-    cin >> tc;
+   // cin >> tc;
     while (tc--)
     {
-        int n,k;cin>>n>>k;
-        string s;
-        cin >> s;
-        int ans=0;
-        for(int i = 0; i < n; i++)
+        ll n,sum=0,ans=0;cin>>n;
+        vector<ll>v(n);
+        for(int i=0;i<n;i++){cin>>v[i];sum+=v[i];}
+        ll avg=sum/n;
+        for (int i = 0; i < n; i++)
         {
-            if(s[i]=='B')
-            {
-               ans++;
-               i+=k-1;
-            }
+            ans+=abs(avg-v[i]);
         }
         cout<<ans<<endl;
+        
     }
 
     return 0;

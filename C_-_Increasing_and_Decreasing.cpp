@@ -151,19 +151,35 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int n,k;cin>>n>>k;
-        string s;
-        cin >> s;
-        int ans=0;
-        for(int i = 0; i < n; i++)
+        int x, y, n;
+        cin >> x >> y >> n;
+        if (y<=x)
         {
-            if(s[i]=='B')
-            {
-               ans++;
-               i+=k-1;
-            }
+            cout << -1 << endl;
+            continue;
         }
-        cout<<ans<<endl;
+        vector<int> v(n);
+        // v[0] = x;
+        v[n - 1] = y;
+        for (int i = n - 2; i >= 0; i--)
+        {
+            v[i] = v[i + 1]-(n-i-1);
+            
+        }
+        if(v[0]<x)
+        {
+            cout << -1 << endl;
+            continue;
+        }
+        else
+        {
+               v[0] = x;
+        }
+        for (int i = 0; i < n; i++)
+        {
+            cout << v[i] << " ";
+        }
+        cout << endl;
     }
 
     return 0;
