@@ -148,19 +148,22 @@ int main()
 {
     optimize();
     int tc = 1;
-    //cin >> tc;
+    cin >> tc;
     while (tc--)
     {
-        int n;cin>>n;
-        vector<ll>v(n);
-        for(int i=0;i<n;i++)cin>>v[i];
-        ll b=0,c=0;
-        for (int i = 0; i < n; i++)
-        {
-            if(v[i]>=0)b+=v[i];
-            else c+=v[i];
+         ll n ;cin>>n;
+        map <ll, ll> d;
+        for (int i = 0; i < n; ++i) {
+            ll x ; cin>>x;
+            d[x]++;
         }
-        cout<<b-c<<endl;
+ 
+        ll cnt = d.size();
+ 
+        for (int i = 1; i <= n; ++i) {
+            cout << max((ll)i, cnt) << " ";
+        }
+        cout << endl;
     }
 
     return 0;
