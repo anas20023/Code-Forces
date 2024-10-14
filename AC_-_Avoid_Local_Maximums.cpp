@@ -148,20 +148,38 @@ int main()
 {
     optimize();
     int tc = 1;
-   // cin >> tc;
+    cin >> tc;
     while (tc--)
     {
-        ll n,sum=0,ans=0;cin>>n;
-        vector<ll>v(n);
-        for(int i=0;i<n;i++)cin>>v[i];
-        sort(all(v));
-        ll avg=v[n/2];
+        int n;
+        cin >> n;
+        vector<ll> v(n),vv(n);
+        for (int i = 0; i < n; i++)
+            cin >> v[i];
+        int ans = 0;
+        vv=v;
+        // int rplace=v[n-1];
+        for (int i = 1; i < n - 1; i++)
+        {
+            if (v[i] > v[i - 1] && v[i] > v[i + 1])
+            {
+                if (v[i - 1] != vv[i - 1])
+                {
+                    v[i - 1] = v[i];
+                }
+                else
+                {
+                    ans++;
+                    v[i + 1] = v[i];
+                }
+            }
+        }
+        cout << ans << endl;
         for (int i = 0; i < n; i++)
         {
-            ans+=abs(avg-v[i]);
+            cout << v[i] << " ";
         }
-        cout<<ans<<endl;
-        
+        cout << endl;
     }
 
     return 0;
