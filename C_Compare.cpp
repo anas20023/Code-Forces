@@ -21,15 +21,10 @@ void Fast_io()
 int main()
 {
     Fast_io();
-    string a, b, c, d;
+    string a, b,ans;
     cin >> a >> b;
-    if (a.size() > b.size())
-    {
-        cout << b << endl;
-    }
-    else
-    {
-        cout << a << endl;
-    }
+    ans = (a < b) ? a : b;
+    cout<<ans<<endl;
+    
     return 0;
 }
