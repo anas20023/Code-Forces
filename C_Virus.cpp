@@ -151,14 +151,37 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int n,m;cin>>n>>m;
-        vector<ll>v(m);
+        int n, m;
+        cin >> n >> m;
+        vector<ll> v(m);
         for (int i = 0; i < m; i++)
         {
-            cin>>v[i];
+            cin >> v[i];
         }
         sort(all(v));
-        
+        priority_queue<int> maxdist;
+        for (int i = 1; i <m; i++)
+        {
+            int dist = v[i] - v[i - 1];
+            maxdist.push(dist-1);
+        }
+        int tmpdist=n-v[m-1]+v[0]-1;
+        maxdist.push(tmpdist);
+        int d=0,saved=0;
+        while (!maxdist.empty())
+        {
+            int tmpsaved=maxdist.top();
+            maxdist.pop();
+            if(d*2<tmpsaved)
+            {
+                int y=tmpsaved-(2*d);
+                if(y>1)saved+=y-1;
+                else  saved+=y;
+            }
+            d+=2;
+        }
+
+        cout <<n-saved<< endl;
     }
 
     return 0;
