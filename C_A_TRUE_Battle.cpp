@@ -155,42 +155,23 @@ int main()
         cin >> n;
         string s;
         cin >> s;
-        map<char, int> mp;
-        for (int i = 0; i < n; i++)
+        if(s[0]=='1' || s[n-1]=='1')
         {
-            mp[s[i]]++;
+            cout<<"YES\n";
+            continue;
         }
-        int tr = 0, fl = 0;
-        for (auto i : mp)
+        bool ck=false;
+        for (int i = 0; i < n-1; i++)
         {
-            if (i.F == '1')
-                tr += i.S;
-            else
-                fl += i.S;
-        }
-        // cout<<tr<<" "<<fl<<endl;
-        if (n - 1 % 2 == 1)
-        {
-            if(tr>fl)
+            if(s[i]=='1' && s[i+1]=='1')
             {
-                cout << "YES\n";
-            }
-            else
-            {
-                cout<<"NO\n";
+                ck=true;
+                break;
             }
         }
-        else
-        {
-            if(tr>fl)
-            {
-                cout << "YES\n";
-            }
-            else
-            {
-                cout<<"NO\n";
-            }
-        }
+        if(ck)cout<<"YES\n";
+        else cout<<"NO\n";
+        
     }
 
     return 0;
