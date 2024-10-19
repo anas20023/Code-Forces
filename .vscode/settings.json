@@ -73,7 +73,8 @@
     "unordered_set": "cpp",
     "fstream": "cpp",
     "functional": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "regex": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
