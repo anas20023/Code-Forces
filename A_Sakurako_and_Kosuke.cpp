@@ -148,84 +148,19 @@ int main()
 {
     optimize();
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     while (tc--)
     {
-        int n, q;
-        cin >> n >> q;
-        string s;
-        cin >> s;
-string c;
-        while (q--)
+        int n;cin>>n;
+        if(n%2!=0)
         {
-            
-            cin >> c;
-
-            if (c == "pop_back")
-            {
-                if (!s.empty())
-                { // Check if string is not empty
-                    s.pop_back();
-                }
-            }
-            else if (c == "front")
-            {
-                if (!s.empty())
-                {
-                    cout << s[0] << endl;
-                }
-            }
-            else if (c == "back")
-            {
-                if (!s.empty())
-                {
-                    cout << s[s.size() - 1] << endl;
-                }
-            }
-            else if (c == "sort")
-            {
-                int l, r;
-                cin >> l >> r;
-                if (l >= 1 && r <= n && l <= r)
-                { // Ensure valid range
-                    sort(s.begin() + l - 1, s.begin() + r);
-                }
-            }
-            else if (c == "reverse")
-            {
-                int l, r;
-                cin >> l >> r;
-                if (l >= 1 && r <= n && l <= r)
-                { // Ensure valid range
-                    reverse(s.begin() + l - 1, s.begin() + r);
-                }
-            }
-            else if (c == "print")
-            {
-                int pos;
-                cin >> pos;
-                if (pos >= 1 && pos <= n)
-                { // Check if position is valid
-                    cout << s[pos - 1] << endl;
-                }
-            }
-            else if (c == "substr")
-            {
-                int l, r;
-                cin >> l >> r;
-                if (l >= 1 && r <= n && l <= r)
-                { // Ensure valid range
-                    cout << s.substr(l - 1, r - l + 1) << endl;
-                }
-            }
-            else if (c == "push_back")
-            {
-                char ch;
-                cin >> ch;
-                s.push_back(ch);
-                n++; // Increment the size of the string
-            }
+            cout<<"Kosuke\n";
         }
+        else
+        {
+            cout<<"Sakurako\n";
+        }
+        
     }
 
     return 0;
