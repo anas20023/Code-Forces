@@ -154,18 +154,32 @@ int main()
         int n;
         cin >> n;
         vector<int> v(n);
-        unordered_map<int, int> mp;
-        for (int i = 0; i < n; i++) {
-            cin >> v[i];
-            mp[v[i]]++;
+        for (int i = 0; i < n; i++)cin >> v[i];
+        int ans = 0;
+        int l=0,r=n-1;
+        while (l<r)
+        {
+            if(l+1==r)
+            {
+                if(v[l]==v[r])
+                    {
+                        ans++;
+                        break;
+                    }  
+            }
+            else {
+                int s=0,ds=0;
+                if(v[l]==v[l+1])ds++;
+                if(v[r]==v[r-1])ds++;
+                if(v[l]==v[r-1])s++;
+                if(v[r]==v[l+1])s++;
+                ans+=min(s,ds);
+            }
+            l++;
+            r--;
         }
+        cout<<ans<<endl;
         
-        int maxcnt = 0;
-        for (auto i : mp) {
-            maxcnt = max(maxcnt, i.second);
-        }
-
-        cout << n - maxcnt << endl;
     }
 
     return 0;
