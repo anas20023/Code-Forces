@@ -143,7 +143,7 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-bool has1100(const string &s, int i) {
+bool find_1100(const string &s, int i) {
     return i >= 0 && i + 3 < s.size() && s.substr(i, 4) == "1100";
 }
 int main()
@@ -156,7 +156,7 @@ int main()
         string s;
         cin >> s;
         int cnt = 0;
-        for (int i = 0; i + 3 < s.size();i++)cnt += has1100(s, i);
+        for (int i = 0; i + 3 < s.size();i++)cnt += find_1100(s, i);
         int q;
         cin >> q;
         while (q--)
@@ -164,9 +164,9 @@ int main()
             int i;
             char c;
             cin >> i >> c;i--;
-            for (int j = i - 3; j <= i; ++j)cnt -= has1100(s, j);
+            for (int j = i - 3; j <= i; ++j)cnt -= find_1100(s, j);
             s[i] = c;
-            for (int j = i - 3; j <= i; ++j) cnt += has1100(s, j);
+            for (int j = i - 3; j <= i; ++j) cnt += find_1100(s, j);
             if(cnt > 0) cout<<"YES\n";
             else cout<<"NO\n";
         }
