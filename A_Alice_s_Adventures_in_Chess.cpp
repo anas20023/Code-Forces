@@ -156,7 +156,7 @@ int main()
         string s;cin >> s;
         int x = 0, y = 0;
         bool ans = false;
-        for (int i = 0; i < 500 && !ans; i++) {
+        for (int i = 0; i < 2e5 && !ans; i++) {
             for (int i = 0; i < n; i++) {
                 if (s[i] == 'N') y++;
                 else if (s[i] == 'E') x++;
