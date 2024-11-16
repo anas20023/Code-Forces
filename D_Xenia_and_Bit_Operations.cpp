@@ -147,7 +147,7 @@ void faltu(T arg, const hello &...rest)
 const int MAX = 2e5 + 100;
 ll a[MAX], tree[MAX * 4];
 
-void build(int at, int L, int R, int ch) {
+void build(int at, int L, int R) {
     if (L == R) {
         tree[at] = a[L];
         return;
@@ -155,25 +155,31 @@ void build(int at, int L, int R, int ch) {
     int mid = (L + R) / 2;
     int left = 2 * at;
     int right = 2 * at + 1;
-    build(left, L, mid, ch + 1);
-    build(right, mid + 1, R, ch + 1);
-    if (ch % 2 == 0) tree[at] = (tree[left] | tree[right]);
-    else tree[at] = (tree[left] ^ tree[right]);
+    build(left, L, mid);
+    build(right, mid + 1, R);
+    
+    int p = R - L + 1, x = -1;
+    while (p) p /= 2, x++; 
+    if (x % 2 == 0) tree[at] = (tree[left] ^ tree[right]); 
+    else tree[at] = (tree[left] | tree[right]);            
 }
 
-void update(int at, int L, int R, int pos, ll val, int ch) {
-    if (pos > R || pos < L) return;
+void update(int at, int L, int R, int pos, ll val) {
+    if (pos > R || pos < L) return;  
     if (L == R) {
-        tree[at] = val;
+        tree[at] = val;  
         return;
     }
     int mid = (L + R) / 2;
     int left = at * 2;
     int right = at * 2 + 1;
-    update(left, L, mid, pos, val, ch + 1);
-    update(right, mid + 1, R, pos, val, ch + 1);
-    if (ch % 2 == 0) tree[at] =( tree[left] | tree[right]);
-    else tree[at] = (tree[left] ^ tree[right]);
+    update(left, L, mid, pos, val);
+    update(right, mid + 1, R, pos, val);
+    
+    int p = R - L + 1, x = -1;
+    while (p) p /= 2, x++;  
+    if (x % 2 == 0) tree[at] = (tree[left] ^ tree[right]);  
+    else tree[at] = (tree[left] | tree[right]);            
 }
 
 
@@ -196,18 +202,15 @@ int main()
    // cin >> tc;
     while (tc--)
     {
-        ll n, q; cin >> n >> q;
-        n = (1 << n);
-        //dbg(n);
-        for (int i = 0; i < n; i++) cin >> a[i];
-        int ch = (n % 2 == 0) ? 0 : 1;
-        build(1, 0, n - 1, ch);
+        ll n, q;
+        cin >> n >> q;
+        n = (1 << n);  
+        for (int i = 0; i < n; i++) cin>>a[i];
+        build(1, 0, n - 1);  
         while (q--) {
-            ll pos, val;
-            cin >> pos >> val;
-            pos--;
-            update(1, 0, n - 1, pos, val, ch);
-            cout << tree[1] << endl;
+        ll pos, val;cin>>pos>>val;
+        update(1, 0, n - 1, pos - 1, val);  
+        cout << tree[1] << endl;  
         }
     }
 
