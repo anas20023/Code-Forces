@@ -75,7 +75,10 @@
     "functional": "cpp",
     "iomanip": "cpp",
     "regex": "cpp",
-    "cstdlib": "cpp"
+    "cstdlib": "cpp",
+    "random": "cpp",
+    "limits": "cpp",
+    "valarray": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
