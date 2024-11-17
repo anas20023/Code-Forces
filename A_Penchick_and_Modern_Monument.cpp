@@ -153,12 +153,20 @@ int main()
     {
         int n;cin>>n;
         vector<int>v(n);
-        for(int i=0;i<n;i++)cin>>v[i];
+        map<int,int>mp;
+        for(int i=0;i<n;i++)cin>>v[i],mp[v[i]]++;
         int ans=0;
-        int tm=v[0];
-        for(int i=1;i<n;i++)
+        int track=INT_MIN;
+        int k=-1;
+        for (auto i :mp)
         {
-            if(v[i]<tm)ans++;
+            //cout<<i.F<<" "<<i.S<<endl;
+            if(i.S>track)track=i.S,k=i.F;
+        }
+        
+        for(int i=0;i<n;i++)
+        {
+            if(v[i]<k || v[i]>k)ans++;
         }
         cout<<ans<<endl;
     }
