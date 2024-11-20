@@ -1,11 +1,6 @@
-////////////////              ANAS IBN BELAL            /////////////////
-//                          Template   Code                           ||
-//                                                                    ||
-//                                                                    ||
+////////////////              ANAS IBN BELAL            ////////////////
 //      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
-//                          INTAKE 52                                 ||
 //                      DEPARTMENT OF CSE                             ||
-//                                                                    ||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 #include <bits/stdc++.h>
 using namespace std;
@@ -158,35 +153,17 @@ int main()
     {
         int n, k;
         cin >> n >> k;
-        vector<int> v(n);
-        for (int i = 0; i < n; i++)
-            cin >> v[i];
+        vector<ll> v(n);
+        for (int i = 0; i < n; i++)cin >> v[i];
         sort(all(v));
-        int to_fr = 0, to_back = 0;
-        for (int i = 0; i < n - 1; i++)
+        ll ans=1,cnt=1;
+        for (ll i = 0; i < n-1; i++)
         {
-            if (v[i + 1] - v[i] > k)
-            {
-                break;
-            }
-            else
-            {
-                to_fr++;
-            }
+            if(v[i+1]-v[i]<=k)cnt++;
+            else cnt=1;
+            ans=max(ans,cnt);
         }
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (v[i + 1] - v[i] > k)
-            {
-                break;
-            }
-            else
-            {
-                to_fr++;
-            }
-        }
-        cout << to_fr << " " << to_back << endl;
+       cout << n-ans << endl;
     }
-
     return 0;
 }
