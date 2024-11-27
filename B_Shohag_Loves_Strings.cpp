@@ -1,3 +1,7 @@
+////////////////              ANAS IBN BELAL            ////////////////
+//      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
+//                      DEPARTMENT OF CSE                             ||
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -24,9 +28,7 @@ typedef double dl;
 #define left(node) (node * 2)
 #define right(node) (node * 2 + 1)
 #define mx_int_prime 999999937
-#define yes (cout << "YES\n")
-#define no (cout << "NO\n")
-
+#define arrin(v,n) for(int i=0;i<n;i++)cin>>v[i];
 const double PI = (2.0 * acos(0.0));
 const double eps = 1e-9;
 const int inf = 2000000000;
@@ -141,44 +143,33 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-ll turns(ll h, ll b, ll c)
-{
-    ll np,sp;
-    sp=2*b;
-    np=(c-1)*b;
-    ll damage=sp+np;
-    ll onecycle=h/damage;
-    ll remainh=h-(onecycle*damage);
-    ll total_turns=onecycle*c;
-    total_turns+=(remainh/b);
-    return total_turns;
-}
+void solve();
 int main()
 {
     optimize();
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     while (tc--)
     {
-        ll h1, h2, b1, b2, c1, c2;
-        cin >> h1 >> b1 >> c1;
-        cin >> h2 >> b2 >> c2;
-
-        ll tp1 = turns(h2, b1, c1);
-        ll tp2 = turns(h1, b2, c2);
-        if (tp1 < tp2)
-        {
-            cout << "MIKE TYSON\n";
-        }
-        else if (tp2 < tp1)
-        {
-            cout << "JAKE PAUL\n";
-        }
-        else
-        {
-            cout << "DRAW\n";
-        }
+       solve();
     }
 
     return 0;
+}
+void solve() {
+  string s; cin >> s;
+  int n = s.size();
+  for (int i = 0; i + 1 < n; i++) {
+    if (s[i] == s[i + 1]) {
+      cout << s.substr(i, 2) << '\n';
+      return;
+    }
+  }
+  for (int i = 0; i + 2 < n; i++) {
+    if (s[i] != s[i + 1] and s[i] != s[i + 2] and s[i + 1] != s[i + 2]) {
+      cout << s.substr(i, 3) << '\n';
+      return;
+    }
+  }
+  cout << -1 << '\n';
 }
