@@ -1,7 +1,4 @@
-////////////////              ANAS IBN BELAL            ////////////////
-//      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
-//                      DEPARTMENT OF CSE                             ||
-//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+////////////////             onAC(ALPHA) =>{Target Next ICPC ^-^}            ////////////////
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -37,6 +34,7 @@ const ll infLL = 9000000000000000000;
 
 #define mem(a, b) memset(a, b, sizeof(a))
 #define gcd(a, b) __gcd(a, b)
+#define lcm(a, b) (a * (b / gcd(a, b)))
 #define sqr(a) ((a) * (a))
 
 #define optimize()                \
