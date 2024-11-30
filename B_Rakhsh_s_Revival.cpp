@@ -151,27 +151,16 @@ int main()
     cin >> tc;
     while (tc--)
     {
-       ll n,m,k;cin>>n>>m>>k;
-       string s;cin>>s;
-       ll cnt=0,ans=0;
-       for (int i = 0; i < n; i++)
-       {
-            if(s[i]=='0')
-            {
-                cnt++;
-            }
-            else {
-                cnt=0;
-            }
-            if(cnt>=m)
-            {
-                ans++;
-                cnt = max(0LL, cnt - k);
-                i+=k;
-            }
-       }
-       cout<<ans<<endl;
-       
+       ll n,m,k; cin >> n >> m >> k;
+        string s; cin >> s;
+        int ans = 0,tm = 0;
+        for (int i = 0 ; i < n; i++) {
+            if (s[i] == '0') tm++;
+            else tm = 0;
+            if (tm == m) ans++ , tm = 0 , i += k - 1;
+        }
+
+        cout << ans<<endl;       
     }
 
     return 0;
