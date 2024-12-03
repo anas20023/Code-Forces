@@ -150,8 +150,28 @@ int main()
     optimize();
     int tc = 1;
     cin >> tc;
-    while (t--)
+    while (tc--)
     {
+       ll n,k,sum=0;cin>>n>>k;
+       vector<ll>v(n),a(n);
+       for(int i=0;i<n;i++)cin>>v[i],sum+=v[i];
+       sort(v.rbegin(),v.rend());
+       a=v;
+       if(sum<=k){
+        cout<<k-sum<<endl;
+        continue;
+       }
+       ll ans=0;
+       for (int i = 1; i < n; i++)a[i]+=a[i-1];
+       for (int i = 0; i < n; i++) {
+            if(a[i]>k){
+                ans=k-a[i-1];
+               // cout<<a[i]<<" ";
+                break;
+            }
+           // cout<<a[i]<<" ";
+       }
+       cout<<ans<<endl;
        
     }
 
