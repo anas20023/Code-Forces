@@ -150,33 +150,30 @@ int main()
     cin >> tc;
     while (tc--)
     {
-      ll n;cin>>n;
-      ll dgtsum=0;
-      ll tm=n,twc=0,thrc=0;
-      while(tm>0){
-        if(tm%10==3) thrc++;
-        else if(tm%10==2) twc++;
-        dgtsum+=tm%10;
-        tm/=10;
-      }
-      //cout<<n<<endl;
-      if(dgtsum%9==0){
-        //cout<<"YES"<<endl;
-        //continue;
-      }
-      bool ans = false;
-        for (int x = 0; x <= min(8LL, twc); x++) {
-            for (int y = 0; y <= min(8LL, thrc); y++) { 
-                ll newSum = dgtsum + (x * 2) + (y * 6);
-                if (newSum % 9 == 0) {
-                    ans = true;
-                    break;
-                }
-            }
-            if (ans) break;
-        }
-        if(!ans) cout<<"NO"<<endl;
-        else cout<<"YES"<<endl;
+        ll n, l, r;cin >> n >> l >> r;
+	    vector<ll> a(n);
+	    for (int i = 0; i < n; i++) cin >> a[i];
+	    vector<ll> pref(n + 1);
+	    for (int i = 0; i < n; i++)pref[i + 1] = pref[i] + a[i];
+	    vector<int> dp(n + 1);
+	    int s = 0;
+	    int j = -1;
+	    for (int i = 0; i < n; i++){
+		    dp[i + 1] = max(dp[i + 1], dp[i]);
+		    if (j < i){
+			    j = i;
+			    s = 0;
+	    	}
+		    while(j < n && s < l){
+			    s += a[j++];
+		    }
+		    if (s >= l && s <= r){
+			    dp[j] = max(dp[j], dp[i] + 1);
+	    	}
+		    s -= a[i];
+	    }
+	    cout << dp[n] << '\n';
+       
     }
 
     return 0;
