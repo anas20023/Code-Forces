@@ -1,5 +1,5 @@
-//onAC(ALPHA) =>{Target Next ICPC ^-^}           
-//  ^-^      ^-^       ^-^    ^-^     ^-^  
+// onAC(ALPHA) =>{Target Next ICPC ^-^}
+//   ^-^      ^-^       ^-^    ^-^     ^-^
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -26,7 +26,9 @@ typedef double dl;
 #define left(node) (node * 2)
 #define right(node) (node * 2 + 1)
 #define mx_int_prime 999999937
-#define arrin(v,n) for(int i=0;i<n;i++)cin>>v[i];
+#define arrin(v, n)             \
+    for (int i = 0; i < n; i++) \
+        cin >> v[i];
 const double PI = (2.0 * acos(0.0));
 const double eps = 1e-9;
 const int inf = 2000000000;
@@ -150,33 +152,38 @@ int main()
     cin >> tc;
     while (tc--)
     {
-      ll n;cin>>n;
-      ll dgtsum=0;
-      ll tm=n,twc=0,thrc=0;
-      while(tm>0){
-        if(tm%10==3) thrc++;
-        else if(tm%10==2) twc++;
-        dgtsum+=tm%10;
-        tm/=10;
-      }
-      //cout<<n<<endl;
-      if(dgtsum%9==0){
-        //cout<<"YES"<<endl;
-        //continue;
-      }
-      bool ans = false;
-        for (int x = 0; x <= min(8LL, twc); x++) {
-            for (int y = 0; y <= min(8LL, thrc); y++) { 
-                ll newSum = dgtsum + (x * 2) + (y * 6);
-                if (newSum % 9 == 0) {
-                    ans = true;
-                    break;
-                }
+       string s;cin>>s;
+       ll twc=0,thrc=0,dgtsum=0;
+       for (int i = 0; i < s.size(); i++)
+       {
+            if(s[i]=='2')twc++;
+            if(s[i]=='3')thrc++;
+            dgtsum+=s[i]-'0';
+       }
+       
+        bool ans = false;
+        for (int i = 0; i <= thrc; i++)
+        {
+            ll cur = dgtsum + (i * 6);
+            if (cur % 9 == 0)
+            {
+               cout << "YES" << endl;
+               ans = true;
+               break;
             }
-            if (ans) break;
+            ll need = 9 - (cur % 9);
+            if (need & 1) {
+            need += 9;
+            }
+            need /= 2;
+            if (need <= twc)
+            {
+                cout << "YES" << endl;
+                ans = true;
+                break;
+            }
         }
-        if(!ans) cout<<"NO"<<endl;
-        else cout<<"YES"<<endl;
+        if (!ans) cout << "NO" << endl;
     }
 
     return 0;
