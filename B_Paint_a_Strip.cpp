@@ -151,31 +151,13 @@ int main()
     while (tc--)
     {
        ll n;cin>>n;
-    //    ll ans=1,cnt=1;
-    //    while (cnt<n)
-    //    {
-    //         cnt=(cnt*2)+2;
-    //         ans++;
-    //    }
-    //    cout<<ans<<endl;
-    if(n==1){
-        cout<<1<<endl;
-        continue;
-    }
-    if(n<=4){
-        cout<<2<<endl;
-        continue;
-    }
-    int df=4,sum=0;
-    int ans=0;
-    while (sum<n)
-    {
-        sum+=df;
-        df+=2;
-        ans++;
-    }
-    cout<<ans<<endl;
-    
+       ll ans=1,cnt=1;
+       while (cnt<n)
+       {
+            cnt=(cnt*2)+2;
+            ans++;
+       }
+       cout<<ans<<endl;
     }
     return 0;
 }
