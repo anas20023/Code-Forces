@@ -150,26 +150,16 @@ int main()
     //cin >> tc;
     while (tc--)
     {
-        int n, a, b;cin >> n >> a >> b;
-    vector<int> v(n, 0);
-    int i = 0,j=0;
-    while (a > 0) {
-        v[i]++;
-        a--;
-        i = (i + 1) % n; 
-    }
-    j=i;
-    while (b > 0) {
-        v[j]++;
-        b--;
-        j = (j + 1) % n; 
-    }
-    int ans=INT_MAX;
-    for (auto x : v) {
-        //cout << x << " ";
-        ans=min(ans,x);
-    }
-    cout << ans << endl;
+        ll n,a,b;cin>>n>>a>>b;
+        ll ans=-infLL;
+        for (int i = 1; i <n; i++)
+        {
+            ll acake=a/i;
+            ll bcake=b/(n-i);
+            ll tm=min(acake,bcake);
+            ans=max(ans,tm);
+        }
+        cout<<ans<<endl;
     }
 
     return 0;
