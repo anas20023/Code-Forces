@@ -161,6 +161,35 @@ int main()
             }
        }
        //cout<<p0<<endl;
+       if(p0==-1){
+        cout<<1<<" "<<n<<" "<<n<<" "<<n<<endl;
+        continue;
+       }
+       int sz=n-p0;
+       int l=1,r=sz;
+       string ch=s.substr(p0,sz);
+      // cout<<ch<<endl;
+        map<string,int>ms;
+       for (int i = 0; i <=p0; i++)
+       {
+            if(s[i]=='1'){
+                string tm;
+                for(int j = i, k = p0; k < n && j < n; j++, k++)
+                    {
+                        if(s[j] == s[k]) tm.PB('0');
+                        else tm.PB('1');
+                    }
+                ms[tm]=i;
+            }
+       }
+       for (auto i:ms)
+       {
+            l=i.second;
+            r=l+i.first.size();
+       }
+       
+       //cout<<endl;
+       cout<<l+1<<" "<< r<<" "<<1<<" "<<n<<endl;
        
     }
 

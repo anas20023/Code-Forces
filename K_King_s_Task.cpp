@@ -169,12 +169,13 @@ int main()
         if (isrtd)
         {
             cout << 0 << endl;
-            return 0;
+            break;
         }
         int ans = 0;
         for (int i = 0; i < 2 * n; i++)
         {
-            if (i % 2 == 0)
+            bool check=false;
+            if (i % 2==0)
             {
                 for (int j = 0; j < 2 * n - 1; j += 2)
                 {
@@ -190,7 +191,6 @@ int main()
                 }
                 ans++;
             }
-            bool check=false;
             for (int i = 0; i < 2 * n - 1; i++)
             {
                 if (v[i] < v[i + 1])
