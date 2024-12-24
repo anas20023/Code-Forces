@@ -1,214 +1,72 @@
 // onAC(ALPHA) =>{Target Next ICPC ^-^}
 //   ^-^      ^-^       ^-^    ^-^     ^-^
 #include <bits/stdc++.h>
+
 using namespace std;
 
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-typedef vector<vi> vvi;
-typedef vector<vl> vvl;
-typedef pair<int, int> pii;
-typedef pair<double, double> pdd;
-typedef pair<ll, ll> pll;
-typedef vector<pii> vii;
-typedef vector<pll> vll;
-typedef double dl;
+int a[2010];
+int n;
+int b[2010];
 
-#define PB push_back
-#define F first
-#define S second
-#define MP make_pair
-#define endl '\n'
-#define all(a) (a).begin(), (a).end()
-#define sz(x) (int)x.size()
-#define mid(l, r) ((r + l) / 2)
-#define left(node) (node * 2)
-#define right(node) (node * 2 + 1)
-#define mx_int_prime 999999937
-#define arrin(v, n)             \
-    for (int i = 0; i < n; i++) \
-        cin >> v[i];
-const double PI = (2.0 * acos(0.0));
-const double eps = 1e-9;
-const int inf = 2000000000;
-const ll infLL = 9000000000000000000;
-#define MOD 1000000007
 
-#define mem(a, b) memset(a, b, sizeof(a))
-#define gcd(a, b) __gcd(a, b)
-#define lcm(a, b) (a * (b / gcd(a, b)))
-#define sqr(a) ((a) * (a))
-
-#define optimize()                \
-    ios_base::sync_with_stdio(0); \
-    cin.tie(0);                   \
-    cout.tie(0);
-#define fraction()                \
-    cout.unsetf(ios::floatfield); \
-    cout.precision(10);           \
-    cout.setf(ios::fixed, ios::floatfield);
-#define file()                        \
-    freopen("inputf.in", "r", stdin); \
-    freopen("outpuft.out", "w", stdout);
-
-typedef vector<int>::iterator vit;
-typedef set<int>::iterator sit;
-
-int dx[] = {0, 0, +1, -1};
-int dy[] = {+1, -1, 0, 0};
-// int dx[] = {+1, 0, -1, 0, +1, +1, -1, -1};
-// int dy[] = {0, +1, 0, -1, +1, -1, +1, -1};
-
-template <typename F, typename S>
-ostream &operator<<(ostream &os, const pair<F, S> &p)
-{
-    return os << "(" << p.first << ", " << p.second << ")";
-}
-
-template <typename T>
-ostream &operator<<(ostream &os, const vector<T> &v)
-{
-    os << "{";
-    for (auto it = v.begin(); it != v.end(); ++it)
-    {
-        if (it != v.begin())
-            os << ", ";
-        os << *it;
+bool check() {
+    for (int i = 1; i <= 2 * n - 1; i++) {
+        if (a[i] != a[i + 1] - 1) return false;
     }
-    return os << "}";
+    return true;
 }
 
-template <typename T>
-ostream &operator<<(ostream &os, const set<T> &v)
-{
-    os << "[";
-    for (auto it = v.begin(); it != v.end(); ++it)
-    {
-        if (it != v.begin())
-            os << ", ";
-        os << *it;
+bool gao1() {
+    for (int i = 1; i <= 2 * n; i += 2) {
+        swap(a[i], a[i + 1]);
     }
-    return os << "]";
+    return check();
 }
 
-template <typename T>
-ostream &operator<<(ostream &os, const multiset<T> &v)
-{
-    os << "[";
-    for (auto it = v.begin(); it != v.end(); ++it)
-    {
-        if (it != v.begin())
-            os << ", ";
-        os << *it;
+bool gao2() {
+    for (int i = 1; i <= n; i++) {
+        swap(a[i], a[n + i]);
     }
-    return os << "]";
+    return check();
 }
 
-template <typename F, typename S>
-ostream &operator<<(ostream &os, const map<F, S> &v)
-{
-    os << "[";
-    for (auto it = v.begin(); it != v.end(); ++it)
-    {
-        if (it != v.begin())
-            os << ", ";
-        os << it->first << " = " << it->second;
+int main() {
+    scanf("%d",&n);
+    for (int i = 1; i <= 2 * n; i++) {
+        scanf("%d",&b[i]);
     }
-    return os << "]";
-}
+    
+    const int INF = 1e9;
+    int ans = INF;
+    int now;
 
-#define dbg(args...)            \
-    do                          \
-    {                           \
-        cerr << #args << " : "; \
-        faltu(args);            \
-    } while (0)
+    for (int i = 1; i <= 2 * n; i++) {
+        a[i] = b[i];
+    }
+    if (check()) ans = 0;
 
-void faltu()
-{
-    cerr << endl;
-}
-
-template <typename T>
-void faltu(T a[], int n)
-{
-    for (int i = 0; i < n; ++i)
-        cerr << a[i] << ' ';
-    cerr << endl;
-}
-
-template <typename T, typename... hello>
-void faltu(T arg, const hello &...rest)
-{
-    cerr << arg << ' ';
-    faltu(rest...);
-}
-
-int main()
-{
-    optimize();
-    int tc = 1;
-    // cin >> tc;
-    while (tc--)
-    {
-        int n;
-        cin >> n;
-        vector<int> v(2 * n);
-        for (int i = 0; i < 2 * n; i++)
-            cin >> v[i];
-        bool isrtd = true;
-        for (int i = 0; i < 2 * n - 1; i++)
-        {
-            if (v[i] > v[i + 1])
-            {
-                isrtd = false;
-                break;
-            }
-        }
-        if (isrtd)
-        {
-            cout << 0 << endl;
-            break;
-        }
-        int ans = 0;
-        for (int i = 0; i < 2 * n; i++)
-        {
-            bool check=false;
-            if (i % 2==0)
-            {
-                for (int j = 0; j < 2 * n - 1; j += 2)
-                {
-                    swap(v[j], v[j + 1]);
-                }
-                ans++;
-            }
-            else
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    swap(v[j], v[n + j]);
-                }
-                ans++;
-            }
-            for (int i = 0; i < 2 * n - 1; i++)
-            {
-                if (v[i] < v[i + 1])
-                {
-                    //isrtd = false;
-                    check=true;
-                    //break;
-                }
-                else {
-                    check = false;
-                    break;
-                }
-            }
-            if (check) break;
-        }
-        if(ans<2*n) cout<<ans<<endl;
-        else cout<<-1<<endl;
+    for (int i = 1; i <= 2 * n; i++) {
+        a[i] = b[i];
+    }
+    now = 0;
+    for (int i = 1; i <= 10 * n; i++) {
+        now++;
+        if (gao1()) ans = min(ans, now);
+        now++;
+        if (gao2()) ans = min(ans, now);
     }
 
-    return 0;
+    for (int i = 1; i <= 2 * n; i++) {
+        a[i] = b[i];
+    }
+    now = 0;
+    for (int i = 1; i <= 10 * n; i++) {
+        now++;
+        if (gao2()) ans = min(ans, now);
+        now++;
+        if (gao1()) ans = min(ans, now);
+    }
+
+    if (ans == INF) ans = -1;
+    printf("%d\n",ans);
 }
