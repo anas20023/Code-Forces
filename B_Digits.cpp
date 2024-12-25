@@ -142,7 +142,10 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-
+int fact(int x) {
+    if (x == 0) return 1;
+    return x * fact(x - 1);
+}
 int main()
 {
     optimize();
@@ -150,44 +153,19 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        ll n,d;cin>>n>>d;
-        vector<int> ans;
-        ans.PB(1);  
-        if (n >= 2) {
-            ans.PB(3);
+        int n,k;
+        cin>>n>>k;
+        n = min(n,7);
+        ll factn = fact(n);
+        for(int i=1;i<10;i+=2){
+            if(i==1 ||
+               (i==3 && (factn * k) % 3 == 0) ||
+               (i==5 && (k == 0 || k == 5)) ||
+               (i==7 && (n >= 3 || k == 7)) ||
+               (i==9 && (factn * k) % 9 == 0))
+               cout<<i<<" ";
         }
-        if (d == 5) {
-            ans.PB(5);
-        }
-        if (n >= 7) {
-            ans.PB(7);
-        } else {
-             ll fact = 1;
-             for (int i = 2; i <= n; ++i) {
-                 fact = (fact * i) % 7;
-             }
-
-            if (fact== 0) {
-                ans.PB(7);
-            }
-        }
-        if (n >= 6) {
-            ans.PB(9);
-        } else {
-            ll fact = 1;
-             for (int i = 2; i <= n; ++i) {
-                 fact = (fact * i) % 9;
-             }
-             
-            if (fact== 0) {
-                ans.PB(9);
-            }
-        }
-        for (int i:ans) {
-            cout << i << " ";
-        }
-        cout << endl;
-       
+        cout<<'\n';
     }
 
     return 0;
