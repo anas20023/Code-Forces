@@ -163,7 +163,7 @@ int main()
        }
        ans += (cnt / 2) + 2 * (cnt & 1);
        cout<<"YES"<<endl;
-       if(g) cout<<ans<<endl;
+       if(g==1) cout<<ans<<endl;
        else cout<<0<<endl;
        
     }
