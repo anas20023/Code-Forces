@@ -144,12 +144,20 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-ll solve(ll a,ll b, ll q){
-    if(q==1) return a;
-    if(q==2) return b;
-    if(q>=3){
-        return solve(a,b,q-1)^ solve(a,b,q-2);
+vector<int>dp(1e6+7,0);
+int solve(int n){
+    if(n==0) return 0;
+    if(dp[n]) return dp[n];
+    int tm=n;
+    int res=INT_MAX;
+    //dbg(res);
+    while(tm>0){
+        int dgt=tm%10;
+       if(dgt!=0) res=min(res,1+solve(n-dgt));
+        //cout<<dgt<<endl;
+        tm/=10;
     }
+    return dp[n]=res;
 }
 int main()
 {
@@ -158,23 +166,9 @@ int main()
    // cin >> tc;
     while (tc--)
     {
-       ll a,b,q;cin>>a>>b>>q;
-       //cout<<solve(a,b,q)<<endl;
-       if(q==1) cout<<a<<endl;
-       else if(q==2) cout<<b<<endl;
-       else {
-        ll ans;
-        if(q-1==a){
-            ans=a^b;
-        }
-        else if( q-2==b){
-            ans=a^b;
-        }
-        else{
-            ans=(q-1)^(q-2);
-        }
-        cout<<ans<<endl;
-       }
+       int n;cin>>n;
+       int ans=solve(n);
+       cout<<ans<<endl;
     }
 
     return 0;

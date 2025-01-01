@@ -144,13 +144,6 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-ll solve(ll a,ll b, ll q){
-    if(q==1) return a;
-    if(q==2) return b;
-    if(q>=3){
-        return solve(a,b,q-1)^ solve(a,b,q-2);
-    }
-}
 int main()
 {
     optimize();
@@ -158,23 +151,21 @@ int main()
    // cin >> tc;
     while (tc--)
     {
-       ll a,b,q;cin>>a>>b>>q;
-       //cout<<solve(a,b,q)<<endl;
-       if(q==1) cout<<a<<endl;
-       else if(q==2) cout<<b<<endl;
-       else {
-        ll ans;
-        if(q-1==a){
-            ans=a^b;
-        }
-        else if( q-2==b){
-            ans=a^b;
-        }
-        else{
-            ans=(q-1)^(q-2);
-        }
-        cout<<ans<<endl;
+       int n;cin>>n;
+       vector<int>v(n);
+       for(int i=0;i<n;i++)cin>>v[i];
+       int g=0,cnt=0,ans=0;
+       for (int i = 0; i < n; i++)
+       {
+            g=gcd(g,v[i]);
+            if(v[i]&1)cnt++;
+            else ans+=(cnt / 2) + 2 * (cnt & 1),cnt = 0;
        }
+       ans += (cnt / 2) + 2 * (cnt & 1);
+       cout<<"YES"<<endl;
+       if(g) cout<<ans<<endl;
+       else cout<<0<<endl;
+       
     }
 
     return 0;
