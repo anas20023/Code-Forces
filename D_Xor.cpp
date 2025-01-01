@@ -158,23 +158,9 @@ int main()
    // cin >> tc;
     while (tc--)
     {
-       ll a,b,q;cin>>a>>b>>q;
-       //cout<<solve(a,b,q)<<endl;
-       if(q==1) cout<<a<<endl;
-       else if(q==2) cout<<b<<endl;
-       else {
-        ll ans;
-        if(q-1==a){
-            ans=a^b;
-        }
-        else if( q-2==b){
-            ans=a^b;
-        }
-        else{
-            ans=(q-1)^(q-2);
-        }
-        cout<<ans<<endl;
-       }
+       ll a, b, q; cin >> a >> b >> q;
+        int pos = (q - 1) % 3;
+     cout << (pos == 0 ? a : (pos == 1 ? b : (a ^ b))) << endl;
     }
 
     return 0;
