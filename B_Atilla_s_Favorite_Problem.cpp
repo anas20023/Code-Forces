@@ -151,10 +151,16 @@ int main()
     cin >> tc;
     while (tc--)
     {
-       vector<int>v(3);
-       for(int i=0;i<3;i++)cin>>v[i];
-       sort(all(v));
-       cout<<v[1]<<endl;
+        int n;cin>>n;
+        string s;cin>>s;
+        int ans=INT_MIN;
+        for (int i = 0; i < n; i++)
+        {
+            int tm=s[i]-'a';
+            ans=max(ans,tm);
+        }
+        cout << ans+1 << endl;
+        
     }
 
     return 0;

@@ -151,10 +151,26 @@ int main()
     cin >> tc;
     while (tc--)
     {
-       vector<int>v(3);
-       for(int i=0;i<3;i++)cin>>v[i];
-       sort(all(v));
-       cout<<v[1]<<endl;
+       int n;cin>>n;
+       vector<int>v(n),tm(n);
+       for(int i=0;i<n;i++)cin>>v[i];
+       int mx, mx2;
+       tm=v;
+       sort(all(tm));
+       mx=tm[n-1];
+       mx2=tm[n-2];
+       for (int i = 0; i < n; i++)
+       {
+            if(v[i]==mx) v[i]-=mx2;
+            else v[i]-=mx;
+       }
+       for(auto i : v)
+       {
+         cout<<i<<" ";
+       }
+       cout<<endl;
+       
+
     }
 
     return 0;

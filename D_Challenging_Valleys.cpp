@@ -151,10 +151,22 @@ int main()
     cin >> tc;
     while (tc--)
     {
-       vector<int>v(3);
-       for(int i=0;i<3;i++)cin>>v[i];
-       sort(all(v));
-       cout<<v[1]<<endl;
+       int n;cin>>n;
+       vector<int>v(n),ans;
+       for(int i=0;i<n;i++)cin>>v[i];
+       int cnt=0;
+       for (int i = 0; i <n; i++)
+       {
+            if(i==0||v[i]!=ans.back())ans.PB(v[i]);
+       }
+       for (int i = 0; i <ans.size(); i++)
+       {
+            if((i==0|| ans[i-1]>ans[i])&&(i==ans.size()-1|| ans[i+1]>ans[i])) cnt++;
+       }
+      // cout<<cnt<<endl;
+      if(cnt==1) cout<<"YES"<<endl;
+      else cout<<"NO"<<endl;
+       
     }
 
     return 0;
