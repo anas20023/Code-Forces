@@ -186,7 +186,6 @@ int main()
                 y = i.F - 1; 
             }
         }
-
         cout << x << " " << y << endl;
     }
  
