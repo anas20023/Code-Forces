@@ -178,15 +178,22 @@ int main()
         for (int i = 1; i <= v; i++) {
             mp[g[i]]++;
         }
-       int x = 0, y = 0;
+       vector<int> ans;
         for (auto i : mp) {
-            if (i.S == 1) {
-                x = i.F;  
-            } else {
-                y = i.F - 1; 
-            }
+            // if (i.S == 1) {
+            //     x = i.F;  
+            // } else {
+            //     y = i.F - 1; 
+            // }
+            ans.PB(i.S);
         }
-        cout << x << " " << y << endl;
+        sort(all(ans));
+        if (ans.size() == 3) {
+		cout << ans[1] << ' ' << ans[2] / ans[1] << '\n';
+        }
+        else {
+            cout << ans[0] - 1 << ' ' << ans[1] / (ans[0] - 1) << '\n';
+        }
     }
  
     return 0;
