@@ -166,24 +166,34 @@ int main()
     cin >> tc;
     while (tc--)
     {
-       string s;cin>>s;
-       int n = s.size();
-       int idx = -1;
-        for(int i = 0; i < n-1; i++)
-        if(s[i] == s[i + 1])idx = i;
-
-        if(idx == -1)
-        {
-            if(s.back() == 'a') cout << (s + "z") << endl;
-            else cout << (s + "a") << endl;
+       int n;cin>>n;
+       vector<int> v(n);
+       map<int,int>mp;
+       for(int i = 0; i < n; i++) cin>>v[i],mp[v[i]]++;
+       //int a,b,c,d;
+       vector<int>ans;
+       for (auto& i:mp)
+       {
+        // if(i.S>=2){
+        //     ans.push_back(i.F);
+        //     if(i.S>=4) {
+        //         ans.push_back(i.F);
+        //     }
+        // }
+        int tm=i.S;
+        while(tm>=2){
+            ans.push_back(i.F);
+            tm-=2;
         }
-        else
-        {
-            string t = "a";
-            if(s[idx] == 'a') t = "z";
-            cout << s.substr(0, idx + 1) + t + s.substr(idx + 1) << endl;
-        }
-       
+            //cout<<i.F<<" "<<i.S<<endl;
+       }
+       if(ans.size()<2) {
+        cout<<-1<<endl;
+       }
+       else{
+         cout<<ans[0]<<" "<<ans[0]<<" "<< ans[1]<<" "<<ans[1]<<endl;  
+       }
+       //cout<<endl;
     }
 
     return 0;

@@ -166,25 +166,39 @@ int main()
     cin >> tc;
     while (tc--)
     {
-       string s;cin>>s;
-       int n = s.size();
-       int idx = -1;
-        for(int i = 0; i < n-1; i++)
-        if(s[i] == s[i + 1])idx = i;
+       int n;cin>>n;
+        vector<int> e,o;
+        for (int i = 0; i < n; i++) {
+            int x;cin >> x;
+            if (x % 2 == 0) e.push_back(x);
+            else o.push_back(x);
+        }
 
-        if(idx == -1)
-        {
-            if(s.back() == 'a') cout << (s + "z") << endl;
-            else cout << (s + "a") << endl;
+        sort(e.rbegin(), e.rend());
+        sort(o.rbegin(), o.rend());
+
+        ll sum = 0,ans=0;
+        for (int i : e) {
+            sum += i;
+            if (sum % 2 == 0) {
+                ans++;
+                while (sum % 2 == 0) {
+                    sum /= 2;
+                }
+            }
         }
-        else
-        {
-            string t = "a";
-            if(s[idx] == 'a') t = "z";
-            cout << s.substr(0, idx + 1) + t + s.substr(idx + 1) << endl;
+        for (int i : o) {
+            sum += i;
+            if (sum % 2 == 0) {
+                ans++;
+                while (sum % 2 == 0) {
+                    sum /= 2;
+                }
+            }
         }
-       
+        cout << ans << endl;
     }
+       
 
     return 0;
 }
