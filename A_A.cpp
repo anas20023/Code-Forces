@@ -166,17 +166,30 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int n,s,r;cin>>n>>s>>r;
-        cout<<s-r<<" ";
-        r-=n-1;
-       // cout<<n<<endl;
-        for (int i = n-1; i >0; i--)
+        int n;cin>>n;
+        string s;cin>>s;
+        vector<int>ans;
+        for (int i = 0; i < n/2; i++)
         {
-             int value = min(6, 1 + r); 
-             cout << value << " ";
-             r -= (value - 1); 
+            if(s[i]!=s[n-i-1]) ans.push_back(i);
         }
-        cout<<endl;
+        if(ans.empty()){
+            cout<<"YES"<<endl;
+            continue;
+        }
+        bool ch=true;
+        for (int i = 1; i < ans.size(); i++)
+        {
+            if(ans[i]-ans[i-1]!=1){
+                ch=false;
+               break;
+            }
+           // cout<<ans[i]<<" ";
+        }
+        //cout<<endl;
+        if(ch) cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
+
         
         
     }
