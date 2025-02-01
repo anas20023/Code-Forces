@@ -170,7 +170,7 @@ int main()
         cout<<s-r<<" ";
         r-=n-1;
        // cout<<n<<endl;
-        for (int i = n-1; i >0; i--)
+        for (int i = 0; i <n-1; i++)
         {
              int value = min(6, 1 + r); 
              cout << value << " ";
