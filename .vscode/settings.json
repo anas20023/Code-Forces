@@ -78,7 +78,17 @@
     "cstdlib": "cpp",
     "random": "cpp",
     "limits": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "array": "cpp",
+    "deque": "cpp",
+    "forward_list": "cpp",
+    "list": "cpp",
+    "string_view": "cpp",
+    "format": "cpp",
+    "initializer_list": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "stacktrace": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
