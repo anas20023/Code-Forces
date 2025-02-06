@@ -142,8 +142,8 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-int n,m;
-vector<int>a(5e5+10),b(5e5+10);
+
+
 int main()
 {
     optimize();
@@ -151,20 +151,25 @@ int main()
     //cin >> tc;
     while (tc--)
     {
+        int n,m;
        cin>>n>>m;
+       vector<int>a(n),b(m);
        arrin(a,n);
        arrin(b,m);
        sort(all(a));
        for (int i = 0; i < m; i++)
        {
           int x=b[i];
-          int l=0,r=n;
-          while(l<r){
-            int m=mid(l,r);
-            if(b[m]<=x) l=m+1;
+         // cout<<x<<" ";
+         int l=0,r=n;
+         while (l<r)
+         {
+             int m=mid(l,r);
+           // dbg(x);
+            if(a[m]<=x) l=m+1;
             else r=m;
-          }
-           cout<<l<<" ";
+         }
+         cout<<l<<" ";
        }
        cout<<endl;
        
