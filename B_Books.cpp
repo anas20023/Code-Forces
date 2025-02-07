@@ -151,21 +151,26 @@ int main()
     while (tc--)
     {
        ll n,t;cin>>n>>t;
-       vector<ll>v(n);
-       arrin(v,n);
-       //sort(all(v));
-       for (int i = 1; i < n; i++)
+       vector<ll>v(n+1);
+       for (int i = 1; i <=n; i++)
        {
+         cin>>v[i];
          v[i]+=v[i-1];
        }
-      //for(auto i:v) cout<<i<<" ";
-       int l=0,r=n;
-       while(l<r){
-            int m=mid(l,r);
-            if(v[m]<=t) l=m+1;
-            else r=m;
+       
+       //sort(all(v));
+    //    for (int i = 1; i < n; i++)
+    //    {
+    //      v[i]+=v[i-1];
+    //    }
+       ll ans=0;
+       for (int i = 0; i < n; i++)
+       {
+          ll k=upper_bound(all(v),t+v[i])-v.begin()-1-i;
+          ans=max(ans,k);
        }
-       cout<<l<<endl;
+       cout<<ans<<endl;
+      
     }
 
     return 0;
