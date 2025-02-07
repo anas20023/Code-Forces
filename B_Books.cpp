@@ -142,12 +142,7 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-ll n;
-int isOK(ll md){
-    ll ans=(md*(md+1))/2;
-    if(ans<=n) return 1;
-    else return 0;
-}
+
 int main()
 {
     optimize();
@@ -155,16 +150,23 @@ int main()
     //cin >> tc;
     while (tc--)
     {
-      cin>>n;
-      ll l=1,r=sqrt(2*n)+1;
-      while(l<r){
-        ll m=mid(l,r);
-        if(isOK(m)) l=m+1;
-        else r=m;
-      }
-      cout<<l-1<<endl;
-       
+       ll n,t;cin>>n>>t;
+       vector<ll>v(n);
+       arrin(v,n);
+       //sort(all(v));
+       for (int i = 1; i < n; i++)
+       {
+         v[i]+=v[i-1];
+       }
+      //for(auto i:v) cout<<i<<" ";
+       int l=0,r=n;
+       while(l<r){
+            int m=mid(l,r);
+            if(v[m]<=t) l=m+1;
+            else r=m;
+       }
+       cout<<l<<endl;
     }
 
     return 0;
-}
+}   
