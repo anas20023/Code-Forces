@@ -147,31 +147,17 @@ int main()
 {
     optimize();
     int tc = 1;
-    //cin >> tc;
+    cin >> tc;
     while (tc--)
     {
-       ll n,t;cin>>n>>t;
-       vector<ll>v(n+1);
-       for (int i = 1; i <=n; i++)
-       {
-         cin>>v[i];
-         v[i]+=v[i-1];
-       }
-       
-       //sort(all(v));
-    //    for (int i = 1; i < n; i++)
-    //    {
-    //      v[i]+=v[i-1];
-    //    }
-     //  ll ans=0;
-       ll l=0,r=n+1;
-       while(l<r){
-        ll m=mid(l,r);
-        if(v[m]<=t) l=m+1;
-        else r=m;
-       }
-       cout<<l-1<<endl;
-      
+        ll w,b;cin>>w>>b;
+        ll s=w+b;
+        ll k = 0;
+        while ((k + 2) * (k + 1) / 2 <= s) {
+            k++;
+        }
+        cout << k << endl;
+   
     }
 
     return 0;
