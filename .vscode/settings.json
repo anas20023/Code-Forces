@@ -88,7 +88,8 @@
     "initializer_list": "cpp",
     "ranges": "cpp",
     "span": "cpp",
-    "stacktrace": "cpp"
+    "stacktrace": "cpp",
+    "climits": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled",
   "editor.fontFamily": "\"Fira Code\", 'Courier New', monospace"
