@@ -150,36 +150,38 @@ int main()
     cin >> tc;
     while (tc--)
     {
-       ll n,m;cin>>n>>m;
-       vector<ll>v(n),c(m);
-       arrin(v,n);
-       arrin(c,m);
-       sort(all(c));
-       ll L=-INF;
-       bool ch=true;
-       for(int i=0;i<n;i++){
-        ll x=INF,y=INF;
-       
-        if(v[i]>=L) x=v[i];
-        ll tm=L+v[i];
+        int n, m;
+        cin >> n >> m;
+        vector<int> a(n);
+        vector<int> b(m);
+        bool ch=true;
+        arrin(a,n);
+        arrin(b,m);
+        sort(all(b));
+        int lst = min(a[0], b[0] - a[0]);
+        for (int i = 1; i < n; ++i) {
+            int v1 = a[i] >= lst ? a[i] : inf;
 
-        ll l=1,r=m-1;
-        while(l<r){
-            ll md=mid(l,r);
-            if(c[md]<tm) l=md+1;
-            else r=md;
-        }
-        y=c[l]-v[i];
-        ll ans=min(x,y);
-        if(ans==INF){
+            int l=0,r=m-1,idx=m;
+            while(l<=r){
+                int md=mid(l,r);
+                if(b[md]<a[i]+lst){
+                    l=md+1;
+                }
+                else {
+                    idx=md;
+                    r=md-1;
+                }
+            }
+            int v2 = idx != m ? b[idx] - a[i] : inf;
+            lst = min(v1, v2);
+            if (lst == inf) {
                 ch=false;
+                cout<<"NO"<<endl;
                 break;
+            }
         }
-        L=ans;
-       }
-       if(ch) cout<<"YES"<<endl;
-       else cout<<"NO"<<endl;
-       
+        if(ch) cout<<"YES"<<endl;
     }
     return 0;
 }   
