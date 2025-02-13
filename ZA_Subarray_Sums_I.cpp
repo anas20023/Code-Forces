@@ -157,20 +157,22 @@ int main()
          cin>>v[i];
          v[i]+=v[i-1];
        }
-       
-       //sort(all(v));
-    //    for (int i = 1; i < n; i++)
-    //    {
-    //      v[i]+=v[i-1];
-    //    }
-     //  ll ans=0;
-       ll l=0,r=n+1;
-       while(l<r){
-        ll m=mid(l,r);
-        if(v[m]<=t) l=m+1;
-        else r=m;
+       ll ans=0;
+       for(auto i:v)
+       {
+            //cout<<i<<" ";
+            ll l=0,r=n;
+            while(l<r){
+                ll m=mid(l,r);
+                if(v[m]<t+i) l=m+1;
+                else r=m;
+            }
+            //cout<<v[l]<<" ";
+            //cout<<t+i<<" ";
+            if(v[l]==t+i) ans++;
        }
-       cout<<l-1<<endl;
+       cout<<ans<<endl;
+      
       
     }
 
