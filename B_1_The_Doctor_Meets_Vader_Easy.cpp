@@ -174,14 +174,15 @@ int main()
        
        for (int i = 0; i < n; i++)
        {
-            // int l=0,r=k;
-            // while(l<r){
-            //     int m=mid(l,r);
-            //     if(df[m] <=v[i]) l=m+1;
-            //     else r=m;
-            // }
-            auto itr =upper_bound(all(df),v[i])-df.begin()-1;
-            cout<<gld[itr]<<" ";
+            int l=0,r=k+1;
+            while(l<r){
+                int m=mid(l,r);
+                if(df[m] <=v[i]) l=m+1;
+                else r=m;
+            }
+            // auto itr =upper_bound(all(df),v[i])-df.begin()-1;
+            // cout<<gld[itr]<<" ";
+            cout<<gld[l-1]<<" ";
            // cout<<l-1<<" ";
           //cout<<gd[i].F<<endl;
        }
