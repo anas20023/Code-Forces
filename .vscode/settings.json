@@ -93,5 +93,8 @@
     "numeric": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled",
-  "editor.fontFamily": "\"Fira Code\", 'Courier New', monospace"
+  "editor.fontFamily": "\"Fira Code\", 'Courier New', monospace",
+  "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+    "clang-diagnostic-error"
+  ]
 }
