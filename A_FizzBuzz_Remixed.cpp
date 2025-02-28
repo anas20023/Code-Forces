@@ -151,13 +151,10 @@ int main()
     while (tc--)
     {
        ll n;cin>>n;
-       ll ans=0;
-       for (int i = 0; i <=n; i++)
-       {
-            ll x=i%3;
-            ll y=i%5;
-          if(x==y)ans++;
-       }
+       ll ans=3*(n/15);
+       ans++;
+      if(n%15>=1) ans++;
+      if(n%15>=2) ans++;
        cout<<ans<<endl;
        
     }
