@@ -96,5 +96,6 @@
   "editor.fontFamily": "Fira Code",
   "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
     "clang-diagnostic-error"
-  ]
+  ],
+  "editor.codeLensFontFamily": "Fira Code"
 }
