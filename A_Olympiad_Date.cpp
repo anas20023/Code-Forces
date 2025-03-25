@@ -148,55 +148,43 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-#include <iostream>
-using namespace std;
+bool check(map<int,int>&mf){
+    for(auto it= mf.begin();it!=mf.end();it++){
+        if(it->second==0){
+            return false;
+        }
+    }
+    return true;
 
-void solve() {
-    int n, m;
-    cin >> n >> m;
-    char arr[n][m];
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cin >> arr[i][j];
-        }
-    }
-    // for (int i = 0; i < n; i++) {
-    //     for (int j = 0; j < m; j++) {
-    //         cout<< arr[i][j]<<" ";
-    //     }
-    //     cout<<endl;
-    // }
-    // cout<<endl;
-    bool ch = true;
-    for (int i = n-1; i >=0; i--) {
-        for (int j = m-1; j >=0; j--) {
-            if (arr[i][j] == '1') {
-                bool r=true,c=true;
-                for (int k = j-1; k >=0; k--)
-                {
-                    if(arr[i][k]!='1'){
-                        r=false;
-                        break;
-                    }
-                }
-                for (int k = i-1; k >=0; k--){
-                    if(arr[k][j]!='1'){
-                        c=false;
-                        break;
-                    }
-                }
-                if (!r && !c) {
-                    ch = false;
-                    break;
-                }  
-            }
-        }
-        if (!ch) break;
-    }
-    if (ch) cout << "YES" << endl;
-    else cout << "NO" << endl;
 }
-
+void solve(){
+    int n;cin>>n;
+    vector<int>v(n);
+    for(int i=0;i<n;i++)cin>>v[i];
+    int ans = 0;
+    bool ok = false;
+    map<int, int> mf = {{0, 0}, {1, 0}, {2, 0}, {3, 0}, {5, 0}};
+    for (int i = 0; i < n; ++i) {
+        int num = v[i];
+        if (mf.find(num) != mf.end()) {
+            mf[num]++;
+        }
+        bool valid = true;
+        if (mf[0] < 3) valid = false;
+        if (mf[1] < 1) valid = false;
+        if (mf[2] < 2) valid = false;
+        if (mf[3] < 1) valid = false;
+        if (mf[5] < 1) valid = false;
+        if (valid) {
+            ans = i + 1;
+            ok = true;
+            break;
+        }
+    }
+    if(ok) cout<<ans<<endl;
+    else cout<<0<<endl;
+    
+}
 int main()
 {
     optimize();

@@ -148,55 +148,22 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-#include <iostream>
-using namespace std;
-
-void solve() {
-    int n, m;
-    cin >> n >> m;
-    char arr[n][m];
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cin >> arr[i][j];
-        }
+void solve(){
+    ll n,m,k;cin>>n>>m>>k;
+    ll l=1,r=k,ans=k;
+    while (l<r)
+    {
+        ll md=mid(l,r);
+        //dbg(md);
+        ll dv=md+1;
+        ll tm=n*(((m+1)*md)/dv);
+        if(tm>=k)ans=md,r=md;
+        else l=md+1; 
     }
-    // for (int i = 0; i < n; i++) {
-    //     for (int j = 0; j < m; j++) {
-    //         cout<< arr[i][j]<<" ";
-    //     }
-    //     cout<<endl;
-    // }
-    // cout<<endl;
-    bool ch = true;
-    for (int i = n-1; i >=0; i--) {
-        for (int j = m-1; j >=0; j--) {
-            if (arr[i][j] == '1') {
-                bool r=true,c=true;
-                for (int k = j-1; k >=0; k--)
-                {
-                    if(arr[i][k]!='1'){
-                        r=false;
-                        break;
-                    }
-                }
-                for (int k = i-1; k >=0; k--){
-                    if(arr[k][j]!='1'){
-                        c=false;
-                        break;
-                    }
-                }
-                if (!r && !c) {
-                    ch = false;
-                    break;
-                }  
-            }
-        }
-        if (!ch) break;
-    }
-    if (ch) cout << "YES" << endl;
-    else cout << "NO" << endl;
+    cout<<ans<<endl;
+    
+    
 }
-
 int main()
 {
     optimize();
