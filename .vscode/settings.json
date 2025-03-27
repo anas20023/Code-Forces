@@ -90,7 +90,9 @@
     "span": "cpp",
     "stacktrace": "cpp",
     "climits": "cpp",
-    "numeric": "cpp"
+    "numeric": "cpp",
+    "iosfwd": "cpp",
+    "complex": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled",
   "editor.fontFamily": "Fira Code",
