@@ -148,27 +148,24 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
+
 void solve(){
-    ll n,c;cin>>n>>c;
-    vector<int>v(n);
-    for (ll i = 0; i < n; i++)
+    int n;cin>>n;
+    vector<int>v(n+1),p(n+1);
+    for (int i = 1; i <=n; i++)
     {
         cin>>v[i];
-        v[i]+=min(i+1,n-i);
+        p[v[i]]=i;
     }
-    ll ans=0;
-    sort(all(v));
-    for (int i = 0; i < n; i++)
+    int rst=0;
+    for (int i = 1; i <n; i++)
     {
-        if(v[i]>c){
-            break;
-        }
-        ans++;
-        c-=v[i];
+        if(p[i]>p[i+1]) rst++;
     }
-    cout<<ans<<endl;
+    cout<<rst<<endl;
     
     
+  
 }
 int main()
 {
