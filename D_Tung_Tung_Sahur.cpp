@@ -150,28 +150,46 @@ void faltu(T arg, const hello &...rest)
 }
 void solve(){
     string p,s;cin>>p>>s;
-    int r = s.size() - p.size(); 
-    int pi = 0, si = 0;
-    int d = 0;
-    bool valid = true;
-    
-    while (pi < p.size() && si < s.size()){
-        if (p[pi] != s[si]){
-            valid = false;
-            break;
-        }
-        if (d < r && si + 1 < s.size() && s[si+1] == p[pi]){
-            d++;
-            si += 2;
-        } else {
-            si += 1;
-        }
-        pi++;
+    if(p[0]!=s[0] || s.size()<p.size() || s.size()>p.size()*2){
+        cout<<"NO"<<endl;
+        return;
     }
+    int ps=p.size();
+    int ss=s.size();
+    vector<int>cntp,cnts;
+    int cnt=1;
+    for (int i = 0; i < ps-1; i++)
+    {
+        if(p[i+1]!=p[i]){
+            cntp.push_back(cnt);
+            cnt=1;
+        }
+        else cnt++;
+    }
+    cntp.push_back(cnt);
+     cnt=1;
+    for (int i = 0; i < ss-1; i++)
+    {
+        if(s[i+1]!=s[i]){
+            cnts.push_back(cnt);
+            cnt=1;
+        }
+        else cnt++;
+    }
+    cnts.push_back(cnt);
+    if(cnts.size()!=cntp.size()){
+        cout<<"NO"<<endl;
+        return;
+    }
+    for (int i = 0; i < cnts.size(); i++)
+    {
+        if(cnts[i]<cntp[i]||cnts[i]>cntp[i]*2){
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
+    cout<<"YES"<<endl;
     
-    if(pi != p.size() || si != s.size()) valid = false;
-    if(valid) cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
 }
 int main()
 {
