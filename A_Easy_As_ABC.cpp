@@ -150,6 +150,9 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
+bool is_adjacent(int r1, int c1, int r2, int c2) {
+    return abs(r1 - r2) <= 1 && abs(c1 - c2) <= 1 && !(r1 == r2 && c1 == c2);
+}
 void solve(){
     char arr[3][3];
     for (int i = 0; i < 3; i++)
@@ -160,15 +163,38 @@ void solve(){
         }
         
     }
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            cout<<arr[i][j]<<" ";
+    vector<string>V;
+    for (int r1 = 0; r1 < 3; r1++) {
+        for (int c1 = 0; c1 < 3; c1++) {
+            for (int r2 = 0; r2 < 3; r2++) {
+                for (int c2 = 0; c2 < 3; c2++) {
+                    for (int r3 = 0; r3 < 3; r3++) {
+                        for (int c3 = 0; c3 < 3; c3++) {
+
+                            if ((r1 != r2 || c1 != c2) &&
+                                (r2 != r3 || c2 != c3) &&
+                                (r1 != r3 || c1 != c3)) {
+                                
+
+                                if (is_adjacent(r1, c1, r2, c2) &&
+                                    is_adjacent(r2, c2, r3, c3)) {
+                                    
+                                    string word = "";
+                                    word += arr[r1][c1];
+                                    word += arr[r2][c2];
+                                    word += arr[r3][c3];
+                                    V.push_back(word);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-        cout<<nl;
-        
     }
+    sort(all(V));
+    cout<<V[0]<<nl;
+
     
 }
 int main()
