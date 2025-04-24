@@ -156,7 +156,7 @@ void solve(){
         cin>>v[i];
     }
     unordered_map<int,ll>bitcount;
-    //bitcount.reserve(n);
+    bitcount.reserve(n);
     for (int i = 0; i < n; i++)
     {
         if(v[i]==0){
