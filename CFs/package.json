@@ -1,0 +1,16 @@
+{
+  "name": "code-forces",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Anas Ibn Belal",
+  "license": "ISC",
+  "dependencies": {
+    "@ip-algorithmics/codeforces-io": "^1.1.2"
+  }
+}
