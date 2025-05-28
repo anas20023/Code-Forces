@@ -1,5 +1,3 @@
-//onAC(ALPHA) =>{Target Next ICPC ^-^}           
-//  ^-^      ^-^       ^-^    ^-^     ^-^  
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp> 
 #include <ext/pb_ds/tree_policy.hpp> 
@@ -148,49 +146,39 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-dl dist(ll x1, ll y1, ll x2, ll y2)
-{
-    return sqrtl(pow(x2 - x1, 2) + pow(y2 - y1, 2) * 1.0);
-}
 void solve(){
-    ll n,d,sx,sy;
-    cin>>n>>d>>sx>>sy;
-    vector<pair<ll,ll>>v(n);
-    vector<pair<dl,ll>>clc(n);
+    ll n,k;cin>>n>>k;
+    vector<ll>v(1e5+10,0LL);
     for (int i = 0; i < n; i++)
     {
-        ll x,y;cin>>x>>y;
-        v[i]={x,y};
+        ll l,r;cin>>l>>r;
+        v[l]++;
+        v[r+1]--;
     }
-    for (int i = 0; i < n; i++)
+   // vector<ll>pref(1e5+10,0LL);
+    for (int i = 1; i < 1e5+10; i++){
+        v[i]+=v[i-1];
+        
+    }
+    for (int i = 0; i < k; i++)
     {
-        clc[i].F = dist(sx, sy, v[i].F, v[i].S);
-        clc[i].S = i+1;
+        ll x;cin>>x;
+        cout<< v[x]<<endl;
     }
-    sort(all(clc));
-    vector<ll>ans;
-    for (int i = 0; i < n; i++)
-    {
-        //cout<<clc[i].F<<" ";
-        if(clc[i].F>d) ans.push_back(clc[i].S);
-    }
-    if(ans.size()==0){
-        cout<<"FE!N"<<endl;
-        return;
-    }
-    cout<<ans.size()<<endl;
-    sort(all(ans));
-    for(auto i:ans) cout<<i<<" ";
-    cout<<endl;
+    
+    
+    
 }
 int main()
 {
     optimize();
-    int tc = 1;
+    int tc = 1,j=1;
     cin >> tc;
     while (tc--)
     {
+    cout<<"Case "<<j<<":"<<endl;
        solve();
+       j++;
     }
 
     return 0;

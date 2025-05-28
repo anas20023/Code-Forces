@@ -148,40 +148,35 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-dl dist(ll x1, ll y1, ll x2, ll y2)
-{
-    return sqrtl(pow(x2 - x1, 2) + pow(y2 - y1, 2) * 1.0);
-}
 void solve(){
-    ll n,d,sx,sy;
-    cin>>n>>d>>sx>>sy;
-    vector<pair<ll,ll>>v(n);
-    vector<pair<dl,ll>>clc(n);
+    ll n,q;cin>>n>>q;
+    vector<ll>v(n),k(q);
     for (int i = 0; i < n; i++)
     {
-        ll x,y;cin>>x>>y;
-        v[i]={x,y};
+        cin>>v[i];
     }
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < q; i++)
     {
-        clc[i].F = dist(sx, sy, v[i].F, v[i].S);
-        clc[i].S = i+1;
+        cin>>k[i];
     }
-    sort(all(clc));
+    vector<ll>pre_max(n+1,0),pref_sum(n+1,0);
+    for (int i = 1; i <=n; i++)
+    {
+        pref_sum[i]=pref_sum[i-1]+v[i-1];
+        pre_max[i]=max(pre_max[i-1],v[i-1]);
+    }
+    //for(auto i:pre_max) cout<<i<<" ";
     vector<ll>ans;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < q; i++)
     {
-        //cout<<clc[i].F<<" ";
-        if(clc[i].F>d) ans.push_back(clc[i].S);
+        auto itr=upper_bound(all(pre_max),k[i])-pre_max.begin();
+       /// cout<<itr-1<<" ";
+        ans.push_back(pref_sum[itr-1]);
     }
-    if(ans.size()==0){
-        cout<<"FE!N"<<endl;
-        return;
-    }
-    cout<<ans.size()<<endl;
-    sort(all(ans));
     for(auto i:ans) cout<<i<<" ";
     cout<<endl;
+    
+    
 }
 int main()
 {

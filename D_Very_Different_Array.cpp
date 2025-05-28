@@ -27,6 +27,7 @@ typedef double dl;
 #define MP make_pair
 #define endl '\n'
 #define all(a) (a).begin(), (a).end()
+#define rall(a) (a).rbegin(), (a).rend()
 #define sz(x) (int)x.size()
 #define mid(l, r) ((r + l) / 2)
 #define left(node) (node * 2)
@@ -148,40 +149,33 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-dl dist(ll x1, ll y1, ll x2, ll y2)
-{
-    return sqrtl(pow(x2 - x1, 2) + pow(y2 - y1, 2) * 1.0);
-}
 void solve(){
-    ll n,d,sx,sy;
-    cin>>n>>d>>sx>>sy;
-    vector<pair<ll,ll>>v(n);
-    vector<pair<dl,ll>>clc(n);
+    ll n,m;cin>>n>>m;
+    vector<ll>pt(n),vs(m);
     for (int i = 0; i < n; i++)
     {
-        ll x,y;cin>>x>>y;
-        v[i]={x,y};
+        cin>>pt[i];
     }
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < m; i++)
     {
-        clc[i].F = dist(sx, sy, v[i].F, v[i].S);
-        clc[i].S = i+1;
+        cin>>vs[i];
     }
-    sort(all(clc));
-    vector<ll>ans;
-    for (int i = 0; i < n; i++)
-    {
-        //cout<<clc[i].F<<" ";
-        if(clc[i].F>d) ans.push_back(clc[i].S);
-    }
-    if(ans.size()==0){
-        cout<<"FE!N"<<endl;
-        return;
-    }
-    cout<<ans.size()<<endl;
-    sort(all(ans));
-    for(auto i:ans) cout<<i<<" ";
-    cout<<endl;
+    sort(all(pt));
+    sort(all(vs));
+    ll ans=0;
+    vector<ll> s(n+1), l(n+1);
+        for(int i=1;i<=n;i++){
+            s[i]=s[i-1]+llabs(pt[n-i]-vs[i-1]);
+            l[i]=l[i-1]+llabs(pt[i-1]-vs[m-i]);
+        }
+        for(int k=0;k<=n;k++){
+            ans=max(ans, s[k]+l[n-k]);
+        }
+        cout<<ans<<endl;
+    
+    
+    
+    
 }
 int main()
 {

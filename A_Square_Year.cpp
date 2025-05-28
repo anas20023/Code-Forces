@@ -148,40 +148,14 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-dl dist(ll x1, ll y1, ll x2, ll y2)
-{
-    return sqrtl(pow(x2 - x1, 2) + pow(y2 - y1, 2) * 1.0);
-}
 void solve(){
-    ll n,d,sx,sy;
-    cin>>n>>d>>sx>>sy;
-    vector<pair<ll,ll>>v(n);
-    vector<pair<dl,ll>>clc(n);
-    for (int i = 0; i < n; i++)
-    {
-        ll x,y;cin>>x>>y;
-        v[i]={x,y};
-    }
-    for (int i = 0; i < n; i++)
-    {
-        clc[i].F = dist(sx, sy, v[i].F, v[i].S);
-        clc[i].S = i+1;
-    }
-    sort(all(clc));
-    vector<ll>ans;
-    for (int i = 0; i < n; i++)
-    {
-        //cout<<clc[i].F<<" ";
-        if(clc[i].F>d) ans.push_back(clc[i].S);
-    }
-    if(ans.size()==0){
-        cout<<"FE!N"<<endl;
+    ll n;cin>>n;
+    ll r=sqrtl(n);
+    if(r*r!=n){
+        cout<<-1<<endl;
         return;
     }
-    cout<<ans.size()<<endl;
-    sort(all(ans));
-    for(auto i:ans) cout<<i<<" ";
-    cout<<endl;
+    cout<<0<<" "<<r<<endl;
 }
 int main()
 {
