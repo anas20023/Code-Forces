@@ -156,7 +156,7 @@ void solve(){
     for(int i=2;i<=n;i++){
         cout<<i<<" 1 "<<i-1<<endl;
         cout<<i<<" "<<i<<" "<<n<<endl;
-    }
+    } // some
     
 }
 int main()
