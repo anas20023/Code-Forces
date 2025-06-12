@@ -150,9 +150,6 @@ void faltu(T arg, const hello &...rest)
 }
 void solve(){
     int n;cin>>n;
-    // int k=1+2*(n-2);
-    // if (n==3) k=3;
-    // cout<<k<<endl;
     
     cout<<2*n-1<<endl;
     cout<<1<<" "<<1<<" "<<n<<endl;
