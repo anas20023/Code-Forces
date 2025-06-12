@@ -157,7 +157,7 @@ void solve(){
         cout<<i<<" 1 "<<i-1<<endl;
         cout<<i<<" "<<i<<" "<<n<<endl;
     }
-    
+    // some changes
 }
 int main()
 {
