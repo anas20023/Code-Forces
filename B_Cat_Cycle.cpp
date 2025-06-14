@@ -149,15 +149,27 @@ void faltu(T arg, const hello &...rest)
     faltu(rest...);
 }
 void solve(){
-    int n;cin>>n;
-    
-    cout<<2*n-1<<endl;
-    cout<<1<<" "<<1<<" "<<n<<endl;
-    for(int i=2;i<=n;i++){
-        cout<<i<<" 1 "<<i-1<<endl;
-        cout<<i<<" "<<i<<" "<<n<<endl;
+    ll n,k;cin>>n>>k;
+    if(n%2==0){
+        if(n<k){
+            if(k%n==0){
+                cout<<n<<endl;
+                return;
+            }
+            else{
+                cout<<k%n<<endl;
+                return;
+            }
+        }
+        else{
+            cout<<k<<endl;
+        }
     }
-    // for github badge
+    else{
+        ll x=n/2;
+        k--;
+        cout<<((k + (n % 2) * k / x) % n + 1) <<endl;
+    }
 }
 int main()
 {

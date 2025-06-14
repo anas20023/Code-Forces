@@ -27,6 +27,7 @@ typedef double dl;
 #define MP make_pair
 #define endl '\n'
 #define all(a) (a).begin(), (a).end()
+#define rall(a) (a).rbegin(), (a).rend()
 #define sz(x) (int)x.size()
 #define mid(l, r) ((r + l) / 2)
 #define left(node) (node * 2)
@@ -149,15 +150,29 @@ void faltu(T arg, const hello &...rest)
     faltu(rest...);
 }
 void solve(){
-    int n;cin>>n;
-    
-    cout<<2*n-1<<endl;
-    cout<<1<<" "<<1<<" "<<n<<endl;
-    for(int i=2;i<=n;i++){
-        cout<<i<<" 1 "<<i-1<<endl;
-        cout<<i<<" "<<i<<" "<<n<<endl;
+    ll n;cin>>n;
+    vector<ll>v(n),x(n),res(n);
+    arrin(v,n);
+    arrin(x,n);
+    for (int i = 0; i < n; i++)
+    {
+        res[i]=x[i]-v[i];
     }
-    // for github badge
+    sort(all(res));
+    ll l=0,r=n-1,ans=0;
+    while(l<r){
+       if (res[l] + res[r] >= 0) {
+        ans++;
+        r--; l++;
+    } else {
+       // res[r]+=res[l];
+        l++; 
+    }
+    }
+   // if(l==r && res[l]>=0) ans++;
+    cout<<ans<<endl;
+    
+    
 }
 int main()
 {
