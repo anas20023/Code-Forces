@@ -1,6 +1,7 @@
 .cph
 /**/*.exe
 /**/*.o
+/**/*.class
 /**/*.bin
 node_modules
 outputf.out
