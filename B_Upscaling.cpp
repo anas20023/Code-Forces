@@ -148,54 +148,17 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-const int N=2e5;
-vector<int>graph[N];
-vector<bool>vis(N);
-vector<pair<int,int>>ans;
-int n;
-void dfs(int node,bool ok){
-    vis[node]=true;
-    for(auto it:graph[node]){
-        if(vis[it]){
-            continue;
-        }
-        if(ok) {
-            ans.push_back({it,node});
-        }
-        else{
-            ans.push_back({node,it});
-        }
-        dfs(it,!ok);
-    }
-}
 void solve(){
-    cin>>n;
-    for(int i=0;i<n;i++) graph[i].clear();
-    for(int i=0;i<n;i++) vis[i]=false;
-    ans.clear();
-    for (int i = 0; i < n-1; i++)
+    int n;cin>>n;
+    for (int i = 0; i <2*n; i++)
     {
-        int u,v;cin>>u>>v;
-        u--,v--;
-        graph[u].push_back(v);
-        graph[v].push_back(u);
+        for(int j = 0; j <2*n; ++j){
+            int tm=(i/2)+(j/2);
+            if(tm&1) cout<<".";
+            else cout<<"#";
+        }
+        cout<<endl;
     }
-    int r=0;
-    while(r<n && graph[r].size()!=2) r++;
-    if(r>=n){
-        cout<<"NO"<<endl;
-        return;
-    }
-
-    cout<<"YES"<<endl;
-    ans.emplace_back(r, graph[r][0]);
-	ans.emplace_back(graph[r][1], r);
-	vis[r] = 1;
-    dfs(graph[r][0],true);
-    dfs(graph[r][1],false);
-
-    sort(all(ans));
-    for(auto it:ans) cout<<it.first+1<<" "<<it.second+1<<endl;
     
 }
 int main()

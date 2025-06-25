@@ -148,64 +148,35 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-const int N=2e5;
-vector<int>graph[N];
-vector<bool>vis(N);
-vector<pair<int,int>>ans;
-int n;
-void dfs(int node,bool ok){
-    vis[node]=true;
-    for(auto it:graph[node]){
-        if(vis[it]){
-            continue;
-        }
-        if(ok) {
-            ans.push_back({it,node});
-        }
-        else{
-            ans.push_back({node,it});
-        }
-        dfs(it,!ok);
+ll Get_Sum(ll x)
+{
+    ll sum = 0;
+    while (x != 0)
+    {
+        sum += x % 10;
+        x /= 10;
     }
+    return sum;
 }
 void solve(){
-    cin>>n;
-    for(int i=0;i<n;i++) graph[i].clear();
-    for(int i=0;i<n;i++) vis[i]=false;
-    ans.clear();
-    for (int i = 0; i < n-1; i++)
-    {
-        int u,v;cin>>u>>v;
-        u--,v--;
-        graph[u].push_back(v);
-        graph[v].push_back(u);
-    }
-    int r=0;
-    while(r<n && graph[r].size()!=2) r++;
-    if(r>=n){
-        cout<<"NO"<<endl;
-        return;
-    }
-
-    cout<<"YES"<<endl;
-    ans.emplace_back(r, graph[r][0]);
-	ans.emplace_back(graph[r][1], r);
-	vis[r] = 1;
-    dfs(graph[r][0],true);
-    dfs(graph[r][1],false);
-
-    sort(all(ans));
-    for(auto it:ans) cout<<it.first+1<<" "<<it.second+1<<endl;
-    
+   
 }
 int main()
 {
     optimize();
+    vector<int>ans(2e5+7,0);
+    for (int i= 1; i < 2e5+7; i++)
+    {
+        ans[i]=ans[i-1]+Get_Sum(i);
+    }
+    
     int tc = 1;
     cin >> tc;
     while (tc--)
     {
-       solve();
+    //    solve();
+     ll n;cin>>n;
+    cout<<ans[n]<<endl;
     }
 
     return 0;
