@@ -150,32 +150,30 @@ void faltu(T arg, const hello &...rest)
 }
 void solve(){
     ll n,k;cin>>n>>k;
-    vector<ll>v(n);
-    for (int i = 0; i < n; i++)
-    {
-        cin>>v[i];  
+    deque<ll> dq(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> dq[i];
     }
-    ll ans=0;
-    ll l=0,r=n-1;
-    bool turn = true;
-    while(l<=r){
-        if(k<=0) break;
-        if(turn){
-            while (l <= r && v[l] == 0) l++;
-                if (l > r) break;
-                v[l]--;
-                if (v[l] == 0) ans++;
+    while (dq.size() > 1 && k) {
+        ll mn = min(dq.front(), dq.back());
+        if (k < 2 * mn) {
+            dq.front() -= k / 2 + k % 2;
+            dq.back() -= k / 2;
+            k = 0;
+        } else {
+            dq.front() -= mn;
+            dq.back() -= mn;
+            k -= 2 * mn;
         }
-       else{
-            while (l <= r && v[r] == 0) r--;
-            if (l > r) break;
-            v[r]--;
-            if (v[r] == 0) ans++;
-       }
-       turn=!turn;
-       k--;
+        if (dq.front() == 0) {
+            dq.pop_front();
+        }
+        if (dq.back() == 0) {
+            dq.pop_back();
+        }
     }
-    cout<<ans<<endl;
+    ll ans = n - dq.size();
+    cout << ans + (dq.size() && dq.front() <= k) << endl;
 }
 int main()
 {
