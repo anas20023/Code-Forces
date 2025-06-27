@@ -1,13 +1,13 @@
-// onAC(ALPHA) =>{Target Next ICPC ^-^}
-//   ^-^      ^-^       ^-^    ^-^     ^-^
+//onAC(ALPHA) =>{Target Next ICPC ^-^}           
+//  ^-^      ^-^       ^-^    ^-^     ^-^  
 #include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
+#include <ext/pb_ds/assoc_container.hpp> 
+#include <ext/pb_ds/tree_policy.hpp> 
 using namespace std;
 using namespace __gnu_pbds;
 
-template <typename T>
-using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 typedef long long ll;
 typedef vector<int> vi;
@@ -32,9 +32,7 @@ typedef double dl;
 #define left(node) (node * 2)
 #define right(node) (node * 2 + 1)
 #define mx_int_prime 999999937
-#define arrin(v, n)             \
-    for (int i = 0; i < n; i++) \
-        cin >> v[i];
+#define arrin(v,n) for(int i=0;i<n;i++)cin>>v[i];
 const double PI = (2.0 * acos(0.0));
 const double eps = 1e-9;
 const int inf = 2000000000;
@@ -150,63 +148,28 @@ void faltu(T arg, const hello &...rest)
     cerr << arg << ' ';
     faltu(rest...);
 }
-void solve()
-{
-    ll n, k;
-    cin >> n >> k;
-    deque<ll> dq(n);
-    for (int i = 0; i < n; ++i)
-    {
-        cin >> dq[i];
-    }
-    while (dq.size() > 1 && k)
-    {
-        ll mn = min(dq.front(), dq.back());
-        if (k < 2 * mn)
-        {
-            dq.front() -= k / 2 + k % 2;
-            dq.back() -= k / 2;
-            k = 0;
-        }
-        else
-        {
-            dq.front() -= mn;
-            dq.back() -= mn;
-            k -= 2 * mn;
-        }
-        if (dq.front() == 0)
-        {
-            dq.pop_front();
-        }
-        if (dq.back() == 0)
-        {
-            dq.pop_back();
-        }
-    }
-    ll ans = n - dq.size();
-    cout << ans + (dq.size() && dq.front() <= k) << endl;
+void solve(){
+    ll w,h,a,b,x1,y1,x2,y2;
+    cin>>w>>h>>a>>b>>x1>>y1>>x2>>y2;
+    //cout<<w<<h<<a<<b<<x1<<y1<<x2<<y2<<endl;
+    // if((x1+a)<=w && (y1+b)<=h) x1+=a,y1+=b;
+    // if((x2+a)<=w && (y2+b)<=h) x2+=a,y2+=b;
+   // cout<<x1<<" "<<y1<<" "<<x2<<" "<<y2<<endl;
+    ll ans1=(x2-x1),ans2=(y2-y1);
+    if(ans1%a==0 && x1!=x2) cout<<"Yes"<<endl;
+    else if(ans2%b==0 && y1!=y2) cout<<"Yes"<<endl;
+    else cout<<"No"<<endl;
+    
 }
-
-// void solve()
-// {
-//     int n;
-//     cin >> n;
-//     n = 1e9 + 5;
-//     for (int i = 1; i <= n; i++)
-//     {
-//         cout << i << endl;
-//     }
-// }
-
 int main()
-{
+{   
     optimize();
     int tc = 1;
     cin >> tc;
     while (tc--)
     {
-        solve();
+       solve();
     }
 
     return 0;
-}
+}   
