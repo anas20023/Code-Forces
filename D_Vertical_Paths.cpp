@@ -149,93 +149,67 @@ void faltu(T arg, const hello &...rest)
     faltu(rest...);
 }
 
-void solve() {
- int n;
-        cin >> n;
-        vector<int> p(n);
-        for (int i = 0; i < n; i++) {
-            cin >> p[i];
-        }
+const ll N=2e5+10;
+vector<ll>graph[N];
+vector<bool> vis(N);
+vector<deque<ll>> result;
 
-        vector<vector<int>> children(n+1);
-        int root = -1;
-        for (int i = 1; i <= n; i++) {
-            int parent = p[i-1];
-            if (parent == i) {
-                root = i;
-            } else {
-                children[parent].push_back(i);
-            }
+void dfs(ll src,deque<ll>& path){
+   vis[src]=true;
+   path.push_back(src);
+     bool isLeaf = true;
+   for(auto v:graph[src]){
+       if(!vis[v]){
+         isLeaf = false;
+           dfs(v,path);
+       }
+   }
+    if (isLeaf) {
+        result.push_back(path);
+    }
+    path.pop_back();
+}
+void solve(){
+    
+    result.clear();
+    ll n;cin>>n;
+    for (int i = 1; i <=n; i++) {
+        graph[i].clear();
+        vis[i] = false;
+    }
+    vector<ll>v(n+1);
+    ll src=-1;
+    for (int i = 1; i <=n; i++)
+    {
+        cin>>v[i];
+    }
+    for (int i = 1; i <=n; i++)
+    {
+        if(i==v[i]){
+            src=i;
+        }else{
+            graph[v[i]].push_back(i);
         }
+    }
+   deque<ll> path;
+    dfs(src, path);
+    cout<<result.size()<<endl;
+   
+    vector<bool> used(n + 1, false);
+   for(auto s:result){
+    while (s.size() && used[s.front()]) {
+      s.pop_front();
+    }
+    for (auto &it : s) {
+      used[it] = true;
+    }
+    if (s.empty()) continue;
+    cout<<s.size()<<endl;
+    for(auto i:s) cout<<i<<" "; 
+    cout<<endl;
+   }
+   cout<<endl;
 
-        vector<int> next_node(n+1, 0);
-        deque<int> q;
-        if (n > 0) {
-            q.push_back(root);
-            while (!q.empty()) {
-                int u = q.front();
-                q.pop_front();
-                if (!children[u].empty()) {
-                    int chosen;
-                    if (u == root) {
-                        chosen = *min_element(children[u].begin(), children[u].end());
-                    } else {
-                        chosen = *max_element(children[u].begin(), children[u].end());
-                    }
-                    next_node[u] = chosen;
-                    q.push_front(chosen);
-                    for (int child : children[u]) {
-                        if (child != chosen) {
-                            q.push_back(child);
-                        }
-                    }
-                }
-            }
-        }
-
-        vector<bool> is_target(n+1, false);
-        for (int i = 1; i <= n; i++) {
-            if (next_node[i] != 0) {
-                is_target[next_node[i]] = true;
-            }
-        }
-
-        vector<int> starts;
-        for (int i = 1; i <= n; i++) {
-            if (!is_target[i]) {
-                starts.push_back(i);
-            }
-        }
-
-        if (root != -1) {
-            auto it = find(starts.begin(), starts.end(), root);
-            if (it != starts.end()) {
-                starts.erase(it);
-                sort(starts.begin(), starts.end());
-                starts.insert(starts.begin(), root);
-            } else {
-                sort(starts.begin(), starts.end());
-            }
-        } else {
-            sort(starts.begin(), starts.end());
-        }
-
-        cout << starts.size() << endl;
-        for (int s : starts) {
-            vector<int> path;
-            int cur = s;
-            while (cur != 0) {
-                path.push_back(cur);
-                cur = next_node[cur];
-            }
-            cout << path.size() << endl;
-            for (int i = 0; i < path.size(); i++) {
-                if (i > 0) cout << " ";
-                cout << path[i];
-            }
-            cout << endl;
-        }
-        cout<<endl;
 }
 int main()
 {
