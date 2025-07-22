@@ -161,37 +161,14 @@ void faltu(T arg, const hello &...rest)
 
 
 void solve(){
-    int n;cin>>n;
-    vector<int>v(n);
-    arrin(v,n);
-    sort(all(v));
-    int mn=INT_MAX,ans=0;
-    for (int i = 0; i <n ; i++)
-    {
-        if(v[i]<=0) ans++;
-        else mn=min(v[i],mn);
-    }
-    bool ok=(mn<INT_MAX);
-    for (int i = 1; i < n; i++)
-    {
-       if(v[i]<=0){
-        // if{
-        //     ok=true;
-        // }
-        // else{
-        //     ok=false;
-        // }
-      //  ok&=(v[i]-v[i-1]>=mn);
-        if(ok && (v[i]-v[i-1]>=mn)) ok=true;
-        else ok=false;
-       }
-    }
-    if(!ok) cout<<ans<<endl;
-    else cout<<ans+1<<endl;
+   string s;cin>>s;
+    string res;
+    for(char c:s)if(c=='T')res+=c;
+    for(char c:s)if(c=='F'||c=='N')res+=c;
+    for(char c:s)if(c!='F'&&c!='N'&&c!='T')res+=c;
+    cout<<res<<endl;
+
     
-   // cout<<df<<endl;
-    
-   
 }
 int main()
 {
