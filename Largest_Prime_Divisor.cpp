@@ -141,7 +141,7 @@ void faltu(T a[], int n)
         cerr << a[i] << ' ';
     cerr << endl;
 }
-const int N=1e6+5;
+const int N=1e7+5;
 bitset<N> isPrime;
 vector<ll> primes;
 
@@ -187,15 +187,17 @@ int main()
     vector<ll>ans;
     while(cin>>n){
         ll tm=n;
-        if(n==0) continue;
+        if(n==0) break;
         ans.clear();
        // cout<<n<<" = ";
-        //if(n<0) n*=-1, cout<<"-1 x ";
+        if(n<0) n*=-1;
         for (int i = 0; primes[i]*primes[i] <=n; i++)
         {
-            while(n%primes[i]==0){
-                ans.push_back(primes[i]);
+            if(n%primes[i]==0){
+                while(n%primes[i]==0){
                 n/=primes[i];
+            }
+            ans.push_back(primes[i]);
             }
         }
         if(n>1) ans.push_back(n);
