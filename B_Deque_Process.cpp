@@ -192,11 +192,6 @@ void solve(){
         if(ok) ans+="L",l++;
         else ans+="R",r--;
     }
-    // if(ans.size()<n){
-    //     for (int i = n-4; i < n; i++){
-    //         ans+="L";
-    //     }
-    // }
     cout<<ans<<endl;
     
     
