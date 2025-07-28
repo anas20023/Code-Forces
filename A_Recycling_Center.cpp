@@ -167,14 +167,26 @@ void solve(){
     {
         cin>>v[i];
     }
-    ll ans=0;
-    priority_queue<ll,vector<ll>,greater<ll>>pq;
-    for (int i = 0; i < n; i++)
-    {
-        
+   // ll ans=0;
+    sort(v.rbegin(),v.rend());
+    while(1){
+        bool ok=true;
+        for (int i = 0; i < v.size(); i++)
+        {
+            if(v[i]<=c){
+                ok=false;
+                v.erase(v.begin() + i);
+                break;
+            }
+        }
+        if(ok){
+            cout<<v.size()<<endl;
+            return;
+        }
+        for(auto &i :v) i*=2;        
     }
     
-    cout<<ans<<endl;
+  //  cout<<ans<<endl;
 }
 int main()
 {
