@@ -159,34 +159,50 @@ void faltu(T arg, const hello &...rest)
     faltu(rest...);
 }
 
-
-void solve(){   
-   ll n,k,sum=0;cin>>n>>k;
-   vector<ll>v(n);
-   for (int i = 0; i <n; i++)
-   {
-        cin>>v[i];
-        sum=(sum+v[i])%MOD;
-   }
-   if(sum<0) sum+=MOD;
-   ll mx=v[0],cur=v[0];
-   for (int i = 1; i < n; i++)
-   {
-    cur=max(v[i]+cur,v[i]);
-    mx=max(mx,cur);
-   }    
-   mx=max(0LL,mx);
-   ll pow2 = 1, base = 2;
-    ll exp = k;
-    while (exp) {
-        if (exp & 1)  pow2 = (pow2 * base) % MOD;  
-        base  = (base * base) % MOD;     
-        exp  /= 2;                      
+ll pw(ll base , ll ex){
+    ll r=1;
+    base%=MOD;
+    while(ex>0){
+        if(ex&1) r=(r*base)%MOD;
+        base=(base*base)%MOD;
+        ex>>=1;
     }
-    ll pwr=(pow2 -1 + MOD)%MOD;
-
-   ll ans=(sum+mx%MOD * pwr%MOD)%MOD;
-   cout<<ans<<endl;
+    return r;
+}
+void solve(){
+    int n;cin>>n;
+    if(n==2) {
+        cout<<-1<<endl;
+        return;
+    }
+     if(n==1) {
+        cout<<1<<endl;
+        return;
+    }
+    vector<vector<int>>v(n,vector<int>(n));
+    v[0][0]=1;
+    v[n-1][n-1]=n*n;
+    int x=n*n-1;
+    for(int i=1;i+1<n;i++){
+        for(int j=i;j>=0;j--,x--){
+            v[i-j][j]=x;
+        }
+    }
+    x=2;
+    for(int j=n-2;j>0;j--){
+        for(int i=0;i<n-j;i++,x++){
+            v[n-i-1][j+i]=x;
+        }
+    }
+    for(int i=n-1;i>=0;i--,x++){
+        v[i][n-i-1]=x;
+    }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cout<<v[i][j]<<" ";
+        }
+        cout<<endl;
+    }
    
 }
 int main()

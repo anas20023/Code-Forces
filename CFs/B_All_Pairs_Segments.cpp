@@ -151,26 +151,26 @@ void faltu(T arg, const hello &...rest)
 void solve() {
     int n, q;
     cin >> n >> q;
-    vector<ll> x(n), k(q);
-    arrin(x, n);
-    arrin(k, q);
-
-    map<ll, ll> freq;
-
+    vector<ll> x(n);
+    for (int i = 0; i < n; i++) cin >> x[i];
+    map<ll, ll> mp;
+    for (int i = 0; i < n; i++) {
+        ll seg_count = (ll)(i + 1) * (n - i) - 1;
+        mp[seg_count]++;
+    }
     for (int i = 0; i < n - 1; i++) {
-        ll diff = x[i + 1] - x[i] - 1;
-        ll count = (i + 1) * (n - i - 1);
-        freq[count] += diff;
-        freq[count + (n - i - 1)]++;
+        ll gap_length = x[i + 1] - x[i] - 1;
+        if (gap_length > 0) {
+            ll seg_count = (ll)(i + 1) * (n - i - 1);
+            mp[seg_count] += gap_length;
+        }
     }
-
-    vector<ll> result(q);
     for (int i = 0; i < q; i++) {
-        result[i] = freq[k[i]];
-    }
-
-    for (auto &res : result) {
-        cout << res << " ";
+        ll k;
+        cin >> k;
+        if (mp.find(k) != mp.end()) cout << mp[k];
+        else cout << 0;
+        if (i < q - 1) cout << " ";
     }
     cout << endl;
 }
