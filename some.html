@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communicator | Premium Digital Marketing Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#e11d48', // Vibrant red
+                        dark: '#0f172a',    // Dark blue background
+                        light: '#f8fafc',   // Light background
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-pattern {
+            background: radial-gradient(circle at 10% 20%, rgba(225, 29, 72, 0.1) 0%, rgba(15, 23, 42, 0) 25%);
+        }
+        .portfolio-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .portfolio-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(225, 29, 72, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-dark text-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 py-4 px-4 md:px-8 lg:px-12 flex justify-between items-center bg-dark/90 backdrop-blur-sm border-b border-gray-800">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center mr-3">
+                <span class="font-bold text-xl">C</span>
+            </div>
+            <span class="text-xl font-bold">COMMUNICATOR</span>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-8">
+            <a href="#" class="hover:text-primary transition-colors">Home</a>
+            <a href="#" class="hover:text-primary transition-colors">Services</a>
+            <a href="#" class="hover:text-primary transition-colors">Portfolio</a>
+            <a href="#" class="hover:text-primary transition-colors">About</a>
+            <a href="#" class="hover:text-primary transition-colors">Contact</a>
+        </div>
+        
+        <!-- CTA Button -->
+        <button class="bg-primary hover:bg-red-700 px-4 py-2 md:px-6 md:py-2 rounded-full font-semibold transition-all transform hover:scale-105">
+            Get Started
+        </button>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden text-2xl">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-dark z-40 flex flex-col items-center justify-center hidden">
+        <button id="close-menu" class="absolute top-6 right-6 text-2xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="flex flex-col items-center space-y-8">
+            <a href="#" class="text-2xl hover:text-primary transition-colors">Home</a>
+            <a href="#" class="text-2xl hover:text-primary transition-colors">Services</a>
+            <a href="#" class="text-2xl hover:text-primary transition-colors">Portfolio</a>
+            <a href="#" class="text-2xl hover:text-primary transition-colors">About</a>
+            <a href="#" class="text-2xl hover:text-primary transition-colors">Contact</a>
+            <button class="bg-primary hover:bg-red-700 px-8 py-3 rounded-full font-semibold transition-all mt-4">
+                Get Started
+            </button>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="min-h-screen pt-24 pb-16 px-4 md:px-8 lg:px-12 flex flex-col md:flex-row items-center hero-pattern">
+        <!-- Text Content -->
+        <div class="md:w-1/2 md:pr-10 mb-12 md:mb-0">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                <div class="inline-block mb-2">
+                    <span class="text-primary">Big</span> Agency Work.
+                </div>
+                <div class="inline-block">
+                    <span class="text-primary">Small</span> Agency Energy.
+                </div>
+            </h1>
+            
+            <p class="mt-6 text-lg text-gray-300 max-w-lg">
+                At Communicator, we deliver enterprise-level results with the personal touch and agility of a boutique agency. Our team crafts digital experiences that convert visitors into customers.
+            </p>
+            
+            <div class="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <button class="bg-primary hover:bg-red-700 px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold transition-all transform hover:scale-105">
+                    View Our Work
+                </button>
+                <button class="border-2 border-white hover:border-primary px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold hover:text-primary transition-all">
+                    Book Consultation
+                </button>
+            </div>
+            
+            <div class="mt-12 flex flex-wrap items-center gap-4">
+                <div class="flex items-center">
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-600 border-2 border-dark flex items-center justify-center overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-gray-500 border-2 border-dark flex items-center justify-center overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-gray-400 border-2 border-dark flex items-center justify-center overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="font-semibold text-sm md:text-base">Trusted by industry leaders</p>
+                        <div class="flex mt-1">
+                            <span class="text-yellow-400"><i class="fas fa-star text-xs md:text-sm"></i></span>
+                            <span class="text-yellow-400"><i class="fas fa-star text-xs md:text-sm"></i></span>
+                            <span class="text-yellow-400"><i class="fas fa-star text-xs md:text-sm"></i></span>
+                            <span class="text-yellow-400"><i class="fas fa-star text-xs md:text-sm"></i></span>
+                            <span class="text-yellow-400"><i class="fas fa-star text-xs md:text-sm"></i></span>
+                            <span class="ml-2 text-gray-300 text-xs md:text-sm">5.0 (128 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center bg-gray-800/50 px-4 py-2 rounded-full">
+                    <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center mr-2">
+                        <i class="fas fa-trophy text-xs"></i>
+                    </div>
+                    <span class="text-sm">Award Winning Agency 2023</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Portfolio Grid -->
+        <div class="md:w-1/2 grid grid-cols-2 gap-4 md:gap-6">
+            <div class="relative group overflow-hidden rounded-2xl portfolio-hover">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-commerce Brand" class="w-full h-64 md:h-80 object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <div class="translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <h3 class="font-bold text-xl">E-commerce Brand</h3>
+                        <p class="text-gray-300 mt-1">+220% conversion rate</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative group overflow-hidden rounded-2xl portfolio-hover">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fintech Platform" class="w-full h-48 md:h-64 object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <div class="translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <h3 class="font-bold text-xl">Fintech Platform</h3>
+                        <p class="text-gray-300 mt-1">UX redesign</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative group overflow-hidden rounded-2xl portfolio-hover">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="SaaS Dashboard" class="w-full h-48 md:h-64 object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <div class="translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <h3 class="font-bold text-xl">SaaS Dashboard</h3>
+                        <p class="text-gray-300 mt-1">User analytics system</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative group overflow-hidden rounded-2xl portfolio-hover">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobile App" class="w-full h-64 md:h-80 object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <div class="translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <h3 class="font-bold text-xl">Mobile App</h3>
+                        <p class="text-gray-300 mt-1">Health & fitness solution</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-12 bg-light text-dark">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold">OUR EXPERTISE</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-4">Services That Drive Growth</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-600">We combine strategy, creativity, and technology to deliver measurable results for your business.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">SEO Optimization</h3>
+                    <p class="text-gray-600">Boost your visibility and organic traffic with our data-driven SEO strategies.</p>
+                </div>
+                
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-ad text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">PPC Advertising</h3>
+                    <p class="text-gray-600">Drive targeted traffic and conversions with precision paid advertising campaigns.</p>
+                </div>
+                
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-paint-brush text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Brand Design</h3>
+                    <p class="text-gray-600">Create a memorable brand identity that resonates with your target audience.</p>
+                </div>
+                
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Analytics</h3>
+                    <p class="text-gray-600">Gain actionable insights from your data to make informed business decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio Showcase -->
+    <section class="py-20 px-4 md:px-8 lg:px-12">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold">OUR WORK</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-4">Featured Projects</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-400">Explore our latest digital marketing success stories and creative campaigns.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="group relative overflow-hidden rounded-2xl portfolio-hover">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-90 flex flex-col justify-end p-6">
+                        <span class="text-primary font-semibold">Brand Strategy</span>
+                        <h3 class="text-xl font-bold mt-2">NovaTech Rebranding</h3>
+                        <p class="text-gray-300 mt-2">Complete brand transformation for tech startup</p>
+                        <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="text-white border border-white hover:bg-white hover:text-dark px-4 py-2 rounded-full transition-colors">View Case Study</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden rounded-2xl portfolio-hover">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-90 flex flex-col justify-end p-6">
+                        <span class="text-primary font-semibold">E-commerce</span>
+                        <h3 class="text-xl font-bold mt-2">Luxe Home Decor</h3>
+                        <p class="text-gray-300 mt-2">360° marketing campaign for luxury home brand</p>
+                        <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="text-white border border-white hover:bg-white hover:text-dark px-4 py-2 rounded-full transition-colors">View Case Study</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden rounded-2xl portfolio-hover">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-90 flex flex-col justify-end p-6">
+                        <span class="text-primary font-semibold">Web Application</span>
+                        <h3 class="text-xl font-bold mt-2">HealthTrack Pro</h3>
+                        <p class="text-gray-300 mt-2">Dashboard design for health monitoring platform</p>
+                        <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="text-white border border-white hover:bg-white hover:text-dark px-4 py-2 rounded-full transition-colors">View Case Study</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-primary hover:bg-red-700 px-8 py-4 rounded-full font-semibold transition-all">
+                    View Full Portfolio
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="py-16 px-4 md:px-8 lg:px-12 bg-gradient-to-r from-primary to-red-700">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2">250+</div>
+                    <p class="text-gray-200">Projects Completed</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2">98%</div>
+                    <p class="text-gray-200">Client Retention</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2">15M+</div>
+                    <p class="text-gray-200">Revenue Generated</p>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold mb-2">27</div>
+                    <p class="text-gray-200">Industry Awards</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="py-20 px-4 md:px-8 lg:px-12 bg-light text-dark">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold">CLIENT LOVE</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-4">What Our Clients Say</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-600">Don't just take our word for it - hear from some of our amazing clients.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Communicator transformed our online presence. Our conversion rates increased by 180% in just three months!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Sarah Johnson" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <p class="text-gray-500 text-sm">CEO, NovaTech</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"The team's creativity and technical expertise helped us stand out in a crowded market. Truly exceptional work."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Michael Chen" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <p class="text-gray-500 text-sm">Marketing Director, LuxeDecor</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Working with Communicator felt like having an in-house team that truly understood our vision. Highly recommended!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="David Rodriguez" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">David Rodriguez</h4>
+                            <p class="text-gray-500 text-sm">Founder, HealthTrack</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-12 bg-dark">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Digital Presence?</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto">Let's create something extraordinary together. Schedule your free consultation today.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <button class="bg-primary text-white hover:bg-red-700 px-8 py-4 rounded-full font-semibold transition-all">
+                    Book Free Consultation
+                </button>
+                <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-dark px-8 py-4 rounded-full font-semibold transition-all">
+                    View Case Studies
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 px-4 md:px-8 lg:px-12 bg-dark border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center mr-3">
+                            <span class="font-bold text-lg">C</span>
+                        </div>
+                        <span class="text-xl font-bold">COMMUNICATOR</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Delivering big agency results with small agency passion and personal attention.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">SEO Optimization</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">PPC Advertising</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Social Media Marketing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Web Design & Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Brand Strategy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Case Studies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Contact Us</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i>
+                            <span>123 Digital Avenue, San Francisco, CA 94103</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-primary"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-primary"></i>
+                            <span>hello@communicator.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Communicator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Floating Elements -->
+    <div class="fixed top-1/4 left-4 w-4 h-4 rounded-full bg-primary animate-pulse-slow hidden md:block"></div>
+    <div class="fixed top-1/3 right-10 w-6 h-6 rounded-full bg-primary/20 animate-float hidden md:block"></div>
+    <div class="fixed bottom-1/4 left-1/4 w-3 h-3 rounded-full bg-primary/30 animate-pulse-slow hidden md:block"></div>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Portfolio animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const portfolioItems = document.querySelectorAll('.portfolio-hover');
+            
+            portfolioItems.forEach((item, index) => {
+                // Add staggered animation
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 300 + (index * 100));
+            });
+        });
+    </script>
+</body>
