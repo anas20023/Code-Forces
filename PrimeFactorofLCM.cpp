@@ -39,7 +39,7 @@ const int inf = 2000000000;
 const ll infLL = 9000000000000000000;
 #define MOD 1000000007
 const int N=1e6+123;
-bitset<N> is_prime;
+bitset<N> isPrime;
 #define mem(a, b) memset(a, b, sizeof(a))
 #define gcd(a, b) __gcd(a, b)
 #define lcm(a, b) (a * (b / gcd(a, b)))
@@ -144,18 +144,20 @@ void faltu(T a[], int n)
 }
 vector<ll>primes;
 void seive(){
-    is_prime.set();
-    is_prime[0] = is_prime[1] = false;
-    for (int p = 2; p * p <= N; ++p) {
-        if (is_prime[p]) {
-            for (int i = p * p; i <= N; i += p)
-                is_prime[i] = false;
+    isPrime.set();
+    isPrime[0] = isPrime[1] = false;
+    for(int i = 3; i < N; i += 2) {
+        isPrime[i] = 1;
+    }
+    for(ll i = 3; i * i < N; i += 2) {
+        for(int j = i * i; j < N; j += i + i) {
+            isPrime[j] = 0;
         }
     }
     primes.push_back(2);
-    for (int i = 3; i <=N; i+=2)
-    {
-        if(is_prime[i]) primes.push_back(i);
+    for(int i = 3; i < N; i += 2) {
+        if(isPrime[i])
+            primes.push_back(i);
     }
     
 }
