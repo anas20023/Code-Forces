@@ -38,8 +38,6 @@ const double eps = 1e-9;
 const int inf = 2000000000;
 const ll infLL = 9000000000000000000;
 #define MOD 1000000007
-const int N=1e6+123;
-bitset<N> isPrime;
 #define mem(a, b) memset(a, b, sizeof(a))
 #define gcd(a, b) __gcd(a, b)
 #define lcm(a, b) (a * (b / gcd(a, b)))
@@ -142,24 +140,24 @@ void faltu(T a[], int n)
         cerr << a[i] << ' ';
     cerr << endl;
 }
-vector<ll>primes;
-void seive(){
-    isPrime.set();
-    isPrime[0] = isPrime[1] = false;
-    for(int i = 3; i < N; i += 2) {
-        isPrime[i] = 1;
-    }
-    for(ll i = 3; i * i < N; i += 2) {
-        for(int j = i * i; j < N; j += i + i) {
-            isPrime[j] = 0;
+const int N = 1e6 + 123;
+bitset<N> isPrime;
+vector<long long> primes;
+
+void sieve() {
+    isPrime.set(); 
+    isPrime[0] = isPrime[1] = 0;
+    for (long long i = 2; i * i < N; i++) {
+        if (isPrime[i]) {
+            for (long long j = i * i; j < N; j += i) {
+                isPrime[j] = 0;
+            }
         }
     }
-    primes.push_back(2);
-    for(int i = 3; i < N; i += 2) {
-        if(isPrime[i])
-            primes.push_back(i);
+
+    for (int i = 2; i < N; i++) {
+        if (isPrime[i]) primes.push_back(i);
     }
-    
 }
 template <typename T, typename... hello>
 void faltu(T arg, const hello &...rest)
@@ -178,39 +176,39 @@ ll pw(ll base , ll ex){
     }
     return r;
 }
-void solve(int c){
+void solve(int& c){
 
-    ll n;cin>>n;
-    set<int>st;
-    for (int i = 0; i < n; i++)
-    {
-        ll a;cin>>a;
-        for(int j = 0; primes[j]*primes[j] <= a; ++j){
-            if(a%primes[j]==0){
-                st.insert(primes[j]);
-            }
-            while(a%primes[j]==0){
-                a/=primes[j];
-            }
-        }
-        if(a != 1)st.insert(a);
-    }
-    cout<<"Case #"<<c<<": "<<st.size()<<endl;
     
-    for(auto i:st) cout<<i<<endl;
-    
-   
+
 }
 int main()
 {
     optimize();
     int tc = 1,c=1;
-    seive();
     cin >> tc;
+    sieve();
     while (tc--)
     {
-       solve(c);
-       c++;
+       //solve(c);
+        ll n;cin>>n;
+        set<ll>st;
+        for (int i = 0; i < n; i++)
+        {
+            ll a;cin>>a;
+            for(int j = 0; primes[j]*primes[j] <= a; ++j){
+                if(a%primes[j]==0){
+                    st.insert(primes[j]);
+                }
+                while(a%primes[j]==0){
+                    a/=primes[j];
+                }
+            }
+            if(a != 1)st.insert(a);
+        }
+        cout<<"Case #"<<c<<": "<<st.size()<<endl;
+        
+        for(auto i:st) cout<<i<<endl;
+        c++;
     }
 
     return 0;
