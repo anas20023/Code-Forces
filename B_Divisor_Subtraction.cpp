@@ -146,18 +146,11 @@ vector<ll>primes;
 void seive(){
     is_prime.set();
     is_prime[0] = is_prime[1] = false;
-    for (int p = 2; p * p <= N; ++p) {
-        if (is_prime[p]) {
+    for (int p = 2; p * p <= N; ++p)
+        if (is_prime[p])
             for (int i = p * p; i <= N; i += p)
                 is_prime[i] = false;
-        }
-    }
-    primes.push_back(2);
-    for (int p = 3; p <= N; p += 2) {
-        if (is_prime[p]) {
-            primes.push_back(p);
-        }
-    }
+    for (int p = 2; p <= N; ++p) if (is_prime[p]) primes.push_back(p);
 }
 template <typename T, typename... hello>
 void faltu(T arg, const hello &...rest)
@@ -179,27 +172,29 @@ ll pw(ll base , ll ex){
 void solve(){
 
     ll n;cin>>n;
-    if(is_prime[n]){
-        cout<<1<<endl;
+    if(n%2==0){
+        cout<<n/2<<endl;
         return;
     }
-    ll tm=n,cnt=0;
-    for (int i = 0; primes[i]*primes[i] <=tm; i++)
+    ll mn=-1;
+    for (ll i = 2; i*i <=n; i++)
     {
-        while(tm>0 && tm%primes[i]==0){
-                
-                cnt++;
-                tm-=primes[i];
+        if(n%i==0){
+            mn=i;
+            break;
         }
     }
-    cout<<cnt<<endl;
+    if(mn==-1) mn=n;
+    n-=mn;
+    // if(n>1) cnt=n;
+    cout<<1+(n/2)<<endl;
 
 }
 int main()
 {
     optimize();
     int tc = 1;
-    seive();
+   // seive();
     //cin >> tc;
     while (tc--)
     {
