@@ -173,17 +173,44 @@ void solve(){
 
    // ll n;cin>>n;
    string s;cin>>s;
-   ll n=s.size(),z=0,f=0,t=0;
-   for (int i = 0; i < n; i++)
-   {
-       if(s[i]=='5') f++;
-     if(s[i]=='0') z++;
-     if(s[i]=='2') t++;
-   }
-   if(f==0 || z==0){
-        cout<<"NO"<<endl;
-        return;
-   }
+   ll len=s.size();
+   int ans=inf;
+   for (int i = 0; i < len; ++i) {
+		for (int j = 0; j < len; ++j) {
+			if (i == j) continue;
+			string t = s;
+			int cur = 0;
+			for (int k = i; k < len - 1; ++k) {
+				swap(t[k], t[k + 1]);
+				++cur;
+			}
+			
+			for (int k = j - (j > i); k < len - 2; ++k) {
+				swap(t[k], t[k + 1]);
+				++cur;
+			}
+			
+			int pos = -1;
+			for (int k = 0; k < len; ++k) {
+				if (t[k] != '0') {
+					pos = k;
+					break;
+				}
+			}
+			
+			for (int k = pos; k > 0; --k) {
+				swap(t[k], t[k - 1]);
+				++cur;
+			}
+			
+			long long nn = atoll(t.c_str());
+			if (nn % 25 == 0)
+				ans = min(ans, cur);
+		}
+	}
+	
+	if (ans == inf)ans = -1;	
+	cout << ans << endl;
    
     
    
