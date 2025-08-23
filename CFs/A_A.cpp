@@ -1,7 +1,13 @@
 //onAC(ALPHA) =>{Target Next ICPC ^-^}           
 //  ^-^      ^-^       ^-^    ^-^     ^-^  
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp> 
+#include <ext/pb_ds/tree_policy.hpp> 
 using namespace std;
+using namespace __gnu_pbds;
+
+
+template <typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 typedef long long ll;
 typedef vector<int> vi;
@@ -32,9 +38,8 @@ const double eps = 1e-9;
 const int inf = 2000000000;
 const ll infLL = 9000000000000000000;
 #define MOD 1000000007
-#define MAX 1000000+7
-
-
+const int N=1e6+123;
+bitset<N> is_prime;
 #define mem(a, b) memset(a, b, sizeof(a))
 #define gcd(a, b) __gcd(a, b)
 #define lcm(a, b) (a * (b / gcd(a, b)))
@@ -137,62 +142,63 @@ void faltu(T a[], int n)
         cerr << a[i] << ' ';
     cerr << endl;
 }
-
+void seive(){
+    is_prime.set();
+    is_prime[0] = is_prime[1] = false;
+    for (int p = 2; p * p <= N; ++p) {
+        if (is_prime[p]) {
+            for (int i = p * p; i <= N; i += p)
+                is_prime[i] = false;
+        }
+    }
+}
 template <typename T, typename... hello>
 void faltu(T arg, const hello &...rest)
 {
     cerr << arg << ' ';
     faltu(rest...);
 }
-string decimalToBinayString(ll a)
-{
-    string bin = "";
-    ll mask = 1;
-    for(ll i = 0; i < 63; i++)
-    {
-        if((mask&a) >= 1)
-            bin = "1"+bin;
-        else
-            bin = "0"+bin;
-        mask<<=1;
+
+ll pw(ll base , ll ex){
+    ll r=1;
+    base%=MOD;
+    while(ex>0){
+        if(ex&1) r=(r*base)%MOD;
+        base=(base*base)%MOD;
+        ex>>=1;
     }
-    //cout<<binary<<endl;
-    return bin;
+    return r;
+}
+void solve(){
+
+    ll n;cin>>n;
+   // cout<<n-10<<endl;
+//    for (int i = 1; i <=n; i++)
+//    {
+//     cout<<i<<" ";
+//    }
+//    cout<<endl;
+if(n<2020 || n< 2021){
+    cout<<"NO"<<endl;
+    return;
+}
+ll tm=n/2020, r=n%2020;
+// cout<<tm<<" "<<r<<endl;
+if(tm>=r) cout<<"YES"<<endl;
+else cout<<"NO"<<endl;   
+    
+   
 }
 int main()
 {
     optimize();
     int tc = 1;
+   // seive();
     cin >> tc;
     while (tc--)
     {
-        int n;cin>>n;
-        string s;cin>>s;
-        vector<int>ans;
-        for (int i = 0; i < n/2; i++)
-        {
-            if(s[i]!=s[n-i-1]) ans.push_back(i);
-        }
-        if(ans.empty()){
-            cout<<"YES"<<endl;
-            continue;
-        }
-        bool ch=true;
-        for (int i = 1; i < ans.size(); i++)
-        {
-            if(ans[i]-ans[i-1]!=1){
-                ch=false;
-               break;
-            }
-           // cout<<ans[i]<<" ";
-        }
-        //cout<<endl;
-        if(ch) cout<<"YES"<<endl;
-        else cout<<"NO"<<endl;
-
-        
-        
+       solve();
     }
 
     return 0;
-}
+}   

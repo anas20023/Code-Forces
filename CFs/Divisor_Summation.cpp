@@ -38,7 +38,8 @@ const double eps = 1e-9;
 const int inf = 2000000000;
 const ll infLL = 9000000000000000000;
 #define MOD 1000000007
-
+const int N=1e6+123;
+bitset<N> is_prime;
 #define mem(a, b) memset(a, b, sizeof(a))
 #define gcd(a, b) __gcd(a, b)
 #define lcm(a, b) (a * (b / gcd(a, b)))
@@ -141,37 +142,55 @@ void faltu(T a[], int n)
         cerr << a[i] << ' ';
     cerr << endl;
 }
-
+void seive(){
+    is_prime.set();
+    is_prime[0] = is_prime[1] = false;
+    for (int p = 2; p * p <= N; ++p) {
+        if (is_prime[p]) {
+            for (int i = p * p; i <= N; i += p)
+                is_prime[i] = false;
+        }
+    }
+}
 template <typename T, typename... hello>
 void faltu(T arg, const hello &...rest)
 {
     cerr << arg << ' ';
     faltu(rest...);
 }
+
+ll pw(ll base , ll ex){
+    ll r=1;
+    base%=MOD;
+    while(ex>0){
+        if(ex&1) r=(r*base)%MOD;
+        base=(base*base)%MOD;
+        ex>>=1;
+    }
+    return r;
+}
 void solve(){
-    
+
+    ll n,i=0,sum=0;cin>>n;
+    for (i = 1; i*i <n; i++)
+    {
+        if(n%i==0){
+           sum+=i+n/i;
+        }
+    }
+    if(i*i==n) sum+=i;
+    sum-=n;
+    cout<<sum<<endl; 
 }
 int main()
 {
     optimize();
     int tc = 1;
+    //seive();
     cin >> tc;
-    const ll N=5e6+10;
-    vector<ll>v(N+1);
-    for (int i = 1; i <=N; i++)
-    {
-        for (int j = i; j <=N; j+=i)
-        {
-            v[j]+=i;
-        }
-        
-    }
-    
     while (tc--)
     {
-      // solve();
-      ll n;cin>>n;
-      cout<<v[n]-n<<endl;
+       solve();
     }
 
     return 0;
