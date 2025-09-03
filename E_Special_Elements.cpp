@@ -172,7 +172,7 @@ ll pw(ll base , ll ex){
 void solve(){
     int n;cin>>n;
     vector<int>v(n);
-    map<int,int>mp;
+    vector<int>mp(n+1,0);
     for (int i = 0; i < n; i++)
     {
         cin>>v[i];
