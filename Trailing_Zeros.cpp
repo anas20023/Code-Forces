@@ -142,6 +142,7 @@ void faltu(T a[], int n)
         cerr << a[i] << ' ';
     cerr << endl;
 }
+vector<int>primes;
 void seive(){
     is_prime.set();
     is_prime[0] = is_prime[1] = false;
@@ -152,6 +153,8 @@ void seive(){
         }
     }
 }
+
+
 template <typename T, typename... hello>
 void faltu(T arg, const hello &...rest)
 {
@@ -171,16 +174,24 @@ ll pw(ll base , ll ex){
 }
 void solve(){
 
-    ll n;cin>>n;
-    cout<<n/5<<endl;
-    
-   
+    int n;cin>>n;
+    //for(int i=0;i<10;i++) cout<<primes[i]<<" "
+    int ans=0;
+    for (int i = 5; n/i >=1; i*=5)
+    {
+        ans+=n/i;
+    }
+    cout<<ans<<endl;
 }
 int main()
 {
     optimize();
     int tc = 1;
-    //seive();
+//     seive();
+//     for (int i = 1; i <=N; i++)
+// {
+//     if(is_prime[i]) primes.push_back(i);
+// }
     //cin >> tc;
     while (tc--)
     {
