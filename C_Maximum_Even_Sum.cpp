@@ -169,30 +169,30 @@ ll pw(ll base , ll ex){
     }
     return r;
 }
-void solve(){
-
-    ll n,x;cin>>n>>x;
-    ll ans=LLONG_MIN;
-    // for (int i = 1; i*i <=x; i++)
-    // {
-    //     if(x%i==0){
-    //         ll s=n*i+x/i;
-    //         if(s%2==0) ans=max(ans,s);
-    //         if(i!=x/i) { 
-    //                 s=n*(x/i)+i;
-    //                  if(s%2==0) ans=max(ans,s);
-    //             }
-    //     }
-    // }
-    
-    if((n+x)%2==0) ans=max(ans,(n+x));
-    ll k=x;
-    while(k%2==0) k/=2;
-    ll tm=n*k+x/k;
-    if(tm%2==0) ans=max(ans,tm);
-
-   if(ans==LLONG_MIN) cout<<-1<<endl;
-   else cout<<ans<<endl;
+void solve() {
+    ll a, b;
+    cin >> a >> b;
+    if (a % 2 == 0) {
+        if (b % 2 == 0) {
+            ll s1 = a + b;
+            ll s2 = a * (b / 2) + 2;
+            cout << max(s1, s2) << endl;
+        } else {
+            cout << -1 << endl;
+        }
+    } else {
+        if (b % 2 == 1) {
+            cout << a * b + 1 << endl;
+        } else {
+            if (b % 4 == 0) {
+                ll s1 = 2 * a + b / 2;
+                ll s2 = a * (b / 2) + 2;
+                cout << max(s1, s2) << endl;
+            } else {
+                cout << -1 << endl;
+            }
+        }
+    }
 }
 
 int main()
