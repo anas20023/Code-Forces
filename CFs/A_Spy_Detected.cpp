@@ -1,49 +1,29 @@
-////////////////              ANAS IBN BELAL            /////////////////
-//                         Test  Case  Template                       ||
-//                                                                    ||
-//                                                                    ||
-//      BANGLADESH  UNIVERSITY OF BUSINESS AND TECHNOLOGY             ||
-//                          INTAKE 52                                 ||
-//                      DEPARTMENT OF CSE                             ||
-//                                                                    ||
-//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 #include <bits/stdc++.h>
-#define ll long long
-#define endl "\n"
 using namespace std;
 
-void Fast_io()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-}
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-int main()
-{
-    Fast_io();
-    ll tc;
-    cin >> tc;
-    while (tc--)
-    {
-        ll s;
-        cin >> s;
-        vector<ll> el(s);
-        vector<ll> track(105, 0);
-        for (int i = 0; i < s; i++)
-        {
-            cin >> el[i];
-            track[el[i]]++;
-        }
-        for (int i = 0; i < s; i++)
-        {
-            if (track[el[i]] == 1)
-            {
-                cout << i + 1 << endl;
-                break;
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) cin >> a[i];
+
+        if (a[0] != a[1] && a[0] != a[2]) {
+            cout<<1<<endl;
+        } 
+        else {
+            for (int i = 1; i < n; i++) {
+                if (a[i] != a[0]) {
+                    cout<<i+1<<endl; 
+                    break;
+                }
             }
         }
     }
-
     return 0;
 }
