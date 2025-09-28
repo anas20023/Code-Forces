@@ -7,18 +7,31 @@ int main()
     while(t--){
         int n;cin>>n;
         vector<int>v(n);
-        int mn=INT_MAX;
+        
         for (int i = 0; i < n; i++)
         {
             cin>>v[i];
-            if(v[i]>=0) mn=min(mn,v[i]);
+        }
+        bool isok=true;
+        int mn=v[0];
+        for (int i = 1; i < n; i++)
+        {
+            if(v[i]!=v[0]){
+                isok=false;
+                break;
+            }
+            mn=min(mn,v[i]);
         }
         //cout<<mn<<endl;
-        int ans=INT_MAX;
+        if(isok){
+            cout<<-1<<endl;
+            continue;
+        }
+        sort(v.begin(),v.end());
+        int ans=0;
         for (int i = 0; i < n; i++)
         {
-            int tm=abs(mn-v[i]);
-            if(tm>0) ans=min(ans,tm);
+            ans=__gcd(ans,abs(v[i]-mn));
         }
         cout<<ans<<endl;
         
