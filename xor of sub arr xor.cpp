@@ -17,7 +17,7 @@ int main()
         }
     }
     cout<<ans<<endl;
-    
+    /// oik setup gitt
     
     return 0;
 }
