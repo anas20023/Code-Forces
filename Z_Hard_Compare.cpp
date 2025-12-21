@@ -161,24 +161,26 @@ void faltu(T arg, const hello &...rest)
 
 ll pw(ll base , ll ex){
     ll r=1;
-    base%=MOD;
+   // base%=MOD;
     while(ex>0){
-        if(ex&1) r=(r*base)%MOD;
-        base=(base*base)%MOD;
+        if(ex&1) r=(r*base);
+        base=(base*base);
         ex>>=1;
     }
     return r;
 }
 void solve(){
 
-    ll n;cin>>n;
+    ll a,b,c,d;cin>>a>>b>>c>>d;
+    if(b*log(a)>d*log(c)) cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
 }
 int main()
 {
     optimize();
     int tc = 1;
     seive();
-    cin >> tc;
+   // cin >> tc;
     while (tc--)
     {
        solve();
