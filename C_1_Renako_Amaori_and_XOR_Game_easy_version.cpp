@@ -28,9 +28,17 @@ int main()
         }
         // int ansa=abs(x-y),ansb=abs(p-q);
         // cout<<ansa<<" "<<ansb<<endl;
+        int bt=0;
+        for (int i = 0; i < 20; i++)
+        {
+            if(x&1<<i){
+                bt=i;
+            }
+        }
+        
         for (int i = 0; i < n; i++)
         {
-            if(a[i]^b[i]){
+            if((a[i]^b[i])&1<<bt){
                 y=i;
             }
         }
