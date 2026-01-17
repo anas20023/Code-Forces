@@ -20,11 +20,11 @@ int main()
         //     cout<<1<<endl;
         // }
 
-        int s,k,m,x;cin>>s>>k>>m;
+        int s,k,m;cin>>s>>k>>m;
         // int y=m/k;
         // cout<<m%k<<endl;
-        if(s>k && m>=k) x=k;
-        else x=s;
+        int x=(s>k && m>=k)?k:s;
+        // else x=s;
         // cout<<m%k<<endl;
         cout<<max(0,x-(m%k))<<endl;
     }
